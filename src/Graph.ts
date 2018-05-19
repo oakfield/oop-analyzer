@@ -1,34 +1,19 @@
-class Graph<T> implements IGraph<T> {
-	nodes: Set<INode<T>>;
-	edges: Set<IEdge<T>>;
-
-	constructor(nodes: Set<INode<T>> = new Set(), edges: Set<IEdge<T>> = new Set()) {
-		this.nodes = nodes;
-		this.edges = edges;
+export default class Graph<T> implements IGraph<T> {
+	constructor(nodes: Set<INode<T>> = new Set()) {
+		this._nodes = nodes;
 	}
 
-	// get connectedComponents(): IGraph<T>[] {
-	// 	if (this._connectedComponents) {
-	// 		return this._connectedComponents;
-	// 	}
+	// todo: add addNode and removeNode?
+	get nodes(): Set<INode<T>> {
+		for (let node of this._nodes)
+			for (let neighbor of node.neighbors)
+				this._nodes.add(neighbor);
 
-	// 	this._connectedComponents = [];
-	// 	let currentConnectedComponent = new Graph<T>();
-
-	// 	for (let node of this.nodes) {
-	// 		let numberOfDiscoveredNodes = this._discoveredNodes.size;
-
-	// 		this._partialDepthFirstSearch(node);
-	// 		if (this._discoveredNodes.size > numberOfDiscoveredNodes) {
-	// 			numberOfConnectedComponents++;
-	// 		}
-	// 	}
-
-	// 	return numberOfConnectedComponents;
-	// }
+		return this._nodes;
+	}
 
 	get connectedComponents(): IGraph<T>[] {
-		let connectedComponents = [] as IGraph<T>[];
+		let connectedComponents: IGraph<T>[] = [];
 		let discoveredNodes = new Set<INode<T>>();
 
 		for (let node of this.nodes) {
@@ -47,55 +32,7 @@ class Graph<T> implements IGraph<T> {
 		return connectedComponents;
 	}
 
-	addEdge(edge: IEdge<T>) {
-		if (!(this.nodes.has(edge[0]) && this.nodes.has(edge[1])))
-			throw new Error();
-		
-		this.edges.add(edge);
-	}
-
-	removeEdge(edge: IEdge<T>) {
-		this.edges.delete(edge);
-	}
-
-	addNode(node: INode<T>) {
-		this.nodes.add(node);
-	}
-
-	removeNode(node: INode<T>) {
-		for (let edge of this.edges) {
-			if (edge[0] === node || edge[1] === node) {
-				this.removeEdge(edge);
-			}
-		}
-
-		this.nodes.delete(node);
-	}
-
-	getNeighborsOf(node: INode<T>): Set<INode<T>> {
-		const neighbors: Set<INode<T>> = new Set();
-
-		for (let edge of this.edges) {
-			if (edge[0] === node)
-				neighbors.add(edge[1]);
-
-			if (edge[1] === node)
-				neighbors.add(edge[0]);
-		}
-
-		return neighbors;
-	};
-
-	// private *_partialDepthFirstSearch(startNode: INode<T>,
-	// 	discoveredNodes = new Set<INode<T>>()): IterableIterator<INode<T>> {
-	// 	yield startNode;
-
-	// 	discoveredNodes.add(startNode);
-
-	// 	for (let node of this.getNeighborsOf(startNode))
-	// 		if (!discoveredNodes.has(node))
-	// 			yield this._partialDepthFirstSearch(node, discoveredNodes);
-	// }
+	private _nodes: Set<INode<T>>;
 
 	private *_partialDepthFirstSearch(startNode: INode<T>): IterableIterator<INode<T>> {
 		let discoveredNodes = new Set<INode<T>>();
@@ -110,7 +47,7 @@ class Graph<T> implements IGraph<T> {
 
 				yield nextNode;
 
-				for (let neighbor of this.getNeighborsOf(nextNode)) {
+				for (let neighbor of nextNode.neighbors) {
 					stack.push(neighbor);
 				}
 			}
