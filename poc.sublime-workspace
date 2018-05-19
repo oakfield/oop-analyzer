@@ -1,0 +1,935 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nu",
+				"numberOfConnectedComponents\tlet"
+			],
+			[
+				"_",
+				"_depthFirstSearch\tmethod"
+			],
+			[
+				"_d",
+				"_depthFirstSearch\tmethod"
+			],
+			[
+				"en",
+				"endTime1"
+			],
+			[
+				"start",
+				"startTime1"
+			],
+			[
+				"su",
+				"successors"
+			],
+			[
+				"suo",
+				"sudokuStartGrid"
+			],
+			[
+				"con",
+				"contains1through9"
+			],
+			[
+				"arra",
+				"arrayItem"
+			],
+			[
+				"arr",
+				"arrayItem"
+			],
+			[
+				"row",
+				"rowsValid"
+			],
+			[
+				"array",
+				"array2"
+			],
+			[
+				"a",
+				"accumulator"
+			],
+			[
+				"is",
+				"isSolvedIn"
+			],
+			[
+				"si",
+				"isSolvedIn"
+			],
+			[
+				"Search",
+				"SearchProblem"
+			],
+			[
+				"new",
+				"newlyDiscoveredStates"
+			],
+			[
+				"next",
+				"nextState"
+			],
+			[
+				"so",
+				"solution"
+			],
+			[
+				"test",
+				"testSolver"
+			],
+			[
+				"S",
+				"SearchProblem"
+			],
+			[
+				"Searc",
+				"SearchProblemSolver"
+			],
+			[
+				"eve",
+				"eventEmitter"
+			],
+			[
+				"hio",
+				"hospitals"
+			],
+			[
+				"hos",
+				"hospital"
+			],
+			[
+				"ho",
+				"hospital"
+			],
+			[
+				"best",
+				"bestHospital"
+			],
+			[
+				"bes",
+				"bestHospital"
+			],
+			[
+				"data",
+				"dataByState"
+			],
+			[
+				"outcom",
+				"outcomeIndex"
+			],
+			[
+				"solve",
+				"solvedMatrix"
+			],
+			[
+				"set",
+				"setSolvedMatrix"
+			],
+			[
+				"s",
+				"solvedMatrix"
+			],
+			[
+				"get",
+				"getSolvedMatrix"
+			],
+			[
+				"se",
+				"setSolvedMatrix"
+			],
+			[
+				"re",
+				"records"
+			],
+			[
+				"t",
+				"threshold"
+			],
+			[
+				"compl",
+				"complete_cases"
+			],
+			[
+				"pl",
+				"pollutantSum"
+			],
+			[
+				"pollutantValu",
+				"pollutantValuesClean"
+			],
+			[
+				"po",
+				"pollutantCount"
+			],
+			[
+				"pollu",
+				"pollutantCount"
+			],
+			[
+				"poll",
+				"PollutantValuesClean"
+			],
+			[
+				"p",
+				"pollutant"
+			],
+			[
+				"ba",
+				"barGraphCtrl"
+			],
+			[
+				"visu",
+				"visualization"
+			],
+			[
+				"bue",
+				"buyersNormalized"
+			],
+			[
+				"x",
+				"xpathExpression"
+			],
+			[
+				"Bar",
+				"BarGraph"
+			],
+			[
+				"visual",
+				"visualizationTemplate"
+			],
+			[
+				"vis",
+				"visualizationTemplate"
+			],
+			[
+				"module",
+				"moduleFactory"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"Visualiz",
+				"visualizationSelector"
+			],
+			[
+				"auto",
+				"autofocus\tAttr"
+			],
+			[
+				"space",
+				"space-between"
+			],
+			[
+				"dom",
+				"domSection"
+			],
+			[
+				"sty",
+				"stylesheetLoadHandler"
+			],
+			[
+				"on",
+				"onload"
+			],
+			[
+				"scrip",
+				"scriptLoadHandler"
+			],
+			[
+				"st",
+				"stylesheets"
+			],
+			[
+				"load",
+				"loadHandler"
+			],
+			[
+				"file",
+				"fileArray"
+			],
+			[
+				"html",
+				"htmlLoadHandler"
+			],
+			[
+				"que",
+				"queuedModules"
+			],
+			[
+				"tem",
+				"templateIsLoadedProperty"
+			],
+			[
+				"event",
+				"eventBus"
+			],
+			[
+				"even",
+				"eventBus"
+			],
+			[
+				"Module",
+				"ModuleManager"
+			],
+			[
+				"Mod",
+				"ModuleManager"
+			],
+			[
+				"lo",
+				"loadCSS"
+			],
+			[
+				"create",
+				"createFilePath"
+			],
+			[
+				"add",
+				"addDimension"
+			],
+			[
+				"update",
+				"updateData"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
+				"flex",
+				"flex-direction"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"da",
+				"dataset"
+			],
+			[
+				"class",
+				"classList"
+			],
+			[
+				"ease",
+				"ease-in"
+			],
+			[
+				"trans",
+				"transition-timing-function"
+			],
+			[
+				"transition",
+				"transition-duration"
+			],
+			[
+				"l",
+				"layout-vertical"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"ori",
+				"orientation"
+			],
+			[
+				"orie",
+				"orientationValue"
+			],
+			[
+				"curr",
+				"currentStyleSheet"
+			],
+			[
+				"cu",
+				"currentStyleSheet"
+			],
+			[
+				"graph",
+				"graphContainr"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/Graph.ts",
+			"settings":
+			{
+				"buffer_size": 492,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/IEvaluator.ts",
+			"settings":
+			{
+				"buffer_size": 64,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Lcom4Evaluator.ts",
+			"settings":
+			{
+				"buffer_size": 773,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "class Lcom4Evaluator implements IEvaluator {"
+			}
+		},
+		{
+			"contents": "Hey, guys. I keep forgetting to ask, but I'm wondering if we could get your help with the back yard one day, a Saturday or Sunday. Dad isn't keeping up with it, and I can't face it full time, either. I am talking mainly about the back patio area. We looked into having someone come xeroscape it, but it'll be several $thousand. It just needs to be de-trashed, maybe have a rototiller rented to tear up the grass in the flowerbeds and get it all out. I don't know. But it's totally overrun with grass, weeds, and trash. If a group of us worked several hours .... ? Maybe we can get it basically covered in mulch or rocks so that constant weeding isn't necessary. I'm open to any and all suggestions, and I don't mind investing a 3-digit amount of money. \nHEEELLLLP!\nEnoch\nI can help\nWhat kind of xeriscaping were you thinking of?\nIf it's like gravel and some desert plants, it doesnt seem like it would have to be THAT expensive...\nRobin\nFirst, thank you for the gentle spelling correction 🙂. ANYTHING that will largely care for itself.\nThat included a person or crew to do it. If the crew works for pizza and beer, then the price comes down.\nEnoch\nEspecially if we repurposed some of the stone from the patio - I dont know much committed you guys are to it\nRobin\nI like the patio. But only if it's useable. There are weeds and stuff between all the stones\n👎1\nDaniel\nI'm sure we could help. You'll still have to weed but gravel would cut it down. \n\nDo you guys have access to a SUV or truck? Could hit utah lake area for free rocks at least\n👎1\nMight be cheaper than gravel lol... only has money and Mike's hard lemonade for payment 😄😄😄\nEnoch\nDo you like any of these? These are some ideas I found that I think could be replicated cheaply\n😠1\nPersonally, I think the idea of a faux dry riverbed sounds cool\nIt looks like it'd be roo expensive to add a bridge over one, though...\n👍1\nRobin\nIn the car with the glare on my phone. I'll be home in a sec and look.\nRobin\nThe only one that doesn't excite me is the first one.\nLet me show Dad\nRobin\nDad's had trouble keeping pampas grass going, but he's willing to try again. And we like the tall spiky plants and the mix of col8rs of mulch and rock.\nRobin\nAnd we both feel like #2 and 3 are too random, too unorganized.\n10:02am\nRobin\nSo when works for you guys? I could do either Saturday or Sunday this weekend, or Saturday May 12. I'm busy both the 5th and the 6th.\nDaniel\nI'm busy may 5-6, so any other weekend works\nRobin\nSo that means this weekend, before it gets too hot. Saturday or Sunday?\nDaniel\nI would prefer Saturday morning. I believe we have plans Sunday morning and afternoon\nRobin\nKk! We'll try to have some plants, mulch, etc. Or would you rather wait until May 12?\nDaniel\nNo preference here. Just tell me when you be there\nRobin\nI\nI'll wait and see if either this Saturday or May 12 makes any difference for Enoch of Michael. I think Enoch works both of those Saturdays, but we\nwill see.\n12:02pm\nEnoch\nYeah, I have either HEMA 1-3 or work 1-6 every Saturday. But other than that, my weekend is open\n8:06pm\nRobin\nSo, we may have to spread it over both days and just do the best we can. I'm not sure how much can get done in a couple hours, but it'll be more than is being done right now. I still haven't heard from Michael--have no idea about his availability. \nBut Daniel, what time would be good for you this Saturday? And Enoch, you're better with Sunday? And what do you both want for food / refreshments? Mike's lemonade I know. What else?\n",
+			"settings":
+			{
+				"buffer_size": 3502,
+				"line_ending": "Windows",
+				"name": "Hey, guys. I keep forgetting to ask, but I'm wonde"
+			}
+		},
+		{
+			"file": "src/tsconfig.json",
+			"settings":
+			{
+				"buffer_size": 70,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/Michael/Documents/Coding/AI Stuff/Search.ts",
+			"settings":
+			{
+				"buffer_size": 2137,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "packa",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/Michael/Documents/Coding/poc/src",
+		"/E/Michael/Documents/Coding/poc/dist"
+	],
+	"file_history":
+	[
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/ArcticTypescript/README.md",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/TypeScript/TypeScript.sublime-settings",
+		"/E/Michael/Documents/Coding/poc/poc.sublime-project",
+		"/E/Michael/Documents/Coding/poc/INode.ts",
+		"/E/Michael/Documents/Coding/poc/tsconfig.json",
+		"/E/Michael/Documents/Coding/poc/Graph.ts",
+		"/E/Michael/Documents/Coding/poc/IGraph.ts",
+		"/E/Michael/Documents/Coding/poc/greeter.ts",
+		"/E/Michael/Documents/haltingproblem.txt",
+		"/E/Michael/Documents/Coding/AI Stuff/ObjectOrientedProblem.js",
+		"/E/Michael/Documents/Coding/nodejs/main.js",
+		"/E/Michael/Documents/Coding/AI Stuff/.jshintrc",
+		"/E/Michael/Desktop/desktop.ini",
+		"/E/Michael/Documents/Coding/HashTable.js",
+		"/E/Michael/Documents/ish-math.py",
+		"/E/Michael/Documents/Coding/emscripten/hello_world.c",
+		"/C/Users/Michael/AppData/Local/Temp/Temp1_emsdk-portable-64bit.zip/README.md",
+		"/E/Michael/Desktop/simple.wat",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/TypeScript.sublime-settings",
+		"/E/Michael/Documents/Coding/AI Stuff/ObjectOrientedProblem.ts",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/E/Michael/Documents/Coding/graph.py",
+		"/E/Michael/Documents/GitHub/ProgrammingAssignment2/cachematrix.R",
+		"/E/Michael/Documents/comparison",
+		"/E/Michael/Documents/Coding/coursera/Programming in R/Programming Assignment 3/rankall.R",
+		"/E/Michael/Documents/Coding/coursera/Programming in R/Programming Assignment 3/rankhospital.R",
+		"/E/Michael/Documents/Coding/AI Stuff/tsconfig.json",
+		"/E/Michael/Documents/Coding/coursera/Programming in R/Programming Assignment 3/best.R",
+		"/E/Michael/Documents/platform.txt",
+		"/E/Michael/Documents/Coding/AI Stuff/Search.ts",
+		"/E/Michael/Documents/Coding/ObjectOrientedProblem.js",
+		"/E/Michael/Documents/Coding/coursera/Getting and Cleaning Data/housing",
+		"/E/Michael/Documents/Coding/coursera/Getting and Cleaning Data/restaurants.xml",
+		"/E/Michael/Documents/Coding/coursera/Getting and Cleaning Data/gas.xlsx",
+		"/E/Michael/Documents/Coding/coursera/Programming in R/Programming Assignment 1/corr.R",
+		"/E/Michael/Documents/Coding/coursera/Programming in R/Programming Assignment 1/complete.R",
+		"/E/Michael/Documents/Coding/coursera/Programming in R/Programming Assignment 1/pollutantmean.R",
+		"/E/Michael/Documents/GitHub/angular-visualization-selector/visualizationCtrl.js",
+		"/E/Michael/Documents/halledarrell",
+		"/E/Michael/Documents/GitHub/angular-visualization-selector/barGraph.html",
+		"/E/Michael/Documents/GitHub/angular-visualization-selector/app.js",
+		"/E/Michael/Documents/GitHub/angular-visualization-selector/index.html",
+		"/E/Michael/Documents/GitHub/factcheck-scraper/scraper.py",
+		"/C/inetpub/wwwroot/vizApp/module.js",
+		"/C/inetpub/wwwroot/vizApp/barGraph/barGraph.js",
+		"/C/inetpub/wwwroot/vizApp/barGraph/barGraph.html",
+		"/C/inetpub/wwwroot/vizApp/moduleManager.js",
+		"/C/inetpub/wwwroot/vizApp/app.css",
+		"/C/inetpub/wwwroot/vizApp/barGraph/barGraph.css",
+		"/C/inetpub/wwwroot/vizApp/visualizationSelector/visualizationSelector.js",
+		"/C/inetpub/wwwroot/vizApp/editor/editor.js",
+		"/C/inetpub/wwwroot/vizApp/visualizationSelector/visualizationSelector.css",
+		"/C/inetpub/wwwroot/vizApp/editor/editor.css",
+		"/C/inetpub/wwwroot/vizApp/visualizationSelector/visualizationSelector.html",
+		"/C/inetpub/wwwroot/vizApp/editor/editor.html",
+		"/C/inetpub/wwwroot/vizApp/factories.js",
+		"/C/inetpub/wwwroot/vizApp/app.js",
+		"/C/inetpub/wwwroot/vizApp/index.html",
+		"/C/Program Files (x86)/Steam/steamapps/common/FINAL FANTASY FFX&FFX-2 HD Remaster/UnX.ini",
+		"/C/inetpub/wwwroot/vizApp/visualizationSelector/visualizationSelect.js",
+		"/C/inetpub/wwwroot/vizApp/controlPanel/controlPanel.js",
+		"/C/inetpub/wwwroot/vizApp/controlPanel/controlPanel.html",
+		"/C/inetpub/wwwroot/vizApp/eventBus.js",
+		"/C/inetpub/wwwroot/vizApp/vizAppDiscardedIdeas.js",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/inetpub/wwwroot/vizApp/controlPanel/controlPanel.css",
+		"/C/inetpub/wwwroot/vizApp/vizApp.js",
+		"/E/Michael/Documents/Coding/Graphs/barGraph/barGraph.js",
+		"/E/Michael/Documents/Coding/Graphs/barGraph/barGraph.html",
+		"/E/Michael/Documents/Coding/Graphs/vizApp.js",
+		"/E/Michael/Documents/Coding/Graphs/barGraph.css",
+		"/E/Michael/Documents/Coding/Graphs/barGraph.html",
+		"/E/Michael/Documents/Coding/Graphs/barGraph.js",
+		"/E/Michael/Documents/Coding/Graphs/verticalBarGraph.css",
+		"/E/Michael/Documents/Coding/Graphs/horizontalBarGraph.css",
+		"/E/Michael/Documents/Coding/form.html",
+		"/E/Michael/Documents/Coding/progress.js",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/.jshintrc",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/JavaScript.sublime-settings",
+		"/E/Michael/Documents/Coding/d3 practice/practice1.html",
+		"/E/Michael/Documents/Coding/Graphs/verticalBarGraph.js",
+		"/E/Michael/Documents/Coding/Graphs/verticalBarGraph.html",
+		"/E/Michael/Documents/Coding/d3 practice/d3.dv.js",
+		"/E/Michael/Documents/Coding/Graphs/horizontalBarGraph.html",
+		"/D/Program Files/SteamLibrary/steamapps/common/Skyrim/Data/antilag.cfg",
+		"/E/Michael/Documents/My Games/Skyrim/Skyrim.ini",
+		"/E/Michael/Documents/My Games/Skyrim/SkyrimPrefs.ini",
+		"/E/Michael/Desktop/parseFile.js",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/E/Michael/Pictures/Camera Roll",
+		"/E/Michael/Dropbox/School/graph.py",
+		"/E/Michael/Dropbox/School/example.py",
+		"/E/Michael/Dropbox/School/CS 5100/A7b.gdoc",
+		"/E/Michael/Documents/Coding/helloWord.py",
+		"/E/Michael/Documents/Coding/rubytest1.rb",
+		"/G/0.7z"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"node",
+			"Node",
+			"node",
+			"isGoal",
+			"isSolvedIn",
+			"unexploredDiscoveredStates",
+			"ugrids"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"isSolvedIn",
+			"newlyDiscoveredStates"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/Graph.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 492,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								460,
+								460
+							]
+						],
+						"settings":
+						{
+							"SL.14.region_keys":
+							[
+							],
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/IEvaluator.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 64,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								64,
+								64
+							]
+						],
+						"settings":
+						{
+							"SL.15.region_keys":
+							[
+							],
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Lcom4Evaluator.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								509,
+								509
+							]
+						],
+						"settings":
+						{
+							"SL.16.region_keys":
+							[
+							],
+							"auto_name": "class Lcom4Evaluator implements IEvaluator {",
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3502,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3502,
+								3502
+							]
+						],
+						"settings":
+						{
+							"SL.20.region_keys":
+							[
+							],
+							"auto_name": "Hey, guys. I keep forgetting to ask, but I'm wonde",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/tsconfig.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 70,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								67,
+								67
+							]
+						],
+						"settings":
+						{
+							"SL.17.region_keys":
+							[
+							],
+							"SL.264.region_keys":
+							[
+								"SL.json.Gutter.region.redish markup.deleted.sublime_linter markup.error.sublime_linter.dot",
+								"sublime_linter.protected_regions",
+								"SL.json.Highlights.|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|32"
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/E/Michael/Documents/Coding/AI Stuff/Search.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.18.region_keys":
+							[
+							],
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 103.0
+	},
+	"output.doc":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "poc.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 192.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
