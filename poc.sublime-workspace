@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"d",
+				"data\tparameter"
+			],
+			[
+				"no",
+				"node3\tlet"
+			],
+			[
+				"eq",
+				"equal\tproperty"
+			],
+			[
+				"node",
+				"node2\tlet"
+			],
+			[
 				"nu",
 				"numberOfConnectedComponents\tlet"
 			],
@@ -367,9 +383,64 @@
 			"file": "src/Graph.ts",
 			"settings":
 			{
-				"buffer_size": 492,
+				"buffer_size": 886,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/IGraph.ts",
+			"settings":
+			{
+				"buffer_size": 138,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Node.ts",
+			"settings":
+			{
+				"buffer_size": 586,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Graph.spec.ts",
+			"settings":
+			{
+				"buffer_size": 3242,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/michael.tmTheme",
+			"settings":
+			{
+				"buffer_size": 12808,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>author</key>\n\t<string>Michael Sheets</string>\n\t<key>name</key>\n\t<string>Twilight</string>\n\t<key>settings</key>\n\t<array>\n\t\t<dict>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#141414</string>\n\t\t\t\t<key>caret</key>\n\t\t\t\t<string>#A7A7A7</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t\t<key>invisibles</key>\n\t\t\t\t<string>#FFFFFF40</string>\n\t\t\t\t<key>lineHighlight</key>\n\t\t\t\t<string>#FFFFFF08</string>\n\t\t\t\t<key>selection</key>\n\t\t\t\t<string>#DDF0FF33</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Comment</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>comment</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#5F5A60</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Constant</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF6A4C</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Entity</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>entity</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B703F</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Keyword</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>keyword</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CDA869</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Storage</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>storage</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F9EE98</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>String</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8F9D6A</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Support</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B859D</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Variable</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>variable</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#7587A6</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Invalid – Deprecated</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>invalid.deprecated</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic underline</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#D2A8A1</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Invalid – Illegal</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>invalid.illegal</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#562D56BF</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>-----------------------------------</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict/>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Embedded Source</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>text source</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#B0B3BA14</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Embedded Source (Bright)</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>text.html.ruby source</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#B1B3BA21</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Entity inherited-class</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>entity.other.inherited-class</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B5C2E</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String embedded-source</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string source</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#DAEFA3</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String constant</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#DDF2A4</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String.regexp</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string.regexp</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#E9C062</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String.regexp.«special»</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string.regexp constant.character.escape, string.regexp source.ruby.embedded, string.regexp string.regexp.arbitrary-repitition</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF7D34</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String variable</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string variable</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8A9A95</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Support.function</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support.function</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#DAD085</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Support.constant</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support.constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF6A4C</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>c C/C++ Preprocessor Line</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.preprocessor.c</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8996A8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>c C/C++ Preprocessor Directive</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.preprocessor.c keyword</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#AFC4DB</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>✘ Doctype/XML Processing</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.tag.sgml.doctype, meta.tag.sgml.doctype entity, meta.tag.sgml.doctype string, meta.tag.preprocessor.xml, meta.tag.preprocessor.xml entity, meta.tag.preprocessor.xml string</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#494949</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>✘ Meta.tag.«all»</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>declaration.tag, declaration.tag entity, meta.tag, meta.tag entity</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#AC885B</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>✘ Meta.tag.inline</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>declaration.tag.inline, declaration.tag.inline entity, source entity.name.tag, source entity.other.attribute-name, meta.tag.inline, meta.tag.inline entity</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#E0C589</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css tag-name</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.name.tag</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CDA869</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css:pseudo-class</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.other.attribute-name.tag.pseudo-class</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8F9D6A</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css#id</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.other.attribute-name.id</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8B98AB</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css.class</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.other.attribute-name.class</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B703F</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css property-name:</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support.type.property-name.css</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#C5AF75</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css property-value;</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.property-group support.constant.property-value.css, meta.property-value support.constant.property-value.css</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F9EE98</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css @at-rule</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.preprocessor.at-rule keyword.control.at-rule</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8693A5</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css additional-constants</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.property-value support.constant.named-color.css, meta.property-value constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CA7840</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css constructor.argument</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.constructor.argument.css</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8F9D6A</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.header</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.diff, meta.diff.header, meta.separator</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#0E2231</string>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.deleted</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.deleted</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#420E09</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.changed</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.changed</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#4A410D</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.inserted</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.inserted</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#253B22</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Markup: List</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.list</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F9EE98</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Markup: Heading</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.heading</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF6A4C</string>\n\t\t\t</dict>\n\t\t</dict>\n\t</array>\n\t<key>uuid</key>\n\t<string>766026CB-703D-4610-B070-8DE07D967C5F</string>\n</dict>\n</plist>\n",
+			"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Legacy/Twilight.tmTheme",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 11873,
+				"line_ending": "Windows",
+				"scratch": true
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 700,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -385,28 +456,10 @@
 			"file": "src/Lcom4Evaluator.ts",
 			"settings":
 			{
-				"buffer_size": 773,
+				"buffer_size": 156,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "class Lcom4Evaluator implements IEvaluator {"
-			}
-		},
-		{
-			"contents": "Hey, guys. I keep forgetting to ask, but I'm wondering if we could get your help with the back yard one day, a Saturday or Sunday. Dad isn't keeping up with it, and I can't face it full time, either. I am talking mainly about the back patio area. We looked into having someone come xeroscape it, but it'll be several $thousand. It just needs to be de-trashed, maybe have a rototiller rented to tear up the grass in the flowerbeds and get it all out. I don't know. But it's totally overrun with grass, weeds, and trash. If a group of us worked several hours .... ? Maybe we can get it basically covered in mulch or rocks so that constant weeding isn't necessary. I'm open to any and all suggestions, and I don't mind investing a 3-digit amount of money. \nHEEELLLLP!\nEnoch\nI can help\nWhat kind of xeriscaping were you thinking of?\nIf it's like gravel and some desert plants, it doesnt seem like it would have to be THAT expensive...\nRobin\nFirst, thank you for the gentle spelling correction 🙂. ANYTHING that will largely care for itself.\nThat included a person or crew to do it. If the crew works for pizza and beer, then the price comes down.\nEnoch\nEspecially if we repurposed some of the stone from the patio - I dont know much committed you guys are to it\nRobin\nI like the patio. But only if it's useable. There are weeds and stuff between all the stones\n👎1\nDaniel\nI'm sure we could help. You'll still have to weed but gravel would cut it down. \n\nDo you guys have access to a SUV or truck? Could hit utah lake area for free rocks at least\n👎1\nMight be cheaper than gravel lol... only has money and Mike's hard lemonade for payment 😄😄😄\nEnoch\nDo you like any of these? These are some ideas I found that I think could be replicated cheaply\n😠1\nPersonally, I think the idea of a faux dry riverbed sounds cool\nIt looks like it'd be roo expensive to add a bridge over one, though...\n👍1\nRobin\nIn the car with the glare on my phone. I'll be home in a sec and look.\nRobin\nThe only one that doesn't excite me is the first one.\nLet me show Dad\nRobin\nDad's had trouble keeping pampas grass going, but he's willing to try again. And we like the tall spiky plants and the mix of col8rs of mulch and rock.\nRobin\nAnd we both feel like #2 and 3 are too random, too unorganized.\n10:02am\nRobin\nSo when works for you guys? I could do either Saturday or Sunday this weekend, or Saturday May 12. I'm busy both the 5th and the 6th.\nDaniel\nI'm busy may 5-6, so any other weekend works\nRobin\nSo that means this weekend, before it gets too hot. Saturday or Sunday?\nDaniel\nI would prefer Saturday morning. I believe we have plans Sunday morning and afternoon\nRobin\nKk! We'll try to have some plants, mulch, etc. Or would you rather wait until May 12?\nDaniel\nNo preference here. Just tell me when you be there\nRobin\nI\nI'll wait and see if either this Saturday or May 12 makes any difference for Enoch of Michael. I think Enoch works both of those Saturdays, but we\nwill see.\n12:02pm\nEnoch\nYeah, I have either HEMA 1-3 or work 1-6 every Saturday. But other than that, my weekend is open\n8:06pm\nRobin\nSo, we may have to spread it over both days and just do the best we can. I'm not sure how much can get done in a couple hours, but it'll be more than is being done right now. I still haven't heard from Michael--have no idea about his availability. \nBut Daniel, what time would be good for you this Saturday? And Enoch, you're better with Sunday? And what do you both want for food / refreshments? Mike's lemonade I know. What else?\n",
-			"settings":
-			{
-				"buffer_size": 3502,
-				"line_ending": "Windows",
-				"name": "Hey, guys. I keep forgetting to ask, but I'm wonde"
-			}
-		},
-		{
-			"file": "src/tsconfig.json",
-			"settings":
-			{
-				"buffer_size": 70,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
 			}
 		},
 		{
@@ -414,6 +467,15 @@
 			"settings":
 			{
 				"buffer_size": 2137,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter/Twilight (SL).tmTheme",
+			"settings":
+			{
+				"buffer_size": 12834,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -426,9 +488,21 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "packa",
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"prv",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"package resou",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"packa",
 				"Package Control: Install Package"
@@ -444,10 +518,6 @@
 			[
 				"remove",
 				"Package Control: Remove Package"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"Package Control: install",
@@ -475,11 +545,14 @@
 	},
 	"expanded_folders":
 	[
-		"/E/Michael/Documents/Coding/poc/src",
-		"/E/Michael/Documents/Coding/poc/dist"
+		"/E/Michael/Documents/Coding/oop-analyzer/src",
+		"/E/Michael/Documents/Coding/oop-analyzer/dist"
 	],
 	"file_history":
 	[
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter/Twilight (SL).tmTheme",
+		"/E/Michael/Documents/Coding/oop-analyzer/.gitignore",
+		"/E/Michael/Documents/Coding/oop-analyzer/src/tsconfig.json",
 		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/ArcticTypescript/README.md",
 		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/TypeScript/TypeScript.sublime-settings",
 		"/E/Michael/Documents/Coding/poc/poc.sublime-project",
@@ -580,7 +653,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -620,7 +693,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -629,15 +702,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 492,
+						"buffer_size": 886,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								460,
-								460
+								484,
+								484
 							]
 						],
 						"settings":
@@ -656,6 +729,41 @@
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
+						"translation.y": 25.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/IGraph.ts",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 138,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -663,7 +771,179 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
+					"file": "src/Node.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								337,
+								337
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/Graph.spec.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3242,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								765,
+								765
+							]
+						],
+						"settings":
+						{
+							"SL.14.region_keys":
+							[
+							],
+							"SL.34.region_keys":
+							[
+							],
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/michael.tmTheme",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1123,
+								1123
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Legacy/Twilight.tmTheme",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11873,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11873,
+								11873
+							]
+						],
+						"settings":
+						{
+							"buffer_empty": false,
+							"create_dir": true,
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 700,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								213,
+								213
+							]
+						],
+						"settings":
+						{
+							"SL.15.region_keys":
+							[
+							],
+							"SL.35.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "src/IEvaluator.ts",
 					"semi_transient": false,
 					"settings":
@@ -691,24 +971,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 8,
 					"file": "src/Lcom4Evaluator.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 773,
+						"buffer_size": 156,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								509,
-								509
+								0,
+								0
 							]
 						],
 						"settings":
@@ -724,85 +1004,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3502,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3502,
-								3502
-							]
-						],
-						"settings":
-						{
-							"SL.20.region_keys":
-							[
-							],
-							"auto_name": "Hey, guys. I keep forgetting to ask, but I'm wonde",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/tsconfig.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 70,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								67,
-								67
-							]
-						],
-						"settings":
-						{
-							"SL.17.region_keys":
-							[
-							],
-							"SL.264.region_keys":
-							[
-								"SL.json.Gutter.region.redish markup.deleted.sublime_linter markup.error.sublime_linter.dot",
-								"sublime_linter.protected_regions",
-								"SL.json.Highlights.|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|32"
-							],
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 9,
 					"file": "/E/Michael/Documents/Coding/AI Stuff/Search.ts",
 					"semi_transient": false,
 					"settings":
@@ -832,7 +1038,51 @@
 						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 10,
+					"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter/Twilight (SL).tmTheme",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12834,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.55.region_keys":
+							[
+							],
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -840,7 +1090,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -855,11 +1105,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -889,7 +1146,7 @@
 	"project": "poc.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
