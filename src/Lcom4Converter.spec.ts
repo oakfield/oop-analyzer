@@ -8,9 +8,9 @@ describe("convert", () => {
 			variables: [],
 			methods: []
 		};
-		let converter = new Lcom4Converter(JSON.stringify(testClass));
+		let converter = new Lcom4Converter();
 
-		expect(converter.convert().nodes).to.be.empty;
+		expect(converter.convert(testClass).nodes).to.be.empty;
 	});
 
 	it("returns an empty graph when the class has no methods", () => {
@@ -18,9 +18,9 @@ describe("convert", () => {
 			variables: ["a"],
 			methods: []
 		};
-		let converter = new Lcom4Converter(JSON.stringify(testClass));
+		let converter = new Lcom4Converter();
 
-		expect(converter.convert().nodes).to.be.empty;
+		expect(converter.convert(testClass).nodes).to.be.empty;
 	});
 
 
@@ -29,7 +29,7 @@ describe("convert", () => {
 			variables: [],
 			methods: [{ name: "x", references: [] }]
 		};
-		let converted = (new Lcom4Converter(JSON.stringify(testClass))).convert();
+		let converted = (new Lcom4Converter()).convert(testClass);
 
 		expect(converted.nodes.size).to.equal(1);
 		expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
@@ -43,7 +43,7 @@ describe("convert", () => {
 					{ name: "x", references: ["a"] },
 				]
 			};
-			let converted = (new Lcom4Converter(JSON.stringify(testClass))).convert();
+			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(1);
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
@@ -58,7 +58,7 @@ describe("convert", () => {
 					{ name: "y", references: ["b"] }
 				]
 			};
-			let converted = (new Lcom4Converter(JSON.stringify(testClass))).convert();
+			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(2);
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
@@ -73,7 +73,7 @@ describe("convert", () => {
 					{ name: "y", references: ["a"] }
 				]
 			};
-			let converted = (new Lcom4Converter(JSON.stringify(testClass))).convert();
+			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(2);
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 2)).to.be.true;
@@ -87,7 +87,7 @@ describe("convert", () => {
 				{ name: "y", references: ["x"] }
 			]
 		};
-		let converted = (new Lcom4Converter(JSON.stringify(testClass))).convert();
+		let converted = (new Lcom4Converter()).convert(testClass);
 
 		expect(converted.nodes.size).to.equal(2);
 		expect(Array.from(converted.nodes).every(node => node.neighbors.size === 2)).to.be.true;
@@ -103,7 +103,7 @@ describe("convert", () => {
 					{ name: "z", references: ["c"] }
 				]
 			};
-			let converted = (new Lcom4Converter(JSON.stringify(testClass))).convert();
+			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(3);
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;

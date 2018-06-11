@@ -1,7 +1,9 @@
-class Lcom4Evaluator<T> implements IEvaluator<T> {
-	constructor() { }
+import Lcom4Converter from './Lcom4Converter';
 
-	evaluate(graph: IGraph<T>): number {
-		return graph.connectedComponents.length;
+export default class Lcom4Evaluator<T> implements IEvaluator<T> {
+	constructor(private _converter: Lcom4Converter) { }
+
+	evaluate(toEvaluate: { variables: string[], methods: Method[] }): number {
+		return this._converter.convert(toEvaluate).connectedComponents.length;
 	}
 }

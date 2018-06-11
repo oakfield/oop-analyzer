@@ -1,20 +1,12 @@
 import Node from "./Node";
 import Graph from "./Graph";
 
-type Method = { name: string, references: string[]};
-
 export default class Lcom4Converter {
-	private _jsonString: string;
 
-	constructor(jsonString) {
-		this._jsonString = jsonString;
-	}
-
-	convert(): IGraph<Method> {
-		let parsedClass = JSON.parse(this._jsonString);
+	convert(toConvert: { variables: string[], methods: Method[] }): IGraph<Method> {
 		let methods = new Set<Node<Method>>();
 
-		for (let method of parsedClass.methods) {
+		for (let method of toConvert.methods) {
 			methods.add(new Node<Method>(method));
 		}
 
