@@ -19,6 +19,7 @@ export default class Lcom4Validator {
 			variables = Array.from(new Set(variables));
 
 			outputClasses.push({
+				name: "",
 				variables,
 				methods
 			});
