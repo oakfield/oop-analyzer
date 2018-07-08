@@ -1,4 +1,5 @@
 import Lcom4Converter from "./Lcom4Converter";
+import ClassModel from "./ClassModel";
 
 export default class Lcom4Validator {
 	constructor(private _converter: Lcom4Converter) { }
@@ -6,6 +7,7 @@ export default class Lcom4Validator {
 	validate(toValidate: ClassModel): ClassModel[] {
 		let graph = this._converter.convert(toValidate);
 		let outputClasses = [] as ClassModel[];
+		let counter = 0;
 
 		for (let connectedComponent of graph.connectedComponents) {
 			let methods = Array.from(connectedComponent.nodes)
@@ -18,11 +20,14 @@ export default class Lcom4Validator {
 			// Get unique references.
 			variables = Array.from(new Set(variables));
 
-			outputClasses.push({
-				name: "",
-				variables,
-				methods
-			});
+			console.log(graph.connectedComponents.length);
+			
+			let newClassModel = new ClassModel(`Class${counter}`);
+			newClassModel.methods = methods;
+			newClassModel.variables = variables;
+			counter++;
+
+			outputClasses.push(newClassModel);
 		}
 
 		return outputClasses;
