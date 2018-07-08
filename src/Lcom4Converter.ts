@@ -1,13 +1,15 @@
 import Node from "./Node";
 import Graph from "./Graph";
+import ClassModel from "./ClassModel";
+import MethodModel from "./MethodModel";
 
 export default class Lcom4Converter {
 
-	convert(toConvert: { variables: string[], methods: Method[] }): IGraph<Method> {
-		let methods = new Set<Node<Method>>();
+	convert(toConvert: ClassModel): Graph<MethodModel> {
+		let methods = new Set<Node<MethodModel>>();
 
 		for (let method of toConvert.methods) {
-			methods.add(new Node<Method>(method));
+			methods.add(new Node<MethodModel>(method));
 		}
 
 		for (let m of methods) {
@@ -21,6 +23,6 @@ export default class Lcom4Converter {
 			}
 		}
 
-		return new Graph<Method>(methods);
+		return new Graph<MethodModel>(methods);
 	}
 }

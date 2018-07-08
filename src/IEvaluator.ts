@@ -1,6 +1,5 @@
-type Method = { name: string, references: string[]};
-type ClassModel = { name: string, variables: string[], methods: Method[] };
+import ClassModel from "./ClassModel";
 
-interface IEvaluator<T> {
-	evaluate(toEvaluate: { variables: string[], methods: Method[] }): number;
+export interface IEvaluator<T> {
+	evaluate(toEvaluate: ClassModel): number;
 }

@@ -4,6 +4,82 @@
 		"selected_items":
 		[
 			[
+				"clas",
+				"classModel\tlet"
+			],
+			[
+				"class",
+				"classModel\tlet"
+			],
+			[
+				"continue",
+				"continueFn\tparameter"
+			],
+			[
+				"const",
+				"constructorNode\tparameter"
+			],
+			[
+				"co",
+				"continueFn\tparameter"
+			],
+			[
+				"classMOd",
+				"classModels\tlet"
+			],
+			[
+				"lc",
+				"lcom4Validator\tlet"
+			],
+			[
+				"L",
+				"Lcom4Converter\talias"
+			],
+			[
+				"var",
+				"variables\tlet"
+			],
+			[
+				"f",
+				"find\tmethod"
+			],
+			[
+				"fil",
+				"filter\tmethod"
+			],
+			[
+				"Class",
+				"ClassModel\ttype"
+			],
+			[
+				"IE",
+				"IEvaluator\tinterface"
+			],
+			[
+				"imp",
+				"implements\tkeyword"
+			],
+			[
+				"test",
+				"testClass\tlet"
+			],
+			[
+				"ev",
+				"evaluator\tlet"
+			],
+			[
+				"Lc",
+				"Lcom4Evaluator\talias"
+			],
+			[
+				"Meth",
+				"methodNodes\tlet"
+			],
+			[
+				"metho",
+				"methodNodes\tlet"
+			],
+			[
 				"d",
 				"data\tparameter"
 			],
@@ -94,10 +170,6 @@
 			[
 				"so",
 				"solution"
-			],
-			[
-				"test",
-				"testSolver"
 			],
 			[
 				"S",
@@ -332,10 +404,6 @@
 				"dataset"
 			],
 			[
-				"class",
-				"classList"
-			],
-			[
 				"ease",
 				"ease-in"
 			],
@@ -389,65 +457,73 @@
 			}
 		},
 		{
-			"file": "src/IGraph.ts",
+			"file": "src/WmcEvaluator.ts",
 			"settings":
 			{
-				"buffer_size": 138,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/Node.ts",
-			"settings":
-			{
-				"buffer_size": 586,
+				"buffer_size": 179,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/Graph.spec.ts",
+			"file": "src/Lcom4Converter.ts",
 			"settings":
 			{
-				"buffer_size": 3242,
+				"buffer_size": 710,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/michael.tmTheme",
-			"settings":
-			{
-				"buffer_size": 12808,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n\t<key>author</key>\n\t<string>Michael Sheets</string>\n\t<key>name</key>\n\t<string>Twilight</string>\n\t<key>settings</key>\n\t<array>\n\t\t<dict>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#141414</string>\n\t\t\t\t<key>caret</key>\n\t\t\t\t<string>#A7A7A7</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t\t<key>invisibles</key>\n\t\t\t\t<string>#FFFFFF40</string>\n\t\t\t\t<key>lineHighlight</key>\n\t\t\t\t<string>#FFFFFF08</string>\n\t\t\t\t<key>selection</key>\n\t\t\t\t<string>#DDF0FF33</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Comment</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>comment</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#5F5A60</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Constant</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF6A4C</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Entity</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>entity</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B703F</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Keyword</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>keyword</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CDA869</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Storage</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>storage</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F9EE98</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>String</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8F9D6A</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Support</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B859D</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Variable</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>variable</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#7587A6</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Invalid – Deprecated</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>invalid.deprecated</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic underline</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#D2A8A1</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Invalid – Illegal</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>invalid.illegal</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#562D56BF</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>-----------------------------------</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict/>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Embedded Source</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>text source</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#B0B3BA14</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Embedded Source (Bright)</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>text.html.ruby source</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#B1B3BA21</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Entity inherited-class</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>entity.other.inherited-class</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B5C2E</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String embedded-source</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string source</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#DAEFA3</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String constant</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#DDF2A4</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String.regexp</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string.regexp</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#E9C062</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String.regexp.«special»</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string.regexp constant.character.escape, string.regexp source.ruby.embedded, string.regexp string.regexp.arbitrary-repitition</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF7D34</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ String variable</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>string variable</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8A9A95</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Support.function</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support.function</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#DAD085</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>♦ Support.constant</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support.constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string></string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF6A4C</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>c C/C++ Preprocessor Line</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.preprocessor.c</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8996A8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>c C/C++ Preprocessor Directive</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.preprocessor.c keyword</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#AFC4DB</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>✘ Doctype/XML Processing</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.tag.sgml.doctype, meta.tag.sgml.doctype entity, meta.tag.sgml.doctype string, meta.tag.preprocessor.xml, meta.tag.preprocessor.xml entity, meta.tag.preprocessor.xml string</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#494949</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>✘ Meta.tag.«all»</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>declaration.tag, declaration.tag entity, meta.tag, meta.tag entity</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#AC885B</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>✘ Meta.tag.inline</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>declaration.tag.inline, declaration.tag.inline entity, source entity.name.tag, source entity.other.attribute-name, meta.tag.inline, meta.tag.inline entity</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#E0C589</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css tag-name</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.name.tag</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CDA869</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css:pseudo-class</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.other.attribute-name.tag.pseudo-class</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8F9D6A</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css#id</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.other.attribute-name.id</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8B98AB</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css.class</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.selector.css entity.other.attribute-name.class</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#9B703F</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css property-name:</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>support.type.property-name.css</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#C5AF75</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css property-value;</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.property-group support.constant.property-value.css, meta.property-value support.constant.property-value.css</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F9EE98</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css @at-rule</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.preprocessor.at-rule keyword.control.at-rule</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8693A5</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css additional-constants</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.property-value support.constant.named-color.css, meta.property-value constant</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CA7840</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>§ css constructor.argument</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.constructor.argument.css</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#8F9D6A</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.header</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>meta.diff, meta.diff.header, meta.separator</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#0E2231</string>\n\t\t\t\t<key>fontStyle</key>\n\t\t\t\t<string>italic</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.deleted</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.deleted</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#420E09</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.changed</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.changed</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#4A410D</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>⎇ diff.inserted</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.inserted</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>background</key>\n\t\t\t\t<string>#253B22</string>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F8F8F8</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Markup: List</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.list</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#F9EE98</string>\n\t\t\t</dict>\n\t\t</dict>\n\t\t<dict>\n\t\t\t<key>name</key>\n\t\t\t<string>Markup: Heading</string>\n\t\t\t<key>scope</key>\n\t\t\t<string>markup.heading</string>\n\t\t\t<key>settings</key>\n\t\t\t<dict>\n\t\t\t\t<key>foreground</key>\n\t\t\t\t<string>#CF6A4C</string>\n\t\t\t</dict>\n\t\t</dict>\n\t</array>\n\t<key>uuid</key>\n\t<string>766026CB-703D-4610-B070-8DE07D967C5F</string>\n</dict>\n</plist>\n",
-			"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Legacy/Twilight.tmTheme",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 11873,
 				"line_ending": "Windows",
-				"scratch": true
+				"name": "export default class JsonParser {"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "src/Lcom4Converter.spec.ts",
 			"settings":
 			{
-				"buffer_size": 700,
-				"line_ending": "Unix"
+				"buffer_size": 3635,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/IEvaluator.ts",
+			"file": "src/index.ts",
 			"settings":
 			{
-				"buffer_size": 64,
+				"buffer_size": 960,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dist/Node.mjs",
+			"settings":
+			{
+				"buffer_size": 602,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tsconfig.json",
+			"settings":
+			{
+				"buffer_size": 216,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Parser.ts",
+			"settings":
+			{
+				"buffer_size": 446,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/Program Files/SteamLibrary/steamapps/common/SkyrimVR/Skyrim.ini",
+			"settings":
+			{
+				"buffer_size": 1830,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -456,7 +532,7 @@
 			"file": "src/Lcom4Evaluator.ts",
 			"settings":
 			{
-				"buffer_size": 156,
+				"buffer_size": 371,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "class Lcom4Evaluator implements IEvaluator {"
@@ -467,15 +543,6 @@
 			"settings":
 			{
 				"buffer_size": 2137,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter/Twilight (SL).tmTheme",
-			"settings":
-			{
-				"buffer_size": 12834,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -550,6 +617,15 @@
 	],
 	"file_history":
 	[
+		"/E/Michael/Documents/Coding/oop-analyzer/package.json",
+		"/E/Michael/Documents/Coding/oop-analyzer/src/IEvaluator.ts",
+		"/E/Michael/Documents/Coding/oop-analyzer/src/Graph.spec.ts",
+		"/E/Michael/Documents/Coding/oop-analyzer/src/Node.ts",
+		"/E/Michael/Documents/Coding/oop-analyzer/src/INode.ts",
+		"/E/Michael/Documents/Coding/oop-analyzer/node_modules/acorn/dist/acorn.js",
+		"/E/Michael/Documents/Coding/oop-analyzer/src/Lcom4Validator.ts",
+		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Legacy/Twilight.tmTheme",
+		"/E/Michael/Documents/Coding/oop-analyzer/src/michael.tmTheme",
 		"/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter/Twilight (SL).tmTheme",
 		"/E/Michael/Documents/Coding/oop-analyzer/.gitignore",
 		"/E/Michael/Documents/Coding/oop-analyzer/src/tsconfig.json",
@@ -667,6 +743,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"parsed",
+			"token",
+			"Evaluator",
+			"evaluator",
+			"_jsonString",
+			"returns",
+			"variableName",
+			"methodNodes",
 			"node",
 			"Node",
 			"node",
@@ -681,6 +765,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"creates",
 			"isSolvedIn",
 			"newlyDiscoveredStates"
 		],
@@ -693,7 +778,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -709,12 +794,15 @@
 						"selection":
 						[
 							[
-								484,
-								484
+								0,
+								0
 							]
 						],
 						"settings":
 						{
+							"SL.13.region_keys":
+							[
+							],
 							"SL.14.region_keys":
 							[
 							],
@@ -729,19 +817,57 @@
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 25.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/IGraph.ts",
-					"semi_transient": true,
+					"file": "src/WmcEvaluator.ts",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 138,
+						"buffer_size": 179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								174,
+								174
+							]
+						],
+						"settings":
+						{
+							"SL.32.region_keys":
+							[
+							],
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Lcom4Converter.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 710,
 						"regions":
 						{
 						},
@@ -754,6 +880,81 @@
 						],
 						"settings":
 						{
+							"SL.14.region_keys":
+							[
+							],
+							"auto_name": "export default class JsonParser {",
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/Lcom4Converter.spec.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3635,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/index.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.15.region_keys":
+							[
+							],
+							"SL.38.region_keys":
+							[
+							],
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
 							"typescript_plugin_format_options":
 							{
@@ -771,133 +972,27 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/Node.ts",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 586,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								337,
-								337
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/Graph.spec.ts",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3242,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								765,
-								765
-							]
-						],
-						"settings":
-						{
-							"SL.14.region_keys":
-							[
-							],
-							"SL.34.region_keys":
-							[
-							],
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
-							},
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/michael.tmTheme",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12808,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1123,
-								1123
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false,
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
 					"buffer": 5,
-					"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/Color Scheme - Legacy/Twilight.tmTheme",
-					"semi_transient": false,
+					"file": "dist/Node.mjs",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 11873,
+						"buffer_size": 602,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11873,
-								11873
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"buffer_empty": false,
-							"create_dir": true,
-							"syntax": "Packages/XML/XML.sublime-syntax"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -908,79 +1003,122 @@
 				},
 				{
 					"buffer": 6,
-					"file": "package.json",
+					"file": "tsconfig.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 700,
+						"buffer_size": 216,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								213,
-								213
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"SL.15.region_keys":
 							[
+								"sublime_linter.protected_regions"
 							],
-							"SL.35.region_keys":
+							"SL.16.region_keys":
 							[
 							],
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"SL.30.region_keys":
+							[
+							],
+							"SL.31.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "src/IEvaluator.ts",
+					"file": "src/Parser.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 64,
+						"buffer_size": 446,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								64,
-								64
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"SL.15.region_keys":
+							"SL.49.region_keys":
+							[
+							],
+							"SL.57.region_keys":
 							[
 							],
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 379.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
+					"file": "/E/Program Files/SteamLibrary/steamapps/common/SkyrimVR/Skyrim.ini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1829,
+								1796
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1134.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "src/Lcom4Evaluator.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 156,
+						"buffer_size": 371,
 						"regions":
 						{
 						},
@@ -996,6 +1134,9 @@
 							"SL.16.region_keys":
 							[
 							],
+							"SL.23.region_keys":
+							[
+							],
 							"auto_name": "class Lcom4Evaluator implements IEvaluator {",
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
 							"use_tab_stops": false
@@ -1004,11 +1145,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "/E/Michael/Documents/Coding/AI Stuff/Search.ts",
 					"semi_transient": false,
 					"settings":
@@ -1029,60 +1170,19 @@
 							"SL.18.region_keys":
 							[
 							],
+							"SL.24.region_keys":
+							[
+							],
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true,
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 10,
-					"file": "/C/Users/Michael/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter/Twilight (SL).tmTheme",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12834,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"SL.55.region_keys":
-							[
-							],
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false,
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
-							}
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1094,7 +1194,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 40.0
 	},
 	"layout":
 	{
@@ -1105,18 +1205,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1179,6 +1272,15 @@
 	"selected_group": 0,
 	"settings":
 	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		]
 	},
 	"show_minimap": true,
 	"show_open_files": true,
