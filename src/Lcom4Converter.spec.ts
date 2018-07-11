@@ -52,6 +52,7 @@ describe("convert", () => {
 			testMethod1["_references"] = ["a"];
 			let testMethod2 = new MethodModel("y", "");
 			testMethod2["_references"] = ["b"];
+			testClass.methods = [testMethod1, testMethod2];
 			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(2);
@@ -66,6 +67,7 @@ describe("convert", () => {
 			testMethod1["_references"] = ["a"];
 			let testMethod2 = new MethodModel("y", "");
 			testMethod2["_references"] = ["a"];
+			testClass.methods = [testMethod1, testMethod2];
 			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(2);
@@ -79,6 +81,7 @@ describe("convert", () => {
 		testMethod1["_references"] = ["y"];
 		let testMethod2 = new MethodModel("y", "");
 		testMethod2["_references"] = ["x"];
+		testClass.methods = [testMethod1, testMethod2];
 		let converted = (new Lcom4Converter()).convert(testClass);
 
 		expect(converted.nodes.size).to.equal(2);
@@ -94,7 +97,8 @@ describe("convert", () => {
 			let testMethod2 = new MethodModel("y", "");
 			testMethod2["_references"] = ["b"];
 			let testMethod3 = new MethodModel("z", "");
-			testMethod2["_references"] = ["c"];
+			testMethod3["_references"] = ["c"];
+			testClass.methods = [testMethod1, testMethod2, testMethod3];
 			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(3);
