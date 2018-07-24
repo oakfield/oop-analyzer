@@ -1,7 +1,7 @@
-import * as Acorn from 'acorn';
-import * as Walk from 'acorn/dist/walk';
-import ClassModel from './ClassModel';
-import MethodModel from './MethodModel';
+import * as Acorn from "acorn";
+import * as Walk from "acorn/dist/walk";
+import ClassModel from "./models/ClassModel";
+import MethodModel from "./models/MethodModel";
 
 export default class Parser {
 	constructor() { }
@@ -26,12 +26,12 @@ export default class Parser {
 					continueFn(node.body, state);
 				},
 				MethodDefinition: (node, state, continueFn) => {
-					if (node.kind === 'constructor') {
+					if (node.kind === "constructor") {
 						state.currentlyParsing.type = "constructor";
-						state.classModel.constructorModel = new MethodModel('constructor', file.substring(node.start, node.end));
+						state.classModel.constructorModel = new MethodModel("constructor", file.substring(node.start, node.end));
 
 						continueFn(node.value, state);
-					} else if (node.kind === 'method') {
+					} else if (node.kind === "method") {
 						let methodModel = new MethodModel(node.key.name, file.substring(node.start, node.end));
 						state.classModel.methods.push(methodModel);
 						state.currentlyParsing = {
@@ -45,12 +45,12 @@ export default class Parser {
 				MemberExpression: (node, state, continueFn) => {
 					if (state.currentlyParsing.type === "constructor") {
 						// Walk.recursive will hit this even when the type is not MethodDefinition.
-						// Maybe's it's some super-type issue?
-						if (node.type === 'MemberExpression' && node.object.type === "ThisExpression") {
+						// Maybe it's some super-type issue?
+						if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 							state.classModel.variables.push(node.property.name);
 						}
 					} else if (state.currentlyParsing.type === "method") {
-						if (node.type === 'MemberExpression' && node.object.type === "ThisExpression") {
+						if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 							let method = state.classModel.methods.find(method => method.name === state.currentlyParsing.name);
 							method.references.push(node.property.name);
 						}

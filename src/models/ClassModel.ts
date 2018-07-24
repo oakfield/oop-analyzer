@@ -1,4 +1,4 @@
-import MethodModel from './MethodModel';
+import MethodModel from "./MethodModel";
 
 export default class ClassModel {
     private _name: string;

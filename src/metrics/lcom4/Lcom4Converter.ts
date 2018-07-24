@@ -1,7 +1,7 @@
-import Node from "./Node";
-import Graph from "./Graph";
-import ClassModel from "./ClassModel";
-import MethodModel from "./MethodModel";
+import Node from "../../Node";
+import Graph from "../../Graph";
+import ClassModel from "../../models/ClassModel";
+import MethodModel from "../../models/MethodModel";
 
 export default class Lcom4Converter {
 

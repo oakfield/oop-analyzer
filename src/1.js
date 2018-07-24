@@ -7,6 +7,7 @@ class Class0 {
         console.log(this.myVariable1);
     } 
 }
+
 class Class1 {
 	constructor () {
 		this.myVariable2 = null;
