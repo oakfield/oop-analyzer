@@ -1,10 +1,10 @@
-import Lcom4Converter from "./metrics/lcom4/Lcom4Converter";
-import Lcom4Metric from "./metrics/lcom4/Lcom4Metric";
-import ConnectedComponentsTransformation from "./transformers/ConnectedComponentsTransformer";
-import WmcEvaluator from "./metrics/wmc/WmcMetric";
-import Parser from "./Parser";
+import Lcom4Converter from "./app/metrics/lcom4/Lcom4Converter";
+import Lcom4Metric from "./app/metrics/lcom4/Lcom4Metric";
+import ConnectedComponentsTransformation from "./app/transformers/ConnectedComponentsTransformer";
+import WmcEvaluator from "./app/metrics/wmc/WmcMetric";
+import Parser from "./app/Parser";
 import * as fs from "fs";
-import ClassModel from "./models/ClassModel";
+import ClassModel from "./app/models/ClassModel";
 
 let args = process.argv.slice(2);
 let filePath = args[0];
