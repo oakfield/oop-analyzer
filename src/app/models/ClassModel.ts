@@ -1,12 +1,11 @@
 import MethodModel from "./MethodModel";
+import VariableModel from "./VariableModel";
 
 export default class ClassModel {
-    private _name: string;
 	private _methods: MethodModel[];
-    private _variables: string[];
+    private _variables: VariableModel[];
 
-    constructor(name: string) {
-        this._name = name;
+    constructor(private _name: string) {
 		this._methods = [];
 		this._variables = [];
 	}
@@ -23,15 +22,15 @@ export default class ClassModel {
 		return this._name;
 	}
 
-	set variables(variables: string[]) {
+	set variables(variables: VariableModel[]) {
 		this._variables = variables;
 	}
 
-	get variables(): string[] {
+	get variables(): VariableModel[] {
 		return this._variables;
 	}
 
 	toString(): string {
-		return `class ${this._name} {\n\tconstructor () {\n\t\t${this._variables.map(variable => `this.${variable} = null;\n`)}\t}${this._methods.map(method => "\n\n\t" + method.toString())} \n}\n`;
+		return `class ${this._name} {\n\tconstructor () {\n\t\t${this._variables.map(variable => `${variable.toString()}\n`)}\t}${this._methods.map(method => "\n\n\t" + method.toString())} \n}\n`;
 	}
 }

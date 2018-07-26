@@ -15,8 +15,8 @@ export default class Lcom4Converter {
 		for (let m of methods) {
 			for (let n of methods) {
 				if (m.data.references.some(name => n.data.references.includes(name))
-					|| m.data.references.includes(n.data.name)
-					|| n.data.references.includes(m.data.name)) {
+					|| m.data.references.find(variableModel => variableModel.name === n.data.name)
+					|| n.data.references.find(variableModel => variableModel.name === m.data.name)) {
 					m.neighbors.add(n);
 					n.neighbors.add(m);
 				}
