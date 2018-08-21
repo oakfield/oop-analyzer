@@ -1,9 +1,9 @@
-import MethodModel from "../../models/MethodModel";
-import { IMetric } from "../IMetric";
-import VariableModel from "../../models/VariableModel";
+import ClassModel from "../../models/ClassModel";
 
-export default class WmcMetric<T> implements IMetric<T> {
-	evaluate(toEvaluate: { variables: VariableModel[], methods: MethodModel[] }): number {
-		return toEvaluate.methods.length;
+export default class WmcMetric<T> {
+	evaluate(toEvaluate: ClassModel[]): number {
+		return toEvaluate
+			.map(classModel => classModel.methods.length)
+			.reduce((a, b) => a + b, 0) / toEvaluate.length;
 	}
 }
