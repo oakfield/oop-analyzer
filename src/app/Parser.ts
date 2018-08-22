@@ -1,14 +1,17 @@
 import * as Acorn from "acorn";
 import * as Walk from "acorn/dist/walk";
+
 import ClassModel from "./models/ClassModel";
 import MethodModel from "./models/MethodModel";
 import VariableModel from "./models/VariableModel";
 
+type ParserState = { classModel: ClassModel, currentlyParsing: { type: string, name: string }};
+
 export default class Parser {
 	constructor() { }
 
-	parse(file): ClassModel[] {
-		let ast = Acorn.parse(file);
+	parse(file: string, sourceType: "script" | "module" = "script"): ClassModel[] {
+		let ast = Acorn.parse(file, { sourceType });
 		let classModels: ClassModel[] = [];
 
 		Walk.recursive(ast,
@@ -18,32 +21,50 @@ export default class Parser {
 					type: "",
 					name: ""
 				}
-			},
+			} as ParserState,
 			{
-				ClassDeclaration: (node, state, continueFn) => {
+				ClassDeclaration: (node, state: ParserState, continueFn) => {
 					state.classModel = new ClassModel(node.id.name);
 					classModels.push(state.classModel);
 
 					continueFn(node.body, state);
 				},
-				MethodDefinition: (node, state, continueFn) => {
+				MethodDefinition: (node, state: ParserState, continueFn) => {
 					if (node.kind === "constructor") {
 						state.currentlyParsing.type = "constructor";
-						state.classModel.constructorModel = new MethodModel("constructor", file.substring(node.start, node.end));
 
 						continueFn(node.value, state);
-					} else if (node.kind === "method") {
+					} else {
 						let methodModel = new MethodModel(node.key.name, file.substring(node.start, node.end));
-						state.classModel.methods.push(methodModel);
-						state.currentlyParsing = {
-							type: "method",
-							name: methodModel.name
-						};
+
+						switch (node.kind) {
+							case "method":
+								state.classModel.methods.push(methodModel);
+								state.currentlyParsing = {
+									type: "method",
+									name: methodModel.name
+								};
+								break;
+							case "get":
+								state.classModel.getters.push(methodModel);
+								state.currentlyParsing = {
+									type: "getter",
+									name: methodModel.name
+								};
+								break;
+							case "set":
+								state.classModel.setters.push(methodModel);
+								state.currentlyParsing = {
+									type: "setter",
+									name: methodModel.name
+								};
+								break;
+						}
 
 						continueFn(node.value, state);
 					}
 				},
-				AssignmentExpression: (node, state, continueFn) => {
+				AssignmentExpression: (node, state: ParserState, continueFn) => {
 					if (state.currentlyParsing.type === "constructor") {
 						// Walk.recursive will hit this even when the type is not MethodDefinition.
 						// Maybe it's some super-type issue?
@@ -54,7 +75,7 @@ export default class Parser {
 						continueFn(node.left, state);
 					}
 				},
-				MemberExpression: (node, state, continueFn) => {
+				MemberExpression: (node, state: ParserState, continueFn) => {
 					if (state.currentlyParsing.type === "method") {
 						if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 							let method = state.classModel.methods.find(method => method.name === state.currentlyParsing.name);

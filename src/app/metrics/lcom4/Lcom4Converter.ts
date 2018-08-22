@@ -1,7 +1,7 @@
-import Node from "../../Node";
-import Graph from "../../Graph";
 import ClassModel from "../../models/ClassModel";
+import Graph from "../../Graph";
 import MethodModel from "../../models/MethodModel";
+import Node from "../../Node";
 
 export default class Lcom4Converter {
 
@@ -10,6 +10,14 @@ export default class Lcom4Converter {
 
 		for (let method of toConvert.methods) {
 			methods.add(new Node<MethodModel>(method));
+		}
+
+		for (let getter of toConvert.getters) {
+			methods.add(new Node<MethodModel>(getter));
+		}
+
+		for (let setter of toConvert.setters) {
+			methods.add(new Node<MethodModel>(setter));
 		}
 
 		for (let m of methods) {

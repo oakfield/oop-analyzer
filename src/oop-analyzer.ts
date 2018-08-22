@@ -27,6 +27,12 @@ yargs.alias('v', 'version')
 		describe: 'Evaluate according to metric',
 		type: 'string'
 	})
+
+	.option('s', {
+		alias: 'sourceType',
+		describe: 'For JavaScript files, whether to parse as script or module',
+		type: 'string'
+	})
 	
 	.option('t', {
 		alias: 'transformation',
@@ -40,7 +46,7 @@ if (argv.file) {
 	let filePath = argv.file;
 
 	fs.readFile(filePath, "utf8", (error, data) => {
-		let testClasses: ClassModel[] = new Parser().parse(data);
+		let testClasses: ClassModel[] = new Parser().parse(data, argv.sourceType || 'script');
 
 		if (argv.metric) {
 			switch (argv.metric) {

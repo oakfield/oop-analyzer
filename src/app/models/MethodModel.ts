@@ -1,11 +1,9 @@
 import VariableModel from "./VariableModel";
 
 export default class MethodModel {
-    private _references: VariableModel[];
+    private _references: VariableModel[] = [];
 
-    constructor(private _name: string, private _source: string) {
-        this._references = [];
-    }
+    constructor(private _name: string, private _source: string) { }
 
     get name(): string {
         return this._name;
