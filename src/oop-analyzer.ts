@@ -12,6 +12,7 @@ yargs.alias('v', 'version')
 	.version()
 
 	.alias('h', 'help')
+	.completion()
 	.help('help')
 	.usage('Usage: $0 --file=[filepath]')
 	
@@ -46,7 +47,12 @@ if (argv.file) {
 	let filePath = argv.file;
 
 	fs.readFile(filePath, "utf8", (error, data) => {
-		let testClasses: ClassModel[] = new Parser().parse(data, argv.sourceType || 'script');
+		if (error) {
+			console.log(error);
+			process.exit();
+		}
+
+		let testClasses: ClassModel[] = Parser.parse(data, argv.sourceType || 'script');
 
 		if (argv.metric) {
 			switch (argv.metric) {

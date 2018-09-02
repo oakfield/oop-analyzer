@@ -1,20 +1,22 @@
 import Node from "./Node";
 
-export default class Graph<T> implements IGraph<T> {
-	constructor(private _nodes: Set<Node<T>> = new Set()) { }
+export default class Graph {
+	constructor(nodes = new Set()) {
+		this._nodes = nodes;
+	}
 
 	// todo: add addNode and removeNode?
-	get nodes(): Set<Node<T>> {
+	get nodes() {
 		return this._nodes;
 	}
 
-	get connectedComponents(): IGraph<T>[] {
-		let connectedComponents: IGraph<T>[] = [];
-		let discoveredNodes = new Set<Node<T>>();
+	get connectedComponents() {
+		let connectedComponents = [];
+		let discoveredNodes = new Set();
 
 		for (let node of this.nodes) {
 			if (!discoveredNodes.has(node)) {
-				let connectedComponent = new Graph<T>();
+				let connectedComponent = new Graph();
 
 				for (let searchedNode of node.partialDepthFirstSearch()) {
 					discoveredNodes.add(searchedNode);

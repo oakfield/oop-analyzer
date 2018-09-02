@@ -10,7 +10,7 @@ type ParserState = { classModel: ClassModel, currentlyParsing: { type: string, n
 export default class Parser {
 	constructor() { }
 
-	parse(file: string, sourceType: "script" | "module" = "script"): ClassModel[] {
+	static parse(file: string, sourceType: "script" | "module" = "script"): ClassModel[] {
 		let ast = Acorn.parse(file, { sourceType });
 		let classModels: ClassModel[] = [];
 
@@ -73,24 +73,38 @@ export default class Parser {
 						}
 
 						continueFn(node.left, state);
+
+					}
+					
+					// Setters aren't getting processed without this. Seems wrong, though.
+					else if (state.currentlyParsing.type === "setter") {
+						continueFn(node.left, state);
 					}
 				},
 				MemberExpression: (node, state: ParserState, continueFn) => {
 					if (state.currentlyParsing.type === "method") {
-						if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
-							let method = state.classModel.methods.find(method => method.name === state.currentlyParsing.name);
-							let existingVariable = state.classModel.variables.find(variable => variable.name === node.property.name);
-
-							if (existingVariable) {
-								method.references.push(existingVariable);
-							} else {
-								method.references.push(new VariableModel(node.property.name));
-							}
-						}
+						this._addVariableReferenceToMethodLike(node, state, state.classModel.methods);
+					} else if (state.currentlyParsing.type === "getter") {
+						this._addVariableReferenceToMethodLike(node, state, state.classModel.getters);
+					} else if (state.currentlyParsing.type === "setter") {
+						this._addVariableReferenceToMethodLike(node, state, state.classModel.setters);
 					}
 				}
 			});
 
 		return classModels;
+	}
+
+	private static _addVariableReferenceToMethodLike(node: any, state: any, classModelSection: any[]): void {
+		if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
+			let methodLike = classModelSection.find(ml => ml.name === state.currentlyParsing.name);
+			let existingVariable = state.classModel.variables.find(variable => variable.name === node.property.name);
+
+			if (existingVariable) {
+				methodLike.references.push(existingVariable);
+			} else {
+				methodLike.references.push(new VariableModel(node.property.name));
+			}
+		}
 	}
 }
