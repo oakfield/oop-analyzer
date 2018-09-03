@@ -1,19 +1,16 @@
-import MethodModel from "./MethodModel";
-import VariableModel from "./VariableModel";
+import MethodModel from './MethodModel';
+import VariableModel from './VariableModel';
 
 export default class ClassModel {
-	getters: MethodModel[] = [];
-	methods: MethodModel[] = [];
-	setters: MethodModel[] = [];
-    variables: VariableModel[] = [];
+    constructor(name) {
+        this._name = name;
+    }
 
-    constructor(private _name: string) { }
-
-	get name(): string {
+	get name() {
 		return this._name;
 	}
 
-	toString(): string {
+	toString() {
 		let formatMethod = method => "\n\n\t" + method.toString();
 		let variablesString = `${this.variables.map(variable => `${variable.toString()}\n`)}`;
 		let gettersString = `${this.getters.map(formatMethod)}`;
