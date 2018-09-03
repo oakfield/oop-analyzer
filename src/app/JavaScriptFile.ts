@@ -5,12 +5,14 @@ import ClassModel from "./models/ClassModel";
 import MethodModel from "./models/MethodModel";
 import VariableModel from "./models/VariableModel";
 
-export default class Parser {
-	constructor() { }
+type ParserState = { classModel: ClassModel, currentlyParsing: { type: string, name: string }};
 
-	static parse(file, sourceType = "script") {
-		let ast = Acorn.parse(file, { sourceType });
-		let classModels = [];
+export default class JavaScriptFile {
+	constructor(private _source: string, private _sourceType: "script" | "module" = "script") { }
+
+	toClassModelArray(): ClassModel[] {
+		let ast = Acorn.parse(this._source, { sourceType: this._sourceType });
+		let classModels: ClassModel[] = [];
 
 		Walk.recursive(ast,
 			{ 
@@ -19,21 +21,21 @@ export default class Parser {
 					type: "",
 					name: ""
 				}
-			},
+			} as ParserState,
 			{
-				ClassDeclaration: (node, state, continueFn) => {
+				ClassDeclaration: (node, state: ParserState, continueFn) => {
 					state.classModel = new ClassModel(node.id.name);
 					classModels.push(state.classModel);
 
 					continueFn(node.body, state);
 				},
-				MethodDefinition: (node, state, continueFn) => {
+				MethodDefinition: (node, state: ParserState, continueFn) => {
 					if (node.kind === "constructor") {
 						state.currentlyParsing.type = "constructor";
 
 						continueFn(node.value, state);
 					} else {
-						let methodModel = new MethodModel(node.key.name, file.substring(node.start, node.end));
+						let methodModel = new MethodModel(node.key.name, this._source.substring(node.start, node.end));
 
 						switch (node.kind) {
 							case "method":
@@ -62,12 +64,12 @@ export default class Parser {
 						continueFn(node.value, state);
 					}
 				},
-				AssignmentExpression: (node, state, continueFn) => {
+				AssignmentExpression: (node, state: ParserState, continueFn) => {
 					if (state.currentlyParsing.type === "constructor") {
 						// Walk.recursive will hit this even when the type is not MethodDefinition.
 						// Maybe it's some super-type issue?
 						if (node.type === "AssignmentExpression" && node.left.object.type === "ThisExpression") {
-							state.classModel.variables.push(new VariableModel(node.left.property.name, file.substring(node.start, node.end)));
+							state.classModel.variables.push(new VariableModel(node.left.property.name, this._source.substring(node.start, node.end)));
 						}
 
 						continueFn(node.left, state);
@@ -79,7 +81,7 @@ export default class Parser {
 						continueFn(node.left, state);
 					}
 				},
-				MemberExpression: (node, state, continueFn) => {
+				MemberExpression: (node, state: ParserState, continueFn) => {
 					if (state.currentlyParsing.type === "method") {
 						this._addVariableReferenceToMethodLike(node, state, state.classModel.methods);
 					} else if (state.currentlyParsing.type === "getter") {
@@ -93,7 +95,11 @@ export default class Parser {
 		return classModels;
 	}
 
-	static _addVariableReferenceToMethodLike(node, state, classModelSection) {
+	toString(): string {
+		return this._source;
+	}
+
+	private _addVariableReferenceToMethodLike(node: any, state: any, classModelSection: any[]): void {
 		if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 			let methodLike = classModelSection.find(ml => ml.name === state.currentlyParsing.name);
 			let existingVariable = state.classModel.variables.find(variable => variable.name === node.property.name);

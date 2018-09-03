@@ -3,9 +3,9 @@ import * as yargs from "yargs";
 
 import ClassModel from "./app/models/ClassModel";
 import ConnectedComponentsTransformation from "./app/transformers/ConnectedComponentsTransformer";
+import JavaScriptFile from "./app/JavaScriptFile";
 import Lcom4Converter from "./app/metrics/lcom4/Lcom4Converter";
 import Lcom4Metric from "./app/metrics/lcom4/Lcom4Metric";
-import Parser from "./app/Parser";
 import WmcMetric from "./app/metrics/wmc/WmcMetric";
 
 yargs.alias("v", "version")
@@ -52,19 +52,19 @@ if (argv.file) {
 			process.exit();
 		}
 
-		let testClasses: ClassModel[] = Parser.parse(data, argv.sourceType || "script");
+		let classModels: ClassModel[] = (new JavaScriptFile(data, argv.sourceType)).toClassModelArray();
 
 		if (argv.metric) {
 			switch (argv.metric) {
 				case "lcom4":
 					let lcom4Metric = new Lcom4Metric(new Lcom4Converter());
-					for (let testClass of testClasses) {
-						console.log(`${testClass.name}:\t${lcom4Metric.evaluate(testClass)}`);
+					for (let classModel of classModels) {
+						console.log(`${classModel.name}:\t${lcom4Metric.evaluate(classModel)}`);
 					}
 					break;
 				case "wmc":
 					let wmcMetric = new WmcMetric();
-					console.log(wmcMetric.evaluate(testClasses));
+					console.log(wmcMetric.evaluate(classModels));
 					break;
 			}
 		}
@@ -73,10 +73,10 @@ if (argv.file) {
 			switch (argv.transformation) {
 				case "connected-components":
 					let counter = 0;
-					for (let testClass of testClasses) {
+					for (let classModel of classModels) {
 						let lcom4Converter = new Lcom4Converter();
 						let connectedComponentsTransformation = new ConnectedComponentsTransformation(lcom4Converter);
-						let validated = connectedComponentsTransformation.transform(testClass);
+						let validated = connectedComponentsTransformation.transform(classModel);
 					
 						fs.writeFile(`./${counter++}.js`,
 							validated.map(classModel => classModel.toString())
