@@ -5,18 +5,18 @@ import Node from "../../Node";
 
 export default class Lcom4Converter {
 
-	convert(toConvert: ClassModel): Graph<MethodModel> {
+	convert(classModel: ClassModel): Graph<MethodModel> {
 		let methods = new Set<Node<MethodModel>>();
 
-		for (let method of toConvert.methods) {
+		for (let method of classModel.methods) {
 			methods.add(new Node<MethodModel>(method));
 		}
 
-		for (let getter of toConvert.getters) {
+		for (let getter of classModel.getters) {
 			methods.add(new Node<MethodModel>(getter));
 		}
 
-		for (let setter of toConvert.setters) {
+		for (let setter of classModel.setters) {
 			methods.add(new Node<MethodModel>(setter));
 		}
 

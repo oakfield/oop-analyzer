@@ -1,6 +1,6 @@
-import Lcom4Converter from "./Lcom4Converter";
 import ClassModel from "../../models/ClassModel";
-import { IMetric } from "../IMetric";
+import IMetric from "../IMetric";
+import Lcom4Converter from "./Lcom4Converter";
 
 export default class Lcom4Metric<T> implements IMetric<T> {
 	constructor(private _converter: Lcom4Converter) { }

@@ -3,11 +3,6 @@ import Node from "./Node";
 export default class Graph<T> implements IGraph<T> {
 	constructor(private _nodes: Set<Node<T>> = new Set()) { }
 
-	// todo: add addNode and removeNode?
-	get nodes(): Set<Node<T>> {
-		return this._nodes;
-	}
-
 	get connectedComponents(): IGraph<T>[] {
 		let connectedComponents: IGraph<T>[] = [];
 		let discoveredNodes = new Set<Node<T>>();
@@ -26,5 +21,24 @@ export default class Graph<T> implements IGraph<T> {
 		}
 
 		return connectedComponents;
+	}
+
+	get edges(): Set<IEdge<T>> {
+		let edges = new Set<IEdge<T>>();
+
+		for (let m of this.nodes) {
+			for (let n of this.nodes) {
+				if (m.neighbors.has(n)) {
+					edges.add([m, n]);
+				}
+			}
+		}
+
+		return edges;
+	}
+
+	// todo: add addNode and removeNode?
+	get nodes(): Set<Node<T>> {
+		return this._nodes;
 	}
 }

@@ -1,7 +1,7 @@
 import "mocha";
 
 import ClassModel from "../../models/ClassModel";
-import Lcom4Metric from "./Lcom4Converter";
+import Lcom4Converter from "./Lcom4Converter";
 import MethodModel from "../../models/MethodModel";
 import VariableModel from "../../models/VariableModel";
 import { expect } from "chai";
@@ -10,7 +10,7 @@ describe("Lcom4Converter", () => {
 	describe("convert", () => {
 		it("returns an empty graph when the class has no variables or methods", () => {
 			let testClass = new ClassModel("Test");
-			let converter = new Lcom4Metric();
+			let converter = new Lcom4Converter();
 	
 			expect(converter.convert(testClass).nodes).to.be.empty;
 		});
@@ -19,16 +19,15 @@ describe("Lcom4Converter", () => {
 			let testClass = new ClassModel("Test");
 			testClass.variables = [new VariableModel("a")];
 	
-			let converter = new Lcom4Metric();
+			let converter = new Lcom4Converter();
 	
 			expect(converter.convert(testClass).nodes).to.be.empty;
 		});
-	
-	
+
 		it("returns a graph with one node and no edges when the class has no variables", () => {
 			let testClass = new ClassModel("Test");
 			testClass.methods = [new MethodModel("x", "")];
-			let converted = (new Lcom4Metric()).convert(testClass);
+			let converted = (new Lcom4Converter()).convert(testClass);
 	
 			expect(converted.nodes.size).to.equal(1);
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
@@ -42,7 +41,7 @@ describe("Lcom4Converter", () => {
 				testMethod["_references"] = [testVariable];
 				testClass.variables = [testVariable];
 				testClass.methods = [testMethod];
-				let converted = (new Lcom4Metric()).convert(testClass);
+				let converted = (new Lcom4Converter()).convert(testClass);
 	
 				expect(converted.nodes.size).to.equal(1);
 				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
@@ -59,7 +58,7 @@ describe("Lcom4Converter", () => {
 				let testMethod2 = new MethodModel("y", "");
 				testMethod2["_references"] = [testVariableB];
 				testClass.methods = [testMethod1, testMethod2];
-				let converted = (new Lcom4Metric()).convert(testClass);
+				let converted = (new Lcom4Converter()).convert(testClass);
 	
 				expect(converted.nodes.size).to.equal(2);
 				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
@@ -75,7 +74,7 @@ describe("Lcom4Converter", () => {
 				let testMethod2 = new MethodModel("y", "");
 				testMethod2["_references"] = [testVariable];
 				testClass.methods = [testMethod1, testMethod2];
-				let converted = (new Lcom4Metric()).convert(testClass);
+				let converted = (new Lcom4Converter()).convert(testClass);
 	
 				expect(converted.nodes.size).to.equal(2);
 				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 2)).to.be.true;
@@ -89,7 +88,7 @@ describe("Lcom4Converter", () => {
 			let testMethod2 = new MethodModel("y", "");
 			testMethod2["_references"] = [new VariableModel("x")];
 			testClass.methods = [testMethod1, testMethod2];
-			let converted = (new Lcom4Metric()).convert(testClass);
+			let converted = (new Lcom4Converter()).convert(testClass);
 	
 			expect(converted.nodes.size).to.equal(2);
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 2)).to.be.true;
@@ -109,7 +108,7 @@ describe("Lcom4Converter", () => {
 				let testMethod3 = new MethodModel("z", "");
 				testMethod3["_references"] = [testVariableC];
 				testClass.methods = [testMethod1, testMethod2, testMethod3];
-				let converted = (new Lcom4Metric()).convert(testClass);
+				let converted = (new Lcom4Converter()).convert(testClass);
 	
 				expect(converted.nodes.size).to.equal(3);
 				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;

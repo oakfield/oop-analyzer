@@ -4,6 +4,8 @@ import * as yargs from "yargs";
 import ClassModel from "./app/models/ClassModel";
 import ConnectedComponentsTransformation from "./app/transformers/ConnectedComponentsTransformer";
 import JavaScriptFile from "./app/JavaScriptFile";
+import Lcom1Converter from "./app/metrics/lcom1/Lcom1Converter";
+import Lcom1Metric from "./app/metrics/lcom1/Lcom1Metric";
 import Lcom4Converter from "./app/metrics/lcom4/Lcom4Converter";
 import Lcom4Metric from "./app/metrics/lcom4/Lcom4Metric";
 import WmcMetric from "./app/metrics/wmc/WmcMetric";
@@ -60,6 +62,12 @@ if (argv.file) {
 					let lcom4Metric = new Lcom4Metric(new Lcom4Converter());
 					for (let classModel of classModels) {
 						console.log(`${classModel.name}:\t${lcom4Metric.evaluate(classModel)}`);
+					}
+					break;
+				case "lcom1":
+					let lcom1Metric = new Lcom1Metric(new Lcom1Converter());
+					for (let classModel of classModels) {
+						console.log(`${classModel.name}:\t${lcom1Metric.evaluate(classModel)}`);
 					}
 					break;
 				case "wmc":
