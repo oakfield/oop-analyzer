@@ -157,4 +157,47 @@ describe("Graph", () => {
 			expect(graph.edges.size).to.equal(3);
 		});
 	});
+
+	describe("get maximalCliques", () => {
+		it("returns an array of one empty graph when the graph has no nodes", () => {
+			let graph = new Graph();
+			let maximalCliques = graph.maximalCliques;
+
+			expect(maximalCliques.length).to.equal(1);
+			expect(maximalCliques[0].nodes).to.be.empty;
+		});
+
+		it("returns an array of one graph with one node when the graph has one node", () => {
+			let node = new Node();
+			let graph = new Graph(new Set([node]));
+			let maximalCliques = graph.maximalCliques;
+
+			expect(maximalCliques.length).to.equal(1);
+			expect(maximalCliques[0].nodes.size).to.equal(1);
+		});
+
+		it("returns an array of two graphs when the graph has two unconnected nodes", () => {
+			let node1 = new Node("one");
+			let node2 = new Node("two");
+			let graph = new Graph(new Set([node1, node2]));
+			let maximalCliques = graph.maximalCliques;
+
+			expect(maximalCliques.length).to.equal(2);
+			expect(maximalCliques[0].nodes.size).to.equal(1);
+			expect(maximalCliques[1].nodes.size).to.equal(1);
+		});
+
+		it("returns an array of one graph when the graph has two connected nodes", () => {
+			let node1 = new Node("one");
+			let node2 = new Node("two");
+			node1.neighbors.add(node2);
+			node2.neighbors.add(node1);
+			// TODO: distinguish between directed and undirected graphs
+			let graph = new Graph(new Set([node1, node2]));
+			let maximalCliques = graph.maximalCliques;
+
+			expect(maximalCliques.length).to.equal(1);
+			expect(maximalCliques[0].nodes.size).to.equal(2);
+		});
+	});
 });

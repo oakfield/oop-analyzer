@@ -1,10 +1,12 @@
+import { difference, intersection, union } from "lodash";
+
 import Node from "./Node";
 
 export default class Graph<T> implements IGraph<T> {
 	constructor(private _nodes: Set<Node<T>> = new Set()) { }
 
-	get connectedComponents(): IGraph<T>[] {
-		let connectedComponents: IGraph<T>[] = [];
+	get connectedComponents(): Graph<T>[] {
+		let connectedComponents: Graph<T>[] = [];
 		let discoveredNodes = new Set<Node<T>>();
 
 		for (let node of this.nodes) {
@@ -37,8 +39,44 @@ export default class Graph<T> implements IGraph<T> {
 		return edges;
 	}
 
+	get maximalCliques(): Graph<T>[] {
+		let maximalCliques = [];
+		Graph._bronKerbosch([], Array.from(this._nodes), [], maximalCliques);
+
+		return maximalCliques;
+	}
+
 	// todo: add addNode and removeNode?
 	get nodes(): Set<Node<T>> {
 		return this._nodes;
+	}
+
+	// private static *_bronKerbosch<T>(r: Node<T>[], p: Node<T>[], x: Node<T>[]): IterableIterator<Graph<T>> {
+	// 	if (p.length === 0 && x.length === 0) {
+	// 		yield new Graph(new Set(r));
+	// 	}
+
+	// 	for (let node of p) {
+	// 		Graph._bronKerbosch(union(r, [node]),
+	// 			intersection(p, Array.from(node.neighbors)),
+	// 			intersection(x, Array.from(node.neighbors)));
+	// 		p = difference(p, [node]);
+	// 		x = union(x, [node]);
+	// 	}
+	// }
+
+	private static _bronKerbosch<T>(r: Node<T>[], p: Node<T>[], x: Node<T>[], maximalCliques: Graph<T>[]): void {
+		if (p.length === 0 && x.length === 0) {
+			maximalCliques.push(new Graph(new Set(r)));
+		}
+
+		for (let node of p) {
+			Graph._bronKerbosch(union(r, [node]),
+				intersection(p, Array.from(node.neighbors)),
+				intersection(x, Array.from(node.neighbors)),
+				maximalCliques);
+			p = difference(p, [node]);
+			x = union(x, [node]);
+		}
 	}
 }
