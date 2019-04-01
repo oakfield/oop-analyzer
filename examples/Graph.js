@@ -1,5 +1,3 @@
-import Node from "./Node";
-
 export default class Graph {
 	constructor(nodes = new Set()) {
 		this._nodes = nodes;

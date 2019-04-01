@@ -1,7 +1,10 @@
-import { difference, intersection, union } from "lodash";
+import { difference, flatten, intersection, union } from "lodash";
 
 import Node from "./Node";
 
+/**
+ * Basic object-oriented implementation of the IGraph interface.
+ */
 export default class Graph<T> implements IGraph<T> {
 	constructor(private _nodes: Set<Node<T>> = new Set()) { }
 
@@ -40,38 +43,32 @@ export default class Graph<T> implements IGraph<T> {
 	}
 
 	get maximalCliques(): Graph<T>[] {
-		let maximalCliques = [];
+		let maximalCliques: Graph<T>[] = [];
 		Graph._bronKerbosch([], Array.from(this._nodes), [], maximalCliques);
 
 		return maximalCliques;
 	}
 
-	// todo: add addNode and removeNode?
 	get nodes(): Set<Node<T>> {
 		return this._nodes;
 	}
 
-	// private static *_bronKerbosch<T>(r: Node<T>[], p: Node<T>[], x: Node<T>[]): IterableIterator<Graph<T>> {
-	// 	if (p.length === 0 && x.length === 0) {
-	// 		yield new Graph(new Set(r));
-	// 	}
-
-	// 	for (let node of p) {
-	// 		Graph._bronKerbosch(union(r, [node]),
-	// 			intersection(p, Array.from(node.neighbors)),
-	// 			intersection(x, Array.from(node.neighbors)));
-	// 		p = difference(p, [node]);
-	// 		x = union(x, [node]);
-	// 	}
-	// }
-
+	/**
+	 * An algorithm for finding maximal cliques in an undirected graph. This algorithm mutates
+	 * maximalCliques, which is used as the output.
+	 * 
+	 * @param r 
+	 * @param p 
+	 * @param x 
+	 * @param maximalCliques the primary input and output of the algorithm
+	 */
 	private static _bronKerbosch<T>(r: Node<T>[], p: Node<T>[], x: Node<T>[], maximalCliques: Graph<T>[]): void {
 		if (p.length === 0 && x.length === 0) {
 			maximalCliques.push(new Graph(new Set(r)));
 		}
 
 		for (let node of p) {
-			Graph._bronKerbosch(union(r, [node]),
+ 			Graph._bronKerbosch(union(r, [node]),
 				intersection(p, Array.from(node.neighbors)),
 				intersection(x, Array.from(node.neighbors)),
 				maximalCliques);

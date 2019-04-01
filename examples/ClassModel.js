@@ -1,6 +1,3 @@
-import MethodModel from './MethodModel';
-import VariableModel from './VariableModel';
-
 export default class ClassModel {
     constructor(name) {
         this._name = name;

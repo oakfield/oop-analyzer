@@ -1,5 +1,5 @@
 import ClassModel from "../models/ClassModel";
 
-export default interface IMetric<T> {
+export default interface IMetric {
 	evaluate(toEvaluate: ClassModel): number;
 }

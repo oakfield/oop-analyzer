@@ -1,13 +1,13 @@
 import * as fs from "fs";
 import * as yargs from "yargs";
 
-import ClassModel from "./app/models/ClassModel";
 import ConnectedComponentsTransformation from "./app/transformers/ConnectedComponentsTransformer";
 import JavaScriptFile from "./app/JavaScriptFile";
 import Lcom1Converter from "./app/metrics/lcom1/Lcom1Converter";
 import Lcom1Metric from "./app/metrics/lcom1/Lcom1Metric";
 import Lcom4Converter from "./app/metrics/lcom4/Lcom4Converter";
 import Lcom4Metric from "./app/metrics/lcom4/Lcom4Metric";
+import MaximalCliqueTransformer from "./app/transformers/MaximalCliqueTransformer";
 import WmcMetric from "./app/metrics/wmc/WmcMetric";
 
 yargs.alias("v", "version")
@@ -43,10 +43,15 @@ yargs.alias("v", "version")
 		type: "string"
 	});
 
-let argv = yargs.argv;
+let argv = yargs.argv as { 
+	file?: string,
+	metric?: string,
+	sourceType?: "script" | "module",
+	transformation?: "connected-components" | "maximal-cliques"
+};
 
 if (argv.file) {
-	let filePath = argv.file;
+	let filePath: string = argv.file;
 
 	fs.readFile(filePath, "utf8", (error, data) => {
 		if (error) {
@@ -54,7 +59,7 @@ if (argv.file) {
 			process.exit();
 		}
 
-		let classModels: ClassModel[] = (new JavaScriptFile(data, argv.sourceType)).toClassModelArray();
+		let classModels = (new JavaScriptFile(data, argv.sourceType)).toClassModelArray();
 
 		if (argv.metric) {
 			switch (argv.metric) {
@@ -78,9 +83,11 @@ if (argv.file) {
 		}
 
 		if (argv.transformation) {
+			let counter: number;
+
 			switch (argv.transformation) {
 				case "connected-components":
-					let counter = 0;
+					counter = 0;
 					for (let classModel of classModels) {
 						let lcom4Converter = new Lcom4Converter();
 						let connectedComponentsTransformation = new ConnectedComponentsTransformation(lcom4Converter);
@@ -96,6 +103,23 @@ if (argv.file) {
 							});
 					}
 					break;
+				case "maximal-cliques":
+					// TODO: see if this logic can be reused
+					counter = 0;
+					for (let classModel of classModels) {
+						let lcom1Converter = new Lcom1Converter();
+						let maximalCliqueTransformer = new MaximalCliqueTransformer(lcom1Converter);
+						let validated = maximalCliqueTransformer.transform(classModel);
+
+						fs.writeFile(`./${counter++}.js`,
+							validated.map(classModel => classModel.toString())
+								.reduce((current, previous) => `${current}\n${previous}`),
+								error => {
+									if (error) {
+										console.log(error);
+									}
+								});
+					}
 			}
 		}
 	});
