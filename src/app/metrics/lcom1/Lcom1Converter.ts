@@ -7,6 +7,11 @@ import Node from "../../Node";
  * Converts a class into a graph representing the class.
  */
 export default class Lcom1Converter {
+	
+	/**
+	 * Converts a class into a graph representing the class.
+	 * @param classModel the class to convert
+	 */
     convert(classModel: ClassModel): Graph<MethodModel> {
         let methods = new Set<Node<MethodModel>>();
 

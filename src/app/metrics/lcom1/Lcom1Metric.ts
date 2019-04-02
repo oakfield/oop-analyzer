@@ -4,7 +4,7 @@ import Lcom1Converter from "./Lcom1Converter";
 import { filter } from "lodash";
 
 /**
- * A way of evaluating classes according to LCOM1.
+ * Measures how cohesive a class is according to the LCOM1 metric.
  * 
  * To calculate LCOM1 for a class, construct a graph that has a node for each method in the class.
  * Add an undirected edge between any two nodes that reference the same variable. Now, imagine a
@@ -12,8 +12,16 @@ import { filter } from "lodash";
  * graph and the actual graph is the LCOM1.
  */
 export default class Lcom1Metric implements IMetric {
+	/**
+	 * Constructor.
+	 * @param _converter an object that can convert a class to an appropriate graph
+	 */
 	constructor(private _converter: Lcom1Converter) { }
 
+	/**
+	 * Evaluates the class according to LCOM1.
+	 * @param classModel the class the evaluate
+	 */
 	evaluate(classModel: ClassModel): number {
 		// Based on http://www.cs.sjsu.edu/~pearce/modules/lectures/ood/metrics/lcom.htm.
 		// LCOM1 seems to implicitly assume that there are no edges from a node to itself.

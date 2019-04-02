@@ -3,8 +3,15 @@ import Graph from "../../Graph";
 import MethodModel from "../../models/MethodModel";
 import Node from "../../Node";
 
+/**
+ * Converts class to a graph appropriate for measuring LCOM4.
+ */
 export default class Lcom4Converter {
 
+	/**
+	 * Converts a class to a graph appropriate for measure LCOM4.
+	 * @param classModel the class to convert
+	 */
 	convert(classModel: ClassModel): Graph<MethodModel> {
 		let methods = new Set<Node<MethodModel>>();
 

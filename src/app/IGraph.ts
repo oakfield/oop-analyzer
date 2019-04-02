@@ -1,3 +1,6 @@
+/**
+ * An edge is a pair of nodes.
+ */
 type IEdge<T> = [INode<T>, INode<T>];
 
 /**

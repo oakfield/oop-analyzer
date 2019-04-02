@@ -1,10 +1,24 @@
 import ClassModel from "../models/ClassModel";
 import Lcom1Converter from "../metrics/lcom1/Lcom1Converter";
 
+/**
+ * Transforms a class into multiple classes with methods that form cliques. Since the transformer
+ * could make non-maximal cliques simply by giving the classes one method each, it makes maximal
+ * cliques instead. Methods are related to each other according to the LCOM1 metric; that is, they
+ * are connected if they reference the same variable.
+ */
 export default class MaximalCliqueTransformer {
     // TODO: remove dependency on Lcom1Converter specifically, or explain why dependency is necessary
+    /**
+     * Constructor.
+     * @param _lcom1Converter an object that can convert classes to the appropriate graphs
+     */
     constructor(private _lcom1Converter: Lcom1Converter) { }
 
+    /**
+     * Transforms a class into multiple classes with methods that form maximal cliques.
+     * @param classModel the class to transform
+     */
     transform(classModel: ClassModel): ClassModel[] {
         let graph = this._lcom1Converter.convert(classModel);
         let classModels: ClassModel[] = [];

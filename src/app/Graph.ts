@@ -1,4 +1,4 @@
-import { difference, flatten, intersection, union } from "lodash";
+import { difference, intersection, union } from "lodash";
 
 import Node from "./Node";
 
@@ -6,6 +6,10 @@ import Node from "./Node";
  * Basic object-oriented implementation of the IGraph interface.
  */
 export default class Graph<T> implements IGraph<T> {
+	/**
+	 * Constructor.
+	 * @param _nodes the nodes of the graph
+	 */
 	constructor(private _nodes: Set<Node<T>> = new Set()) { }
 
 	get connectedComponents(): Graph<T>[] {

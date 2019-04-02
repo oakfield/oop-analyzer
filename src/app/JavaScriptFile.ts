@@ -7,9 +7,20 @@ import VariableModel from "./models/VariableModel";
 
 type ParserState = { classModel: ClassModel, currentlyParsing: { type: string, name: string }};
 
+/**
+ * Models a JavaScript file.
+ */
 export default class JavaScriptFile {
+	/**
+	 * Constructor.
+	 * @param _source the text of the file
+	 * @param _sourceType whether the file should be parsed as a script or module
+	 */
 	constructor(private _source: string, private _sourceType: "script" | "module" = "script") { }
 
+	/**
+	 * Transforms the file into a list of one or more models of classes.
+	 */
 	toClassModelArray(): ClassModel[] {
 		let ast = Acorn.parse(this._source, { sourceType: this._sourceType });
 		let classModels: ClassModel[] = [];
@@ -95,11 +106,20 @@ export default class JavaScriptFile {
 		return classModels;
 	}
 
+	/**
+	 * Serializes the file as a string.
+	 */
 	toString(): string {
 		return this._source;
 	}
 
-	private _addVariableReferenceToMethodLike(node: any, state: any, classModelSection: any[]): void {
+	/**
+	 * Adds a reference to a variable to a method or thing that can be treated as a method.
+	 * @param node the node
+	 * @param state any data to keep track of while parsing the file
+	 * @param classModelSection a partial class model
+	 */
+	private _addVariableReferenceToMethodLike(node: any, state: any, classModelSection: { name: string, references: VariableModel[]}[]): void {
 		if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 			let methodLike = classModelSection.find(ml => ml.name === state.currentlyParsing.name);
 			let existingVariable = state.classModel.variables.find(variable => variable.name === node.property.name);
