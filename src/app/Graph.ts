@@ -10,7 +10,7 @@ export default class Graph<T> implements IGraph<T> {
 	 * Constructor.
 	 * @param _nodes the nodes of the graph
 	 */
-	constructor(private _nodes: Set<Node<T>> = new Set()) { }
+	constructor(protected _nodes: Set<Node<T>> = new Set()) { }
 
 	get connectedComponents(): Graph<T>[] {
 		let connectedComponents: Graph<T>[] = [];
