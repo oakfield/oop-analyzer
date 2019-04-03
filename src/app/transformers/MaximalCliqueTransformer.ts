@@ -25,7 +25,7 @@ export default class MaximalCliqueTransformer {
         let counter = 0;
 
         for (let maximalClique of graph.maximalCliques) {
-            // TODO: can this logic, which is similar to that in ConnectedComponentsTransformer,
+            // TODO: can this logic, which is similar to that in ComponentsTransformer,
             // be placed somewhere else?
             let cliqueClassModel = new ClassModel(`Class${counter}`);
             let methods = Array.from(maximalClique.nodes)

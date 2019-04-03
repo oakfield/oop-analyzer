@@ -5,23 +5,23 @@ import Node from "./Node";
 import { expect } from "chai";
 
 describe("Graph", () => {
-	describe("get connectedComponents", () => {
+	describe("get components", () => {
 		it("returns an empty array when the graph has no nodes", () => {
 			let graph = new Graph();
 	
-			expect(graph.connectedComponents).to.be.empty;
+			expect(graph.components).to.be.empty;
 		});
 	
-		it("returns one connected component when the graph has one node", () => {
+		it("returns one component when the graph has one node", () => {
 			let node = new Node();
 			let graph = new Graph(new Set([node]));
 	
-			expect(graph.connectedComponents.length).to.equal(1);
-			expect(graph.connectedComponents[0].nodes.size).to.equal(1);
-			expect(graph.connectedComponents[0].nodes).to.contain(node);
+			expect(graph.components.length).to.equal(1);
+			expect(graph.components[0].nodes.size).to.equal(1);
+			expect(graph.components[0].nodes).to.contain(node);
 		});
 	
-		it("returns one connected component when the graph has two connected nodes", () => {
+		it("returns one component when the graph has two connected nodes", () => {
 			let node1 = new Node();
 			let node2 = new Node();
 			node1.neighbors.add(node2);
@@ -29,27 +29,27 @@ describe("Graph", () => {
 	
 			let graph = new Graph(new Set([node1, node2]));
 	
-			expect(graph.connectedComponents.length).to.equal(1);
-			expect(graph.connectedComponents[0].nodes.size).to.equal(2);
-			expect(graph.connectedComponents[0].nodes).to.contain(node1);
-			expect(graph.connectedComponents[0].nodes).to.contain(node2);
+			expect(graph.components.length).to.equal(1);
+			expect(graph.components[0].nodes.size).to.equal(2);
+			expect(graph.components[0].nodes).to.contain(node1);
+			expect(graph.components[0].nodes).to.contain(node2);
 		});
 	
-		it("returns two connected components when the graph has two unconnected nodes", () => {
+		it("returns two components when the graph has two unconnected nodes", () => {
 			let node1 = new Node();
 			let node2 = new Node();
 			let graph = new Graph(new Set([node1, node2]));
 	
-			expect(graph.connectedComponents.length).to.equal(2);
-			expect(graph.connectedComponents[0].nodes.size).to.equal(1);
-			expect(graph.connectedComponents[1].nodes.size).to.equal(1);
-			expect(graph.connectedComponents[0].nodes.has(node1) ||
-				graph.connectedComponents[1].nodes.has(node1)).to.be.true;
-			expect(graph.connectedComponents[0].nodes.has(node2) ||
-				graph.connectedComponents[1].nodes.has(node2)).to.be.true;
+			expect(graph.components.length).to.equal(2);
+			expect(graph.components[0].nodes.size).to.equal(1);
+			expect(graph.components[1].nodes.size).to.equal(1);
+			expect(graph.components[0].nodes.has(node1) ||
+				graph.components[1].nodes.has(node1)).to.be.true;
+			expect(graph.components[0].nodes.has(node2) ||
+				graph.components[1].nodes.has(node2)).to.be.true;
 		});
 	
-		it("returns one connected component when the graph has three connected nodes", () => {
+		it("returns one component when the graph has three connected nodes", () => {
 			let node1 = new Node();
 			let node2 = new Node();
 			let node3 = new Node();
@@ -62,11 +62,11 @@ describe("Graph", () => {
 	
 			let graph = new Graph(new Set([node1, node2, node3]));
 	
-			expect(graph.connectedComponents.length).to.equal(1);
-			expect(graph.connectedComponents[0].nodes.size).to.equal(3);
+			expect(graph.components.length).to.equal(1);
+			expect(graph.components[0].nodes.size).to.equal(3);
 		});
 	
-		it("returns two connected components when the graph has three nodes, two connected", () => {
+		it("returns two components when the graph has three nodes, two connected", () => {
 			let node1 = new Node();
 			let node2 = new Node();
 			let node3 = new Node();
@@ -75,9 +75,9 @@ describe("Graph", () => {
 	
 			let graph = new Graph(new Set([node1, node2, node3]));
 	
-			expect(graph.connectedComponents.length).to.equal(2);
-			expect(graph.connectedComponents[0].nodes.size).to.equal(2);
-			expect(graph.connectedComponents[1].nodes.size).to.equal(1);
+			expect(graph.components.length).to.equal(2);
+			expect(graph.components[0].nodes.size).to.equal(2);
+			expect(graph.components[1].nodes.size).to.equal(1);
 		});
 	
 		it("returns three connected components when the graph has three unconnected nodes", () => {
@@ -86,10 +86,10 @@ describe("Graph", () => {
 			let node3 = new Node();
 			let graph = new Graph(new Set([node1, node2, node3]));
 	
-			expect(graph.connectedComponents.length).to.equal(3);
-			expect(graph.connectedComponents[0].nodes.size).to.equal(1);
-			expect(graph.connectedComponents[1].nodes.size).to.equal(1);
-			expect(graph.connectedComponents[2].nodes.size).to.equal(1);
+			expect(graph.components.length).to.equal(3);
+			expect(graph.components[0].nodes.size).to.equal(1);
+			expect(graph.components[1].nodes.size).to.equal(1);
+			expect(graph.components[2].nodes.size).to.equal(1);
 		});
 	});
 

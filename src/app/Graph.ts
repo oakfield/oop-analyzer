@@ -12,24 +12,24 @@ export default class Graph<T> implements IGraph<T> {
 	 */
 	constructor(protected _nodes: Set<Node<T>> = new Set()) { }
 
-	get connectedComponents(): Graph<T>[] {
-		let connectedComponents: Graph<T>[] = [];
+	get components(): Graph<T>[] {
+		let components: Graph<T>[] = [];
 		let discoveredNodes = new Set<Node<T>>();
 
 		for (let node of this.nodes) {
 			if (!discoveredNodes.has(node)) {
-				let connectedComponent = new Graph<T>();
+				let component = new Graph<T>();
 
 				for (let searchedNode of node.partialDepthFirstSearch()) {
 					discoveredNodes.add(searchedNode);
-					connectedComponent.nodes.add(searchedNode);
+					component.nodes.add(searchedNode);
 				}
 
-				connectedComponents.push(connectedComponent);
+				components.push(component);
 			}
 		}
 
-		return connectedComponents;
+		return components;
 	}
 
 	get edges(): Set<IEdge<T>> {

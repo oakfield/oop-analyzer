@@ -8,23 +8,23 @@ export default class Graph {
 		return this._nodes;
 	}
 
-	get connectedComponents() {
-		let connectedComponents = [];
+	get components() {
+		let components = [];
 		let discoveredNodes = new Set();
 
 		for (let node of this.nodes) {
 			if (!discoveredNodes.has(node)) {
-				let connectedComponent = new Graph();
+				let component = new Graph();
 
 				for (let searchedNode of node.partialDepthFirstSearch()) {
 					discoveredNodes.add(searchedNode);
-					connectedComponent.nodes.add(searchedNode);
+					component.nodes.add(searchedNode);
 				}
 
-				connectedComponents.push(connectedComponent);
+				components.push(component);
 			}
 		}
 
-		return connectedComponents;
+		return components;
 	}
 }

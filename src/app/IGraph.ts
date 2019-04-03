@@ -10,13 +10,13 @@ type IEdge<T> = [INode<T>, INode<T>];
  */
 interface IGraph<T> {
 	/**
-	 * An array of connect components in the Graph.
+	 * An array of connected components in the Graph.
 	 * 
-	 * A connected component is a subgraph in which each node has a path to each other node, and
-	 * that can't be made any larger by adding other nodes.
+	 * A component is a subgraph in which each node has a path to each other node, and that can't
+	 * be made any larger by adding other nodes.
 	 * 
 	 */
-	readonly connectedComponents: IGraph<T>[];
+	readonly components: IGraph<T>[];
 
 	/**
 	 * A set of edges in the Graph.

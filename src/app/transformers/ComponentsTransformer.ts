@@ -3,10 +3,10 @@ import Lcom4Metric from "../metrics/lcom4/Lcom4Converter";
 
 /**
  * Transforms a class into multiple classes, each of which is a connected component. The
- * transformer defines connected components using the LCOM4 metric; that is, methods are
- * related if they reference the same variable or method.
+ * transformer defines components using the LCOM4 metric; that is, methods are related if they
+ * reference the same variable or method.
  */
-export default class ConnectedComponentsTransformer {
+export default class ComponentsTransformer {
 	// TODO: remove dependency on Lcom4Metric specifically
 	/**
 	 * Constructor.
@@ -15,7 +15,7 @@ export default class ConnectedComponentsTransformer {
 	constructor(private _converter: Lcom4Metric) { }
 
 	/**
-	 * Transforms a class into multiple classes, each of which is a connected component.
+	 * Transforms a class into multiple classes, each of which is a component.
 	 * @param classModel the class to transform
 	 */
 	transform(classModel: ClassModel): ClassModel[] {
@@ -23,8 +23,8 @@ export default class ConnectedComponentsTransformer {
 		let outputClasses = [] as ClassModel[];
 		let counter = 0;
 
-		for (let connectedComponent of graph.connectedComponents) {
-			let methods = Array.from(connectedComponent.nodes)
+		for (let component of graph.components) {
+			let methods = Array.from(component.nodes)
 					.map(node => node.data);
 			let variables = methods
 				.map(method => method.references)

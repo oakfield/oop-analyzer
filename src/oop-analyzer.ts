@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as yargs from "yargs";
 
-import ConnectedComponentsTransformation from "./app/transformers/ConnectedComponentsTransformer";
+import ComponentsTransformation from "./app/transformers/ComponentsTransformer";
 import JavaScriptFile from "./app/JavaScriptFile";
 import Lcom1Converter from "./app/metrics/lcom1/Lcom1Converter";
 import Lcom1Metric from "./app/metrics/lcom1/Lcom1Metric";
@@ -47,7 +47,7 @@ let argv = yargs.argv as {
 	file?: string,
 	metric?: string,
 	sourceType?: "script" | "module",
-	transformation?: "connected-components" | "maximal-cliques"
+	transformation?: "components" | "maximal-cliques"
 };
 
 if (argv.file) {
@@ -86,12 +86,12 @@ if (argv.file) {
 			let counter: number;
 
 			switch (argv.transformation) {
-				case "connected-components":
+				case "components":
 					counter = 0;
 					for (let classModel of classModels) {
 						let lcom4Converter = new Lcom4Converter();
-						let connectedComponentsTransformation = new ConnectedComponentsTransformation(lcom4Converter);
-						let validated = connectedComponentsTransformation.transform(classModel);
+						let componentsTransformation = new ComponentsTransformation(lcom4Converter);
+						let validated = componentsTransformation.transform(classModel);
 					
 						fs.writeFile(`./${counter++}.js`,
 							validated.map(classModel => classModel.toString())

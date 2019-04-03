@@ -17,6 +17,6 @@ export default class Lcom4Metric implements IMetric {
 	 * @param classModel the class to evaluate
 	 */
 	evaluate(classModel: ClassModel): number {
-		return this._converter.convert(classModel).connectedComponents.length;
+		return this._converter.convert(classModel).components.length;
 	}
 }
