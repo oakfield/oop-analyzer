@@ -1,5 +1,5 @@
 import ClassModel from "../models/ClassModel";
-import Lcom4Metric from "../metrics/lcom4/Lcom4Converter";
+import Lcom4Converter from "../metrics/lcom4/Lcom4Converter";
 
 /**
  * Transforms a class into multiple classes, each of which is a connected component. The
@@ -7,12 +7,12 @@ import Lcom4Metric from "../metrics/lcom4/Lcom4Converter";
  * reference the same variable or method.
  */
 export default class ComponentsTransformer {
-	// TODO: remove dependency on Lcom4Metric specifically
+	// TODO: remove dependency on Lcom4Converter specifically
 	/**
 	 * Constructor.
 	 * @param _converter an object that can convert class models to the appropriate graph
 	 */
-	constructor(private _converter: Lcom4Metric) { }
+	constructor(private _converter: Lcom4Converter) { }
 
 	/**
 	 * Transforms a class into multiple classes, each of which is a component.
