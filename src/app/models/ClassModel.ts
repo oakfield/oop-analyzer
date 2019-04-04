@@ -27,7 +27,7 @@ export default class ClassModel {
 	 * Serializes the class as a string.
 	 */
 	toString(): string {
-		let formatMethod = method => "\n\n\t" + method.toString();
+		let formatMethod = (method: { toString: () => string; }) => "\n\n\t" + method.toString();
 		let variablesString = `${this.variables.map(variable => `${variable.toString()}\n`)}`;
 		let gettersString = `${this.getters.map(formatMethod)}`;
 		let methodsString = `${this.methods.map(formatMethod)}`;

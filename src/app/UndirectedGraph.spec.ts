@@ -11,14 +11,14 @@ describe("Graph", () => {
         });
 
         it("constructs a new graph given a single unconnected node", () => {
-            let node1 = new Node();
+            let node1 = new Node(null);
 
             expect(() => new UndirectedGraph(new Set([node1])))
                 .not.to.throw();
         });
 
         it("constructs a new graph given a single self-connected node", () => {
-            let node1 = new Node();
+            let node1 = new Node(null);
 
             node1.neighbors.add(node1);
 
@@ -27,16 +27,16 @@ describe("Graph", () => {
         });
 
         it("constructs a new graph given two unconnected nodes", () => {
-            let node1 = new Node();
-            let node2 = new Node();
+            let node1 = new Node(null);
+            let node2 = new Node(null);
 
             expect(() => new UndirectedGraph(new Set([node1, node2])))
                 .not.to.throw();
         });
 
         it("constructs a new graph given two connected nodes", () => {
-            let node1 = new Node();
-            let node2 = new Node();
+            let node1 = new Node(null);
+            let node2 = new Node(null);
 
             node1.neighbors.add(node2);
             node2.neighbors.add(node1);
@@ -46,11 +46,11 @@ describe("Graph", () => {
         });
 
         it("constructs a new graph given many undirected nodes", () => {
-            let node1 = new Node();
-            let node2 = new Node();
-            let node3 = new Node();
-            let node4 = new Node();
-            let node5 = new Node();
+            let node1 = new Node(null);
+            let node2 = new Node(null);
+            let node3 = new Node(null);
+            let node4 = new Node(null);
+            let node5 = new Node(null);
 
             node1.neighbors.add(node2);
             node2.neighbors.add(node1);
@@ -75,8 +75,8 @@ describe("Graph", () => {
         });
 
         it("throws an error when given two nodes only one of which is connected to the other", () => {
-            let node1 = new Node();
-            let node2 = new Node();
+            let node1 = new Node(null);
+            let node2 = new Node(null);
 
             node1.neighbors.add(node2);
 
@@ -84,11 +84,11 @@ describe("Graph", () => {
         });
 
         it("throws an error when given many nodes that form an undirected graph", () => {
-            let node1 = new Node();
-            let node2 = new Node();
-            let node3 = new Node();
-            let node4 = new Node();
-            let node5 = new Node();
+            let node1 = new Node(null);
+            let node2 = new Node(null);
+            let node3 = new Node(null);
+            let node4 = new Node(null);
+            let node5 = new Node(null);
 
             node1.neighbors.add(node2);
             node2.neighbors.add(node1);

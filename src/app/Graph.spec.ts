@@ -13,7 +13,7 @@ describe("Graph", () => {
 		});
 	
 		it("returns one component when the graph has one node", () => {
-			let node = new Node();
+			let node = new Node(null);
 			let graph = new Graph(new Set([node]));
 	
 			expect(graph.components.length).to.equal(1);
@@ -22,8 +22,8 @@ describe("Graph", () => {
 		});
 	
 		it("returns one component when the graph has two connected nodes", () => {
-			let node1 = new Node();
-			let node2 = new Node();
+			let node1 = new Node(null);
+			let node2 = new Node(null);
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
 	
@@ -36,8 +36,8 @@ describe("Graph", () => {
 		});
 	
 		it("returns two components when the graph has two unconnected nodes", () => {
-			let node1 = new Node();
-			let node2 = new Node();
+			let node1 = new Node(null);
+			let node2 = new Node(null);
 			let graph = new Graph(new Set([node1, node2]));
 	
 			expect(graph.components.length).to.equal(2);
@@ -50,9 +50,9 @@ describe("Graph", () => {
 		});
 	
 		it("returns one component when the graph has three connected nodes", () => {
-			let node1 = new Node();
-			let node2 = new Node();
-			let node3 = new Node();
+			let node1 = new Node(null);
+			let node2 = new Node(null);
+			let node3 = new Node(null);
 			node1.neighbors.add(node2);
 			node1.neighbors.add(node3);
 			node2.neighbors.add(node1);
@@ -67,9 +67,9 @@ describe("Graph", () => {
 		});
 	
 		it("returns two components when the graph has three nodes, two connected", () => {
-			let node1 = new Node();
-			let node2 = new Node();
-			let node3 = new Node();
+			let node1 = new Node(null);
+			let node2 = new Node(null);
+			let node3 = new Node(null);
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
 	
@@ -81,9 +81,9 @@ describe("Graph", () => {
 		});
 	
 		it("returns three connected components when the graph has three unconnected nodes", () => {
-			let node1 = new Node();
-			let node2 = new Node();
-			let node3 = new Node();
+			let node1 = new Node(null);
+			let node2 = new Node(null);
+			let node3 = new Node(null);
 			let graph = new Graph(new Set([node1, node2, node3]));
 	
 			expect(graph.components.length).to.equal(3);
@@ -101,14 +101,14 @@ describe("Graph", () => {
 		});
 
 		it("returns an empty set when the graph has one unconnected node", () => {
-			let node = new Node();
+			let node = new Node(null);
 			let graph = new Graph(new Set([node]));
 	
 			expect(graph.edges).to.be.empty;
 		});
 
 		it("returns a set of one edge when the graph has one self-connected node", () => {
-			let node = new Node();
+			let node = new Node(null);
 			node.neighbors.add(node);
 			let graph = new Graph(new Set([node]));
 
@@ -168,7 +168,7 @@ describe("Graph", () => {
 		});
 
 		it("returns an array of one graph with one node when the graph has one node", () => {
-			let node = new Node();
+			let node = new Node(null);
 			let graph = new Graph(new Set([node]));
 			let maximalCliques = graph.maximalCliques;
 

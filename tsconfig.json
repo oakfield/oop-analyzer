@@ -1,9 +1,11 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
 		"lib": ["es5", "es6", "es2017", "dom"],
 		"moduleResolution": "Node",
 		"outDir": "dist",
 		"sourceMap": true,
+		"strictNullChecks": true,
 		"target": "es2017"
 	},
 	"exclude": ["node_modules", "dist", "**/*.spec.ts"],

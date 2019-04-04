@@ -9,7 +9,7 @@ export default class Node<T> implements INode<T> {
 	 * Constructor.
 	 * @param data the information to store in the node
 	 */
-	constructor(data: T = null) {
+	constructor(data: T) {
 		this.data = data;
 		this.neighbors = new Set();
 	}
@@ -23,7 +23,7 @@ export default class Node<T> implements INode<T> {
 		stack.push(this);
 
 		while (stack.length) {
-			let nextNode = stack.pop();
+			let nextNode = stack.pop()!;
 
 			if (!discoveredNodes.has(nextNode)) {
 				discoveredNodes.add(nextNode);

@@ -1,11 +1,47 @@
 import * as Acorn from "acorn";
-import * as Walk from "acorn/dist/walk";
+import * as Walk from "acorn-walk";
 
 import ClassModel from "./models/ClassModel";
 import MethodModel from "./models/MethodModel";
 import VariableModel from "./models/VariableModel";
 
-type ParserState = { classModel: ClassModel, currentlyParsing: { type: string, name: string }};
+type ParserState = {
+	classModel: ClassModel | null,
+	currentlyParsing: {
+		type: "constructor" | "method" | "getter" | "setter" | "",
+		name: string
+	}
+};
+
+type AssignmentExpressionNode = Acorn.Node & {
+	left: {
+		object: {
+			type: string;
+		};
+		property: {
+			name: string;
+		};
+	};
+};
+
+type ClassDeclarationNode = { 
+	id: { 
+		name: string;
+	}; 
+	body: any;
+};
+
+type MethodDefinitionNode = {
+	kind: string;
+	value: any;
+	key: {
+		name: string;
+	};
+	start: number;
+	end: number;
+};
+
+type ContinueFn = (arg0: object, arg1: ParserState) => void;
 
 /**
  * Models a JavaScript file.
@@ -34,18 +70,22 @@ export default class JavaScriptFile {
 				}
 			} as ParserState,
 			{
-				ClassDeclaration: (node, state: ParserState, continueFn) => {
+				ClassDeclaration: (node: ClassDeclarationNode, state: ParserState, continueFn: ContinueFn) => {
 					state.classModel = new ClassModel(node.id.name);
 					classModels.push(state.classModel);
 
 					continueFn(node.body, state);
 				},
-				MethodDefinition: (node, state: ParserState, continueFn) => {
+				MethodDefinition: (node: MethodDefinitionNode, state: ParserState, continueFn: ContinueFn) => {
 					if (node.kind === "constructor") {
 						state.currentlyParsing.type = "constructor";
 
 						continueFn(node.value, state);
 					} else {
+						if (!state.classModel) {
+							throw new Error("Tried parsing a method definition outside of a class");
+						}
+
 						let methodModel = new MethodModel(node.key.name, this._source.substring(node.start, node.end));
 
 						switch (node.kind) {
@@ -75,7 +115,11 @@ export default class JavaScriptFile {
 						continueFn(node.value, state);
 					}
 				},
-				AssignmentExpression: (node, state: ParserState, continueFn) => {
+				AssignmentExpression: (node: AssignmentExpressionNode, state: ParserState, continueFn: ContinueFn) => {
+					if (!state.classModel) {
+						throw new Error("Tried parsing an assignment expression outside of a class");
+					}
+
 					if (state.currentlyParsing.type === "constructor") {
 						// Walk.recursive will hit this even when the type is not MethodDefinition.
 						// Maybe it's some super-type issue?
@@ -92,7 +136,11 @@ export default class JavaScriptFile {
 						continueFn(node.left, state);
 					}
 				},
-				MemberExpression: (node, state: ParserState, continueFn) => {
+				MemberExpression: (node: object, state: ParserState, continueFn: ContinueFn) => {
+					if (!state.classModel) {
+						throw new Error("Tried parsing a member expression outside of a class");
+					}
+
 					if (state.currentlyParsing.type === "method") {
 						this._addVariableReferenceToMethodLike(node, state, state.classModel.methods);
 					} else if (state.currentlyParsing.type === "getter") {
@@ -122,6 +170,11 @@ export default class JavaScriptFile {
 	private _addVariableReferenceToMethodLike(node: any, state: any, classModelSection: { name: string, references: VariableModel[]}[]): void {
 		if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 			let methodLike = classModelSection.find(ml => ml.name === state.currentlyParsing.name);
+
+			if (!methodLike) {
+				throw new Error("Couldn't find match method in class");
+			}
+			
 			let existingVariable = state.classModel.variables.find(variable => variable.name === node.property.name);
 
 			if (existingVariable) {
