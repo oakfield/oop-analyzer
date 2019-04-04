@@ -25,24 +25,28 @@ export default class MaximalCliqueTransformer {
         let counter = 0;
 
         for (let maximalClique of graph.maximalCliques) {
-            // TODO: can this logic, which is similar to that in ComponentsTransformer,
-            // be placed somewhere else?
-            let cliqueClassModel = new ClassModel(`Class${counter}`);
-            let methods = Array.from(maximalClique.nodes)
-                .map(n => n.data);
-            let variables = methods
-				.map(m => m.references)
-				.reduce((a, b) => a.concat(b), [])
-                .filter(r => classModel.variables.includes(r));
+            // A maximal clique can have no nodes as a limiting case. Don't output any classes in
+            // such a case.
+            if (maximalClique.nodes.size) {
+                // TODO: can this logic, which is similar to that in ComponentsTransformer,
+                // be placed somewhere else?
+                let cliqueClassModel = new ClassModel(`Class${counter}`);
+                let methods = Array.from(maximalClique.nodes)
+                    .map(n => n.data);
+                let variables = methods
+                    .map(m => m.references)
+                    .reduce((a, b) => a.concat(b), [])
+                    .filter(r => classModel.variables.includes(r));
+                    
+                // Get unique references.
+                variables = Array.from(new Set(variables));
                 
-            // Get unique references.
-            variables = Array.from(new Set(variables));
-            
-            cliqueClassModel.methods = methods;
-			cliqueClassModel.variables = variables;
-            counter++;
-            
-            classModels.push(cliqueClassModel);
+                cliqueClassModel.methods = methods;
+                cliqueClassModel.variables = variables;
+                counter++;
+                
+                classModels.push(cliqueClassModel);
+            }
         }
 
         return classModels;
