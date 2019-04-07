@@ -6,7 +6,7 @@ import MethodModel from "../../models/MethodModel";
 import VariableModel from "../../models/VariableModel";
 import { expect } from "chai";
 
-describe("Lcom1Converter", () => {
+describe(Lcom1Converter.name, () => {
     describe("convert", () => {
 		it("returns an empty graph when the class has no variables or methods", () => {
 			let testClass = new ClassModel("Test");

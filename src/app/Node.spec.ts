@@ -3,7 +3,7 @@ import "mocha";
 import Node from "./Node";
 import { expect } from "chai";
 
-describe("Node", () => {
+describe(Node.name, () => {
     describe("constructor", () => {
         it("initializes instance variables", () => {
             const data = "test";

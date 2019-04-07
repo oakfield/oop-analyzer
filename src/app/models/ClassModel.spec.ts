@@ -5,7 +5,7 @@ import MethodModel from './MethodModel';
 import VariableModel from './VariableModel';
 import { expect } from 'chai';
 
-describe("ClassModel", () => {
+describe(ClassModel.name, () => {
     describe("constructor", () => {
         it("does not throw", () => {
             expect(() => new ClassModel("Test")).not.to.throw();

@@ -6,7 +6,7 @@ import VariableModel from "../../models/VariableModel";
 import WmcMetric from "./WmcMetric";
 import { expect } from "chai";
 
-describe("WmcMetric", () => {
+describe(WmcMetric.name, () => {
     describe("evaluate", () => {
         it("returns NaN given an empty list of classes", () => {
             let wmcMetric = new WmcMetric();

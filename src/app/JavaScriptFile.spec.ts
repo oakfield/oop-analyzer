@@ -3,7 +3,7 @@ import "mocha";
 import JavaScriptFile from "./JavaScriptFile";
 import { expect } from "chai";
 
-describe("JavaScriptFile", () => {
+describe(JavaScriptFile.name, () => {
     describe("toClassModelArray", () => {
         it("returns an empty array of class models when given a blank file", () => {
             let classModels = (new JavaScriptFile("")).toClassModelArray();

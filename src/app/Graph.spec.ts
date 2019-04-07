@@ -4,7 +4,7 @@ import Graph from "./Graph";
 import Node from "./Node";
 import { expect } from "chai";
 
-describe("Graph", () => {
+describe(Graph.name, () => {
 	describe("get components", () => {
 		it("returns an empty array when the graph has no nodes", () => {
 			let graph = new Graph();

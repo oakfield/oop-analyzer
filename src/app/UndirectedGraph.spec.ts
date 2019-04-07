@@ -4,7 +4,7 @@ import Node from "./Node";
 import UndirectedGraph from "./UndirectedGraph";
 import { expect } from "chai";
 
-describe("Graph", () => {
+describe(UndirectedGraph.name, () => {
     describe("constructor", () => {
         it("constructs a new graph given no nodes", () => {
             expect(() => new UndirectedGraph()).not.to.throw();

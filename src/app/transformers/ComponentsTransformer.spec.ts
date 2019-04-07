@@ -7,7 +7,7 @@ import MethodModel from '../models/MethodModel';
 import Node from '../Node';
 import { expect } from 'chai';
 
-describe("ComponentsTransformer", () => {
+describe(ComponentsTransformer.name, () => {
     describe("transform", () => {
         it("returns an empty list when given a class with no methods or variables", () => {
             let classModel = new ClassModel("");
