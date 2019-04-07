@@ -167,7 +167,7 @@ export default class JavaScriptFile {
 	 * @param state any data to keep track of while parsing the file
 	 * @param classModelSection a partial class model
 	 */
-	private _addVariableReferenceToMethodLike(node: any, state: any, classModelSection: { name: string, references: VariableModel[]}[]): void {
+	private _addVariableReferenceToMethodLike(node: any, state: ParserState, classModelSection: { name: string, references: VariableModel[]}[]): void {
 		if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 			let methodLike = classModelSection.find(ml => ml.name === state.currentlyParsing.name);
 
@@ -175,7 +175,7 @@ export default class JavaScriptFile {
 				throw new Error("Couldn't find match method in class");
 			}
 			
-			let existingVariable = state.classModel.variables.find(variable => variable.name === node.property.name);
+			let existingVariable = state.classModel!.variables.find((variable: { name: string; }) => variable.name === node.property.name);
 
 			if (existingVariable) {
 				methodLike.references.push(existingVariable);
