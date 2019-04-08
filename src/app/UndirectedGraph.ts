@@ -7,10 +7,10 @@ import Node from "./Node";
 export default class UndirectedGraph<T> extends Graph<T> {
     
 	/**
-	 * Constructor.
-	 * @param _nodes the nodes of the graph
+     * Constructor.
+     * @param _nodes the nodes of the graph
      * @throws if the nodes don't form an undirected graph
-	 */
+     */
 	constructor(nodes: Set<Node<T>> = new Set()) {
         super(nodes);
 
