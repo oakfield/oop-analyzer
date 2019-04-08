@@ -120,7 +120,7 @@ export default class JavaScriptFile {
 						throw new Error("Tried parsing an assignment expression outside of a class");
 					}
 
-					if (state.currentlyParsing.type === "constructor") {
+					if (state.currentlyParsing.type === "method" || state.currentlyParsing.type === "constructor") {
 						// Walk.recursive will hit this even when the type is not MethodDefinition.
 						// Maybe it's some super-type issue?
 						if (node.type === "AssignmentExpression" && node.left.object.type === "ThisExpression") {
@@ -175,10 +175,13 @@ export default class JavaScriptFile {
 				throw new Error("Couldn't find match method in class");
 			}
 			
-			let existingVariable = state.classModel!.variables.find((variable: { name: string; }) => variable.name === node.property.name);
+			let classAlreadyHasVariable = state.classModel!.variables.find((variable: VariableModel) => variable.name === node.property.name);
+			let methodAlreadyHasVariable = methodLike.references.find((variable: VariableModel) => variable.name === node.property.name);
 
-			if (existingVariable) {
-				methodLike.references.push(existingVariable);
+			if(methodAlreadyHasVariable) {
+				return;
+			} else if (classAlreadyHasVariable) {
+				methodLike.references.push(classAlreadyHasVariable);
 			} else {
 				methodLike.references.push(new VariableModel(node.property.name));
 			}

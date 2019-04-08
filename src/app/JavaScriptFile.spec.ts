@@ -76,5 +76,28 @@ describe(JavaScriptFile.name, () => {
             expect(setters[0].references.length).to.equal(1);
             expect(setters[0].references[0].name).to.equal(variableName);
         });
+
+        it("adds variables assigned in a function to the class model", () => {
+            let variableName = "myVariable";
+            let methodName = "myMethod";
+            let classModels = (new JavaScriptFile(`class Test { ${methodName}() { this.${variableName} = 1; } }`)).toClassModelArray();
+            let methods = classModels[0].methods;
+
+            expect(methods[0].references.length).to.equal(1);
+            expect(methods[0].references[0].name).to.equal(variableName);
+        });
+
+        it("adds variables assigned in a function to the class model", () => {
+            let variableName = "var1";
+            let classModels = (new JavaScriptFile(`import * as moment from 'moment'; export default class Test { foo() { this.${variableName} = 1; return this.${variableName}; } bar() { return this.${variableName} && this.${variableName} + 1; } baz() { if (this.${variableName}) return this.${variableName} + 2; } }`, "module")).toClassModelArray();
+            let classModel = classModels[0];
+            let methods = classModel.methods;
+            let variables = classModel.variables;
+
+            expect(variables.length).to.equal(1);
+            expect(variables[0].name).to.equal(variableName);
+            expect(methods[0].references.length).to.equal(1);
+            expect(methods[0].references[0].name).to.equal(variableName);
+        });
     });
 });
