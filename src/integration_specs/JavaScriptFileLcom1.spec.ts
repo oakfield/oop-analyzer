@@ -170,4 +170,17 @@ describe("LCOM1 of JavaScript file", () => {
 
         expect(actualValue).to.equal(0);
     });
+
+    it("is defined when the file has multiple classes", () => {
+        let javaScript = `class Test1 { } class Test2 { }`;
+        let javaScriptFile = new JavaScriptFile(javaScript);
+        let metric = new Lcom1Metric(new Lcom1Converter());
+
+        let classModels = javaScriptFile.toClassModelArray();
+        let actualValue1 = metric.evaluate(classModels[0]);
+        let actualValue2 = metric.evaluate(classModels[0]);
+
+        expect(actualValue1).to.equal(0);
+        expect(actualValue2).to.equal(0);
+    });
 });

@@ -2,6 +2,8 @@
  * A model of a variable, in the sense of programming.
  */
 export default class VariableModel {
+    // TODO: it shouldn't be possible to create an invalid VariableModel with a name that doesn't
+    // match the assignmentSource. See if logic can be added to infer the name from the assignment source.
     /**
      * Constructor.
      * @param _name the variable's name
