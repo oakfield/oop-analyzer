@@ -17,14 +17,14 @@ yargs.alias("v", "version")
 	.completion()
 	.help("help")
 	.usage("Usage: $0 --file=[filepath]")
-	
+
 	.option("f", {
 		alias: "file",
 		demand: true,
 		describe: "Use file",
 		type: "string"
 	})
-	
+
 	.option("m", {
 		alias: "metric",
 		describe: "Evaluate according to metric",
@@ -36,14 +36,14 @@ yargs.alias("v", "version")
 		describe: "For JavaScript files, whether to parse as script or module",
 		type: "string"
 	})
-	
+
 	.option("t", {
 		alias: "transformation",
 		describe: "Transformation to apply",
 		type: "string"
 	});
 
-let argv = yargs.argv as { 
+let argv = yargs.argv as {
 	file?: string,
 	metric?: string,
 	sourceType?: "script" | "module",
@@ -92,7 +92,7 @@ if (argv.file) {
 						let lcom4Converter = new Lcom4Converter();
 						let componentsTransformation = new ComponentsTransformation(lcom4Converter);
 						let validated = componentsTransformation.transform(classModel);
-					
+
 						fs.writeFile(`./${counter++}.js`,
 							validated.map(classModel => classModel.toString())
 								.reduce((current, previous) => `${current}\n${previous}`),
@@ -114,11 +114,11 @@ if (argv.file) {
 						fs.writeFile(`./${counter++}.js`,
 							validated.map(classModel => classModel.toString())
 								.reduce((current, previous) => `${current}\n${previous}`),
-								error => {
-									if (error) {
-										console.log(error);
-									}
-								});
+							error => {
+								if (error) {
+									console.log(error);
+								}
+							});
 					}
 			}
 		}

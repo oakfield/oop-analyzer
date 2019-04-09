@@ -7,13 +7,13 @@ import Node from "../../Node";
  * Converts a class into a graph representing the class.
  */
 export default class Lcom1Converter {
-	
+
 	/**
 	 * Converts a class into a graph representing the class.
 	 * @param classModel the class to convert
 	 */
-    convert(classModel: ClassModel): Graph<MethodModel> {
-        let methods = new Set<Node<MethodModel>>();
+	convert(classModel: ClassModel): Graph<MethodModel> {
+		let methods = new Set<Node<MethodModel>>();
 
 		for (let method of classModel.methods) {
 			methods.add(new Node<MethodModel>(method));
@@ -25,17 +25,17 @@ export default class Lcom1Converter {
 
 		for (let setter of classModel.setters) {
 			methods.add(new Node<MethodModel>(setter));
-        }
-        
-        for (let m of methods) {
+		}
+
+		for (let m of methods) {
 			for (let n of methods) {
 				if (m.data.references.some(name => n.data.references.includes(name))) {
 					m.neighbors.add(n);
 					n.neighbors.add(m);
 				}
 			}
-        }
-        
-        return new Graph<MethodModel>(methods);
-    }
+		}
+
+		return new Graph<MethodModel>(methods);
+	}
 }

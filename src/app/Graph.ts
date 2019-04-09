@@ -72,7 +72,7 @@ export default class Graph<T> implements IGraph<T> {
 		}
 
 		for (let node of p) {
- 			Graph._bronKerbosch(union(r, [node]),
+			Graph._bronKerbosch(union(r, [node]),
 				intersection(p, Array.from(node.neighbors)),
 				intersection(x, Array.from(node.neighbors)),
 				maximalCliques);

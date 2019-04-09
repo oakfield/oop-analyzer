@@ -24,10 +24,10 @@ type AssignmentExpressionNode = Acorn.Node & {
 	};
 };
 
-type ClassDeclarationNode = { 
-	id: { 
+type ClassDeclarationNode = {
+	id: {
 		name: string;
-	}; 
+	};
 	body: any;
 };
 
@@ -62,7 +62,7 @@ export default class JavaScriptFile {
 		let classModels: ClassModel[] = [];
 
 		Walk.recursive(ast,
-			{ 
+			{
 				classModel: null,
 				currentlyParsing: {
 					type: "",
@@ -130,7 +130,7 @@ export default class JavaScriptFile {
 						continueFn(node.left, state);
 
 					}
-					
+
 					// Setters aren't getting processed without this. Seems wrong, though.
 					else if (state.currentlyParsing.type === "setter") {
 						continueFn(node.left, state);
@@ -167,18 +167,18 @@ export default class JavaScriptFile {
 	 * @param state any data to keep track of while parsing the file
 	 * @param classModelSection a partial class model
 	 */
-	private _addVariableReferenceToMethodLike(node: any, state: ParserState, classModelSection: { name: string, references: VariableModel[]}[]): void {
+	private _addVariableReferenceToMethodLike(node: any, state: ParserState, classModelSection: { name: string, references: VariableModel[] }[]): void {
 		if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 			let methodLike = classModelSection.find(ml => ml.name === state.currentlyParsing.name);
 
 			if (!methodLike) {
 				throw new Error("Couldn't find match method in class");
 			}
-			
+
 			let classAlreadyHasVariable = state.classModel!.variables.find((variable: VariableModel) => variable.name === node.property.name);
 			let methodAlreadyHasVariable = methodLike.references.find((variable: VariableModel) => variable.name === node.property.name);
 
-			if(methodAlreadyHasVariable) {
+			if (methodAlreadyHasVariable) {
 				return;
 			} else if (classAlreadyHasVariable) {
 				methodLike.references.push(classAlreadyHasVariable);

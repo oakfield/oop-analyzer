@@ -25,7 +25,7 @@ export default class ComponentsTransformer {
 
 		for (let component of graph.components) {
 			let methods = Array.from(component.nodes)
-					.map(node => node.data);
+				.map(node => node.data);
 			let variables = methods
 				.map(method => method.references)
 				.reduce((a, b) => a.concat(b), [])

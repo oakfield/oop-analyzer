@@ -8,38 +8,38 @@ describe(Graph.name, () => {
 	describe("get components", () => {
 		it("returns an empty array when the graph has no nodes", () => {
 			let graph = new Graph();
-	
+
 			expect(graph.components).to.be.empty;
 		});
-	
+
 		it("returns one component when the graph has one node", () => {
 			let node = new Node(null);
 			let graph = new Graph(new Set([node]));
-	
+
 			expect(graph.components.length).to.equal(1);
 			expect(graph.components[0].nodes.size).to.equal(1);
 			expect(graph.components[0].nodes).to.contain(node);
 		});
-	
+
 		it("returns one component when the graph has two connected nodes", () => {
 			let node1 = new Node(null);
 			let node2 = new Node(null);
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
-	
+
 			let graph = new Graph(new Set([node1, node2]));
-	
+
 			expect(graph.components.length).to.equal(1);
 			expect(graph.components[0].nodes.size).to.equal(2);
 			expect(graph.components[0].nodes).to.contain(node1);
 			expect(graph.components[0].nodes).to.contain(node2);
 		});
-	
+
 		it("returns two components when the graph has two unconnected nodes", () => {
 			let node1 = new Node(null);
 			let node2 = new Node(null);
 			let graph = new Graph(new Set([node1, node2]));
-	
+
 			expect(graph.components.length).to.equal(2);
 			expect(graph.components[0].nodes.size).to.equal(1);
 			expect(graph.components[1].nodes.size).to.equal(1);
@@ -48,7 +48,7 @@ describe(Graph.name, () => {
 			expect(graph.components[0].nodes.has(node2) ||
 				graph.components[1].nodes.has(node2)).to.be.true;
 		});
-	
+
 		it("returns one component when the graph has three connected nodes", () => {
 			let node1 = new Node(null);
 			let node2 = new Node(null);
@@ -59,33 +59,33 @@ describe(Graph.name, () => {
 			node2.neighbors.add(node3);
 			node3.neighbors.add(node1);
 			node3.neighbors.add(node2);
-	
+
 			let graph = new Graph(new Set([node1, node2, node3]));
-	
+
 			expect(graph.components.length).to.equal(1);
 			expect(graph.components[0].nodes.size).to.equal(3);
 		});
-	
+
 		it("returns two components when the graph has three nodes, two connected", () => {
 			let node1 = new Node(null);
 			let node2 = new Node(null);
 			let node3 = new Node(null);
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
-	
+
 			let graph = new Graph(new Set([node1, node2, node3]));
-	
+
 			expect(graph.components.length).to.equal(2);
 			expect(graph.components[0].nodes.size).to.equal(2);
 			expect(graph.components[1].nodes.size).to.equal(1);
 		});
-	
+
 		it("returns three connected components when the graph has three unconnected nodes", () => {
 			let node1 = new Node(null);
 			let node2 = new Node(null);
 			let node3 = new Node(null);
 			let graph = new Graph(new Set([node1, node2, node3]));
-	
+
 			expect(graph.components.length).to.equal(3);
 			expect(graph.components[0].nodes.size).to.equal(1);
 			expect(graph.components[1].nodes.size).to.equal(1);
@@ -96,14 +96,14 @@ describe(Graph.name, () => {
 	describe("get edges", () => {
 		it("returns an empty set when the graph has no nodes", () => {
 			let graph = new Graph();
-	
+
 			expect(graph.edges).to.be.empty;
 		});
 
 		it("returns an empty set when the graph has one unconnected node", () => {
 			let node = new Node(null);
 			let graph = new Graph(new Set([node]));
-	
+
 			expect(graph.edges).to.be.empty;
 		});
 

@@ -8,13 +8,13 @@ export default class ClassModel {
 	getters: MethodModel[] = [];
 	methods: MethodModel[] = [];
 	setters: MethodModel[] = [];
-    variables: VariableModel[] = [];
+	variables: VariableModel[] = [];
 
 	/**
 	 * Constructor.
 	 * @param _name the class's name
 	 */
-    constructor(private _name: string) { }
+	constructor(private _name: string) { }
 
 	/**
 	 * The class's name, for example, "Person" given "class Person."
