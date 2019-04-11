@@ -2,46 +2,9 @@ import * as Acorn from "acorn";
 import * as Walk from "acorn-walk";
 
 import ClassModel from "./models/ClassModel";
+import IParserState from "./IParserState";
 import MethodModel from "./models/MethodModel";
 import VariableModel from "./models/VariableModel";
-
-type ParserState = {
-	classModel: ClassModel | null,
-	currentlyParsing: {
-		type: "constructor" | "method" | "getter" | "setter" | "",
-		name: string
-	}
-};
-
-type AssignmentExpressionNode = Acorn.Node & {
-	left: {
-		object: {
-			type: string;
-		};
-		property: {
-			name: string;
-		};
-	};
-};
-
-type ClassDeclarationNode = {
-	id: {
-		name: string;
-	};
-	body: any;
-};
-
-type MethodDefinitionNode = {
-	kind: string;
-	value: any;
-	key: {
-		name: string;
-	};
-	start: number;
-	end: number;
-};
-
-type ContinueFn = (arg0: object, arg1: ParserState) => void;
 
 /**
  * Models a JavaScript file.
@@ -61,22 +24,22 @@ export default class JavaScriptFile {
 		let ast = Acorn.parse(this._source, { sourceType: this._sourceType });
 		let classModels: ClassModel[] = [];
 
-		Walk.recursive(ast,
+		Walk.recursive<IParserState>(ast,
 			{
 				classModel: null,
 				currentlyParsing: {
 					type: "",
 					name: ""
 				}
-			} as ParserState,
+			} as IParserState,
 			{
-				ClassDeclaration: (node: ClassDeclarationNode, state: ParserState, continueFn: ContinueFn) => {
+				ClassDeclaration: (node: Walk.ClassDeclarationNode, state: IParserState, continueFn: Walk.ContinueFn<IParserState>) => {
 					state.classModel = new ClassModel(node.id.name);
 					classModels.push(state.classModel);
 
 					continueFn(node.body, state);
 				},
-				MethodDefinition: (node: MethodDefinitionNode, state: ParserState, continueFn: ContinueFn) => {
+				MethodDefinition: (node: Walk.MethodDefinitionNode, state: IParserState, continueFn: Walk.ContinueFn<IParserState>) => {
 					if (node.kind === "constructor") {
 						state.currentlyParsing.type = "constructor";
 
@@ -115,7 +78,7 @@ export default class JavaScriptFile {
 						continueFn(node.value, state);
 					}
 				},
-				AssignmentExpression: (node: AssignmentExpressionNode, state: ParserState, continueFn: ContinueFn) => {
+				AssignmentExpression: (node: Walk.AssignmentExpressionNode, state: IParserState, continueFn: Walk.ContinueFn<IParserState>) => {
 					if (!state.classModel) {
 						throw new Error("Tried parsing an assignment expression outside of a class");
 					}
@@ -136,7 +99,7 @@ export default class JavaScriptFile {
 						continueFn(node.left, state);
 					}
 				},
-				MemberExpression: (node: object, state: ParserState, continueFn: ContinueFn) => {
+				MemberExpression: (node: Walk.MemberExpressionNode, state: IParserState, continueFn: Walk.ContinueFn<IParserState>) => {
 					if (!state.classModel) {
 						throw new Error("Tried parsing a member expression outside of a class");
 					}
@@ -167,7 +130,7 @@ export default class JavaScriptFile {
 	 * @param state any data to keep track of while parsing the file
 	 * @param classModelSection a partial class model
 	 */
-	private _addVariableReferenceToMethodLike(node: any, state: ParserState, classModelSection: { name: string, references: VariableModel[] }[]): void {
+	private _addVariableReferenceToMethodLike(node: Walk.MemberExpressionNode, state: IParserState, classModelSection: { name: string, references: VariableModel[] }[]): void {
 		if (node.type === "MemberExpression" && node.object.type === "ThisExpression") {
 			let methodLike = classModelSection.find(ml => ml.name === state.currentlyParsing.name);
 

@@ -4,6 +4,9 @@ import VariableModel from "./VariableModel";
  * A model of a method, in the sense of object-oriented programming.
  */
 export default class MethodModel {
+	/**
+	 * Instance variables referenced by the method.
+	 */
 	private _references: VariableModel[] = [];
 
 	/**

@@ -1,9 +1,59 @@
 {
 	"defaultSeverity": "error",
-	"extends": [],
 	"jsRules": {},
 	"rules": {
-		"quotemark": "double"
+		"ban-types": [
+			true,
+			[
+				"Object",
+				"Did you mean 'object'?"
+			],
+			[
+				"String",
+				"Did you mean 'string'?"
+			],
+			[
+				"Function",
+				"Avoid using the 'Function' type. Prefer a specific function type, like '() => void'."
+			],
+			[
+				"Number",
+				"Did you mean 'number'?"
+			],
+			[
+				"Boolean",
+				"Did you mean 'boolean'?"
+			],
+			[
+				"Symbol",
+				"Did you mean 'symbol'?"
+			]
+		],
+		"completed-docs": [true, { "classes": true, "methods": true, "functions": true }],
+		"forin": true,
+		"label-position": true,
+		"no-any": true,
+		"no-arg": true,
+		"no-bitwise": true,
+		"no-conditional-assignment": true,
+		"no-construct": true,
+		"no-debugger": true,
+		"no-duplicate-super": true,
+		"no-empty": true,
+		"no-empty-interface": true,
+		"no-eval": true,
+		"no-misused-new": true,
+		"no-namespace": true,
+		"no-redundant-jsdoc": true,
+		"no-shadowed-variable": true,
+		"no-string-literal": true,
+		"no-string-throw": true,
+		"no-switch-case-fall-through": true,
+		"no-tautological-expression": true,
+		"no-var-keyword": true,
+		"prefer-for-of": true,
+		"radix": true,
+		"use-isnan": true
 	},
 	"rulesDirectory": []
 }

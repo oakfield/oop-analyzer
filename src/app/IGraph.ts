@@ -1,14 +1,16 @@
+import INode from "./INode";
+
 /**
  * An edge is a pair of nodes.
  */
-type IEdge<T> = [INode<T>, INode<T>];
+export type IEdge<T> = [INode<T>, INode<T>];
 
 /**
  * Model of a graph as used in computer science. A graph has nodes and edges.
  * 
  * This interface allows using multiple implementations of a graph.
  */
-interface IGraph<T> {
+export default interface IGraph<T> {
 	/**
 	 * An array of connected components in the Graph.
 	 * 

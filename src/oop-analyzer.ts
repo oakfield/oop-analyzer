@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as yargs from "yargs";
 
 import ComponentsTransformation from "./app/transformers/ComponentsTransformer";
+import IProgramArguments from "./app/IProgramArguments";
 import JavaScriptFile from "./app/JavaScriptFile";
 import Lcom1Converter from "./app/metrics/lcom1/Lcom1Converter";
 import Lcom1Metric from "./app/metrics/lcom1/Lcom1Metric";
@@ -43,17 +44,10 @@ yargs.alias("v", "version")
 		type: "string"
 	});
 
-let argv = yargs.argv as {
-	file?: string,
-	metric?: string,
-	sourceType?: "script" | "module",
-	transformation?: "components" | "maximal-cliques"
-};
+let argv = yargs.argv as IProgramArguments;
 
 if (argv.file) {
-	let filePath: string = argv.file;
-
-	fs.readFile(filePath, "utf8", (error, data) => {
+	fs.readFile(argv.file, "utf8", (error, data) => {
 		if (error) {
 			console.log(error);
 			process.exit();
@@ -94,11 +88,11 @@ if (argv.file) {
 						let validated = componentsTransformation.transform(classModel);
 
 						fs.writeFile(`./${counter++}.js`,
-							validated.map(classModel => classModel.toString())
+							validated.map(validatedClassModel => validatedClassModel.toString())
 								.reduce((current, previous) => `${current}\n${previous}`),
-							error => {
-								if (error) {
-									console.log(error);
+							writeFileError => {
+								if (writeFileError) {
+									console.log(writeFileError);
 								}
 							});
 					}
@@ -112,11 +106,11 @@ if (argv.file) {
 						let validated = maximalCliqueTransformer.transform(classModel);
 
 						fs.writeFile(`./${counter++}.js`,
-							validated.map(classModel => classModel.toString())
+							validated.map(validatedClassModel => validatedClassModel.toString())
 								.reduce((current, previous) => `${current}\n${previous}`),
-							error => {
-								if (error) {
-									console.log(error);
+							writeFileError => {
+								if (writeFileError) {
+									console.log(writeFileError);
 								}
 							});
 					}

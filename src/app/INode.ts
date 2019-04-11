@@ -2,7 +2,7 @@
  * Represents a node, in the sense of graphs in computer science. A node has neighbors and data
  * associated with it.
  */
-interface INode<T> {
+export default interface INode<T> {
 	/**
 	 * The information to store in the node.
 	 */

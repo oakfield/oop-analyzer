@@ -10,11 +10,11 @@ export default class WmcMetric {
 
 	/**
 	 * Measures a class according to the WMC metric.
-	 * @param classModel the class to evaluate 
+	 * @param classModels the class to evaluate 
 	 */
-	evaluate(classModel: ClassModel[]): number {
-		return classModel
+	evaluate(classModels: ClassModel[]): number {
+		return classModels
 			.map(classModel => classModel.methods.length)
-			.reduce((a, b) => a + b, 0) / classModel.length;
+			.reduce((a, b) => a + b, 0) / classModels.length;
 	}
 }

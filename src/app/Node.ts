@@ -1,39 +1,48 @@
+import INode from "./INode";
+
 /**
  * Basic object-oriented implementation of a node, in the sense of graphs in computer science.
  */
 export default class Node<T> implements INode<T> {
-    public data: T;
-    public neighbors: Set<Node<T>>;
+	/**
+	 * The information to store in the Node.
+	 */
+	data: T;
 
-    /**
-    * Constructor.
-    * @param data the information to store in the node
- */
-    constructor(data: T) {
-        this.data = data;
-        this.neighbors = new Set();
-    }
+	/**
+	 * The Nodes to which this Node is directly connected.
+	 */
+	neighbors: Set<Node<T>>;
 
-    /**
-     * Iterates through the node, its neighbors, its neighbors' neighbors, etc.
-     */
-    *partialDepthFirstSearch(): IterableIterator<Node<T>> {
-        let discoveredNodes = new Set<Node<T>>();
-        let stack: Node<T>[] = [];
-        stack.push(this);
+	/**
+	 * Constructor.
+	 * @param data the information to store in the Node
+	*/
+	constructor(data: T) {
+		this.data = data;
+		this.neighbors = new Set();
+	}
 
-        while (stack.length) {
-            let nextNode = stack.pop()!;
+	/**
+	 * Iterates through the Node, its neighbors, its neighbors' neighbors, etc.
+	 */
+	*partialDepthFirstSearch(): IterableIterator<Node<T>> {
+		let discoveredNodes = new Set<Node<T>>();
+		let stack: Node<T>[] = [];
+		stack.push(this);
 
-            if (!discoveredNodes.has(nextNode)) {
-                discoveredNodes.add(nextNode);
+		while (stack.length) {
+			let nextNode = stack.pop()!;
 
-                yield nextNode;
+			if (!discoveredNodes.has(nextNode)) {
+				discoveredNodes.add(nextNode);
 
-                for (let neighbor of nextNode.neighbors) {
-                    stack.push(neighbor);
-                }
-            }
-        }
-    }
+				yield nextNode;
+
+				for (let neighbor of nextNode.neighbors) {
+					stack.push(neighbor);
+				}
+			}
+		}
+	}
 }

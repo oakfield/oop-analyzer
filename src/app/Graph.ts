@@ -1,3 +1,4 @@
+import IGraph, { IEdge } from "./IGraph";
 import { difference, intersection, union } from "lodash";
 
 import Node from "./Node";
@@ -61,9 +62,9 @@ export default class Graph<T> implements IGraph<T> {
 	 * An algorithm for finding maximal cliques in an undirected graph. This algorithm mutates
 	 * maximalCliques, which is used as the output.
 	 * 
-	 * @param r 
-	 * @param p 
-	 * @param x 
+	 * @param r a set of nodes disjoint with p and x
+	 * @param p a set of nodes disjoint with r and x
+	 * @param x a set of nodes disjoint with r and p
 	 * @param maximalCliques the primary input and output of the algorithm
 	 */
 	private static _bronKerbosch<T>(r: Node<T>[], p: Node<T>[], x: Node<T>[], maximalCliques: Graph<T>[]): void {

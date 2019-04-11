@@ -8,6 +8,7 @@
 			"dom"
 		],
 		"moduleResolution": "Node",
+		"noImplicitAny": true,
 		"outDir": "dist",
 		"sourceMap": true,
 		"strictNullChecks": true,
@@ -19,6 +20,6 @@
 		"**/*.spec.ts"
 	],
 	"include": [
-		"src/**/*"
+		"src/**/*", "acorn-walk.d.ts"
 	]
 }
