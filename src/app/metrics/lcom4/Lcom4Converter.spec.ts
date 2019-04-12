@@ -38,7 +38,7 @@ describe(Lcom4Converter.name, () => {
 				let testClass = new ClassModel("Test");
 				let testMethod = new MethodModel("x", "");
 				let testVariable = new VariableModel("a");
-				testMethod["_references"] = [testVariable];
+				testMethod.references.push(testVariable);
 				testClass.variables = [testVariable];
 				testClass.methods = [testMethod];
 				let converted = (new Lcom4Converter()).convert(testClass);
@@ -54,9 +54,9 @@ describe(Lcom4Converter.name, () => {
 				let testVariableB = new VariableModel("b");
 				testClass.variables = [testVariableA, testVariableB];
 				let testMethod1 = new MethodModel("x", "");
-				testMethod1["_references"] = [testVariableA];
+				testMethod1.references.push(testVariableA);
 				let testMethod2 = new MethodModel("y", "");
-				testMethod2["_references"] = [testVariableB];
+				testMethod2.references.push(testVariableB);
 				testClass.methods = [testMethod1, testMethod2];
 				let converted = (new Lcom4Converter()).convert(testClass);
 
@@ -70,9 +70,9 @@ describe(Lcom4Converter.name, () => {
 				let testVariable = new VariableModel("a");
 				testClass.variables = [testVariable];
 				let testMethod1 = new MethodModel("x", "");
-				testMethod1["_references"] = [testVariable];
+				testMethod1.references.push(testVariable);
 				let testMethod2 = new MethodModel("y", "");
-				testMethod2["_references"] = [testVariable];
+				testMethod2.references.push(testVariable);
 				testClass.methods = [testMethod1, testMethod2];
 				let converted = (new Lcom4Converter()).convert(testClass);
 
@@ -84,9 +84,9 @@ describe(Lcom4Converter.name, () => {
 			let testClass = new ClassModel("Test");
 			testClass.variables = [];
 			let testMethod1 = new MethodModel("x", "");
-			testMethod1["_references"] = [new VariableModel("y")];
+			testMethod1.references.push(new VariableModel("y"));
 			let testMethod2 = new MethodModel("y", "");
-			testMethod2["_references"] = [new VariableModel("x")];
+			testMethod2.references.push(new VariableModel("x"));
 			testClass.methods = [testMethod1, testMethod2];
 			let converted = (new Lcom4Converter()).convert(testClass);
 
@@ -102,11 +102,11 @@ describe(Lcom4Converter.name, () => {
 				let testVariableC = new VariableModel("c");
 				testClass.variables = [testVariableA, testVariableB, testVariableC];
 				let testMethod1 = new MethodModel("x", "");
-				testMethod1["_references"] = [testVariableA];
+				testMethod1.references.push(testVariableA);
 				let testMethod2 = new MethodModel("y", "");
-				testMethod2["_references"] = [testVariableB];
+				testMethod2.references.push(testVariableB);
 				let testMethod3 = new MethodModel("z", "");
-				testMethod3["_references"] = [testVariableC];
+				testMethod3.references.push(testVariableC);
 				testClass.methods = [testMethod1, testMethod2, testMethod3];
 				let converted = (new Lcom4Converter()).convert(testClass);
 
