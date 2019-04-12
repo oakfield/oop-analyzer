@@ -33,7 +33,7 @@ describe(Lcom4Metric.name, () => {
 		it("initializes instance variables", () => {
 			let metric = new Lcom4Metric(mockEmptyConverter);
 
-			expect(metric["_converter"]).not.to.be.undefined;
+			expect(metric).not.to.be.undefined;
 		});
 	});
 
