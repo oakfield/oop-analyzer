@@ -5,12 +5,12 @@ import ComponentsTransformer from './ComponentsTransformer';
 import Graph from '../Graph';
 import MethodModel from '../models/MethodModel';
 import Node from '../Node';
+import VariableModel from '../models/VariableModel';
 import { expect } from 'chai';
 
 describe(ComponentsTransformer.name, () => {
 	describe("transform", () => {
-		// TODO: revist these tests
-		it("returns an empty list when given a class with no methods or variables", () => {
+		it("returns an empty class when given a class with no methods or variables", () => {
 			let classModel = new ClassModel("");
 			let mockLcom4Converter = {
 				convert: () => new Graph<MethodModel>()
@@ -19,11 +19,13 @@ describe(ComponentsTransformer.name, () => {
 
 			let actual = transformer.transform(classModel);
 
-			expect(actual.length).to.equal(0);
+			expect(actual.length).to.equal(1);
 		});
 
-		it("returns an empty list when given a class with no methods and some variables", () => {
-			let classModel = new ClassModel("class Test { constructor() { this.foo = 1; } }");
+		it("returns a single class with one variable when given a class with no methods and one variable", () => {
+			let variableName = "foo";
+			let classModel = new ClassModel(`class Test { constructor() { this.${variableName} = 1; } }`);
+			classModel.variables.push(new VariableModel(variableName, `this.${variableName} = foo;`));
 			let mockLcom4Converter = {
 				convert: () => new Graph<MethodModel>()
 			};
@@ -31,7 +33,9 @@ describe(ComponentsTransformer.name, () => {
 
 			let actual = transformer.transform(classModel);
 
-			expect(actual.length).to.equal(0);
+			expect(actual.length).to.equal(1);
+			expect(actual[0].variables.length).to.equal(1);
+			expect(actual[0].variables[0].name).to.equal(variableName);
 		});
 
 		it("returns a single class with one method when given a class with one method and no variables", () => {

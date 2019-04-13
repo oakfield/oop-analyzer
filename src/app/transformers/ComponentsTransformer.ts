@@ -1,5 +1,6 @@
 import ClassModel from "../models/ClassModel";
 import Lcom4Converter from "../metrics/lcom4/Lcom4Converter";
+import { difference } from "lodash";
 
 /**
  * Transforms a class into multiple classes, each of which is a connected component. The
@@ -20,9 +21,10 @@ export default class ComponentsTransformer {
 	 */
 	transform(classModel: ClassModel): ClassModel[] {
 		let graph = this._converter.convert(classModel);
-		let outputClasses = [] as ClassModel[];
+		let classModels = [] as ClassModel[];
 		let counter = 0;
 
+		// TODO: use map()?
 		for (let component of graph.components) {
 			let methods = Array.from(component.nodes)
 				.map(node => node.data);
@@ -39,9 +41,25 @@ export default class ComponentsTransformer {
 			newClassModel.variables = variables;
 			counter++;
 
-			outputClasses.push(newClassModel);
+			classModels.push(newClassModel);
 		}
 
-		return outputClasses;
+		// We should always get out as much information out of transform as we in. If there are no
+		// connected components, just return the original ClassModel.
+		if (!classModels.length) {
+			classModels.push(classModel);
+		}
+
+		// The class may have some variables not referenced in a method. Collect them here and dump
+		// them into the first class.
+		// TODO: refactor
+		let methodVariables = classModel.methods
+			.map(m => m.references)
+			.reduce((a, b) => a.concat(b), [])
+			.filter(r => !classModel.variables.includes(r));
+		let constructorVariables = difference(classModel.variables, methodVariables);
+		classModels[0].variables = Array.from(new Set(classModels[0].variables.concat(constructorVariables)));
+
+		return classModels;
 	}
 }
