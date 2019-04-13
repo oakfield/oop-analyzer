@@ -9,6 +9,7 @@ import { expect } from 'chai';
 
 describe(ComponentsTransformer.name, () => {
 	describe("transform", () => {
+		// TODO: revist these tests
 		it("returns an empty list when given a class with no methods or variables", () => {
 			let classModel = new ClassModel("");
 			let mockLcom4Converter = {

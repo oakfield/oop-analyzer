@@ -5,7 +5,7 @@ import Lcom4Converter from "../app/metrics/lcom4/Lcom4Converter";
 import Lcom4Metric from "../app/metrics/lcom4/Lcom4Metric";
 import { expect } from "chai";
 
-describe("LCOM1 of JavaScript file", () => {
+describe("LCOM4 of JavaScript file", () => {
 	it("is 0 if the script has a single class with no methods and no variables", () => {
 		let javaScript = `class Test { }`;
 		let javaScriptFile = new JavaScriptFile(javaScript);
