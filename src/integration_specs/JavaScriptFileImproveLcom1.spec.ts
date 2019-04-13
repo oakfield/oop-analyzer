@@ -104,4 +104,24 @@ describe("Transform JavaScript file to improve LCOM1", () => {
 		expect(transformedClassModel.methods[0].name).to.equal(methodName);
 		expect(transformedClassModel.methods[0].toString()).to.equal(methodSource);
 	});
+
+	it("does not worsen LCOM1 when given a class with one variable and one method that references the variable", () => {
+		let javaScript = `class AnotherTest { constructor() { this.testVar = 'foo'; } testMethod() { return this.testVar; } }`;
+		let javaScriptFile = new JavaScriptFile(javaScript);
+		let converter = new Lcom1Converter();
+		let metric = new Lcom1Metric(converter);
+		let maximalCliqueTransformer = new MaximalCliqueTransformer(converter);
+
+		// Get initial LCOM1.
+		let classModel = javaScriptFile.toClassModelArray()[0];
+		let initialLcom1 = metric.evaluate(classModel);
+
+		// Transform.
+		let transformedClassModel = maximalCliqueTransformer.transform(classModel)[0];
+
+		// Get transformed LCOM1.
+		let transformedLcom1 = metric.evaluate(transformedClassModel);
+
+		expect(transformedLcom1 <= initialLcom1).to.equal(true);
+	});
 });

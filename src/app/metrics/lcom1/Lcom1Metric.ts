@@ -22,10 +22,8 @@ export default class Lcom1Metric implements IMetric {
 	 * @param classModel the class the evaluate
 	 */
 	evaluate(classModel: ClassModel): number {
-		// Based on http://www.cs.sjsu.edu/~pearce/modules/lectures/ood/metrics/lcom.htm.
-		// LCOM1 seems to implicitly assume that there are no edges from a node to itself.
 		let graph = this._converter.convert(classModel);
-		let edges = Array.from(graph.edges).filter(edge => edge[0] !== edge[1]);
+		let edges = Array.from(graph.edges);
 
 		// TODO: make sure the graph returns the right number of edges.
 		// Since the graph should be considered undirected, we have to divide by 2 to get the edges.

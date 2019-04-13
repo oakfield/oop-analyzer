@@ -29,7 +29,9 @@ export default class Lcom1Converter {
 
 		for (let m of methods) {
 			for (let n of methods) {
-				if (m.data.references.some(name => n.data.references.includes(name))) {
+				// Based on http://www.cs.sjsu.edu/~pearce/modules/lectures/ood/metrics/lcom.htm.
+				// LCOM1 seems to implicitly assume that there are no edges from a node to itself.
+				if (m !== n && m.data.references.some(name => n.data.references.includes(name))) {
 					m.neighbors.add(n);
 					n.neighbors.add(m);
 				}

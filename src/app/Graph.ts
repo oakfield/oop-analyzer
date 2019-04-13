@@ -59,26 +59,31 @@ export default class Graph<T> implements IGraph<T> {
 	}
 
 	/**
-	 * An algorithm for finding maximal cliques in an undirected graph. This algorithm mutates
-	 * maximalCliques, which is used as the output.
+	 * A recursive backtracking algorithm for finding maximal cliques in an undirected graph. This
+	 * algorithm mutates maximalCliques, which is used as the output.
 	 * 
-	 * @param r a set of nodes disjoint with p and x
-	 * @param p a set of nodes disjoint with r and x
-	 * @param x a set of nodes disjoint with r and p
+	 * @param currentWorkingClique a set (R) of nodes disjoint with unclassifiedNodes and excludedNodes
+	 * @param unclassifiedNodes a set of nodes (P) disjoint with currentWorkingClique and excludedNodes
+	 * @param excludedNodes a set of nodes (X) disjoint with currentWorkingClique and unclassifiedNodes
 	 * @param maximalCliques the primary input and output of the algorithm
 	 */
-	private static _bronKerbosch<T>(r: Node<T>[], p: Node<T>[], x: Node<T>[], maximalCliques: Graph<T>[]): void {
-		if (p.length === 0 && x.length === 0) {
-			maximalCliques.push(new Graph(new Set(r)));
+	private static _bronKerbosch<T>(
+		currentWorkingClique: Node<T>[],
+		unclassifiedNodes: Node<T>[],
+		excludedNodes: Node<T>[],
+		maximalCliques: Graph<T>[]
+	): void {
+		if (unclassifiedNodes.length === 0 && excludedNodes.length === 0) {
+			maximalCliques.push(new Graph(new Set(currentWorkingClique)));
 		}
 
-		for (let node of p) {
-			Graph._bronKerbosch(union(r, [node]),
-				intersection(p, Array.from(node.neighbors)),
-				intersection(x, Array.from(node.neighbors)),
+		for (let unclassifiedNode of unclassifiedNodes) {
+			Graph._bronKerbosch(union(currentWorkingClique, [unclassifiedNode]),
+				intersection(unclassifiedNodes, Array.from(unclassifiedNode.neighbors)),
+				intersection(excludedNodes, Array.from(unclassifiedNode.neighbors)),
 				maximalCliques);
-			p = difference(p, [node]);
-			x = union(x, [node]);
+			unclassifiedNodes = difference(unclassifiedNodes, [unclassifiedNode]);
+			excludedNodes = union(excludedNodes, [unclassifiedNode]);
 		}
 	}
 }

@@ -33,7 +33,7 @@ describe(Lcom1Converter.name, () => {
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
 		});
 
-		it("returns a graph with one self-connected node when the class has one method referencing a variable",
+		it("returns a graph with one node when the class has one method referencing a variable",
 			() => {
 				let testClass = new ClassModel("Test");
 				let testMethod = new MethodModel("x", "");
@@ -44,7 +44,7 @@ describe(Lcom1Converter.name, () => {
 				let converted = (new Lcom1Converter()).convert(testClass);
 
 				expect(converted.nodes.size).to.equal(1);
-				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
+				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
 			});
 
 		it("returns a graph with two separate nodes when the class has two methods that have no common references",
@@ -61,7 +61,7 @@ describe(Lcom1Converter.name, () => {
 				let converted = (new Lcom1Converter()).convert(testClass);
 
 				expect(converted.nodes.size).to.equal(2);
-				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
+				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
 			});
 
 		it("returns a graph with two connected nodes when the class has two methods that reference the same variable",
@@ -77,7 +77,7 @@ describe(Lcom1Converter.name, () => {
 				let converted = (new Lcom1Converter()).convert(testClass);
 
 				expect(converted.nodes.size).to.equal(2);
-				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 2)).to.be.true;
+				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
 			});
 
 		it("returns a graph with two unconnected nodes when the class has two methods one of which references the other", () => {
