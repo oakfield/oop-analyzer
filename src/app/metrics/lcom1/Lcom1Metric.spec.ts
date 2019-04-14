@@ -4,8 +4,8 @@ import ClassModel from "../../models/ClassModel";
 import Lcom1Converter from "./Lcom1Converter";
 import Lcom1Metric from "./Lcom1Metric";
 import MethodModel from "../../models/MethodModel";
-import Node from "../../Node";
-import UndirectedGraph from "../../UndirectedGraph";
+import Node from "../../graphs/Node";
+import UndirectedGraph from "../../graphs/UndirectedGraph";
 import VariableModel from "../../models/VariableModel";
 import { expect } from "chai";
 

@@ -3,8 +3,8 @@ import 'mocha';
 import ClassModel from '../models/ClassModel';
 import MaximalCliqueTransformer from './MaximalCliqueTransformer';
 import MethodModel from '../models/MethodModel';
-import Node from '../Node';
-import UndirectedGraph from '../UndirectedGraph';
+import Node from '../graphs/Node';
+import UndirectedGraph from '../graphs/UndirectedGraph';
 import VariableModel from '../models/VariableModel';
 import { expect } from 'chai';
 

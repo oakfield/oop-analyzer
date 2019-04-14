@@ -1,8 +1,8 @@
 import ClassModel from '../../models/ClassModel';
-import IUndirectedGraph from '../../IUndirectedGraph';
+import IUndirectedGraph from '../../graphs/IUndirectedGraph';
 import MethodModel from '../../models/MethodModel';
-import Node from "../../Node";
-import UndirectedGraph from '../../UndirectedGraph';
+import Node from "../../graphs/Node";
+import UndirectedGraph from '../../graphs/UndirectedGraph';
 
 /**
  * Converts a class into a graph representing the class.

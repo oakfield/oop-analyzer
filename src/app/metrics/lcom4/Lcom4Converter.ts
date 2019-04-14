@@ -1,7 +1,8 @@
 import ClassModel from "../../models/ClassModel";
-import DirectedGraph from "../../DirectedGraph";
+import IUndirectedGraph from "../../graphs/IUndirectedGraph";
 import MethodModel from "../../models/MethodModel";
-import Node from "../../Node";
+import Node from "../../graphs/Node";
+import UndirectedGraph from "../../graphs/UndirectedGraph";
 
 /**
  * Converts class to a graph appropriate for measuring LCOM4.
@@ -12,7 +13,7 @@ export default class Lcom4Converter {
 	 * Converts a class to a graph appropriate for measure LCOM4.
 	 * @param classModel the class to convert
 	 */
-	convert(classModel: ClassModel): DirectedGraph<MethodModel> {
+	convert(classModel: ClassModel): IUndirectedGraph<MethodModel> {
 		let methods = new Set<Node<MethodModel>>();
 
 		for (let method of classModel.methods) {
@@ -38,6 +39,6 @@ export default class Lcom4Converter {
 			}
 		}
 
-		return new DirectedGraph<MethodModel>(methods);
+		return new UndirectedGraph<MethodModel>(methods);
 	}
 }
