@@ -2,9 +2,9 @@ import 'mocha';
 
 import ClassModel from '../models/ClassModel';
 import ComponentsTransformer from './ComponentsTransformer';
-import Graph from '../Graph';
 import MethodModel from '../models/MethodModel';
 import Node from '../Node';
+import UndirectedGraph from '../UndirectedGraph';
 import VariableModel from '../models/VariableModel';
 import { expect } from 'chai';
 
@@ -13,7 +13,7 @@ describe(ComponentsTransformer.name, () => {
 		it("returns an empty class when given a class with no methods or variables", () => {
 			let classModel = new ClassModel("");
 			let mockLcom4Converter = {
-				convert: () => new Graph<MethodModel>()
+				convert: () => new UndirectedGraph<MethodModel>()
 			};
 			let transformer = new ComponentsTransformer(mockLcom4Converter);
 
@@ -27,7 +27,7 @@ describe(ComponentsTransformer.name, () => {
 			let classModel = new ClassModel(`class Test { constructor() { this.${variableName} = 1; } }`);
 			classModel.variables.push(new VariableModel(variableName, `this.${variableName} = foo;`));
 			let mockLcom4Converter = {
-				convert: () => new Graph<MethodModel>()
+				convert: () => new UndirectedGraph<MethodModel>()
 			};
 			let transformer = new ComponentsTransformer(mockLcom4Converter);
 
@@ -45,7 +45,7 @@ describe(ComponentsTransformer.name, () => {
 			let mockLcom4Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
-					return new Graph<MethodModel>(new Set([new Node<MethodModel>(method)]));
+					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
 				}
 			};
 			let transformer = new ComponentsTransformer(mockLcom4Converter);
@@ -63,7 +63,7 @@ describe(ComponentsTransformer.name, () => {
 			let mockLcom4Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
-					return new Graph<MethodModel>(new Set([new Node<MethodModel>(method)]));
+					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
 				}
 			};
 			let transformer = new ComponentsTransformer(mockLcom4Converter);
@@ -81,7 +81,7 @@ describe(ComponentsTransformer.name, () => {
 			let mockLcom4Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
-					return new Graph<MethodModel>(new Set([new Node<MethodModel>(method)]));
+					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
 				}
 			};
 			let transformer = new ComponentsTransformer(mockLcom4Converter);

@@ -1,5 +1,5 @@
 import ClassModel from "../../models/ClassModel";
-import Graph from "../../Graph";
+import DirectedGraph from "../../DirectedGraph";
 import MethodModel from "../../models/MethodModel";
 import Node from "../../Node";
 
@@ -12,7 +12,7 @@ export default class Lcom4Converter {
 	 * Converts a class to a graph appropriate for measure LCOM4.
 	 * @param classModel the class to convert
 	 */
-	convert(classModel: ClassModel): Graph<MethodModel> {
+	convert(classModel: ClassModel): DirectedGraph<MethodModel> {
 		let methods = new Set<Node<MethodModel>>();
 
 		for (let method of classModel.methods) {
@@ -38,6 +38,6 @@ export default class Lcom4Converter {
 			}
 		}
 
-		return new Graph<MethodModel>(methods);
+		return new DirectedGraph<MethodModel>(methods);
 	}
 }

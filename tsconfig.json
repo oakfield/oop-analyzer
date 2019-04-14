@@ -16,8 +16,7 @@
 	},
 	"exclude": [
 		"node_modules",
-		"dist",
-		"**/*.spec.ts"
+		"dist"
 	],
 	"include": [
 		"src/**/*", "acorn-walk.d.ts"

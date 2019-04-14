@@ -1,7 +1,8 @@
 import ClassModel from '../../models/ClassModel';
-import Graph from '../../Graph';
+import IUndirectedGraph from '../../IUndirectedGraph';
 import MethodModel from '../../models/MethodModel';
 import Node from "../../Node";
+import UndirectedGraph from '../../UndirectedGraph';
 
 /**
  * Converts a class into a graph representing the class.
@@ -12,7 +13,7 @@ export default class Lcom1Converter {
 	 * Converts a class into a graph representing the class.
 	 * @param classModel the class to convert
 	 */
-	convert(classModel: ClassModel): Graph<MethodModel> {
+	convert(classModel: ClassModel): IUndirectedGraph<MethodModel> {
 		let methods = new Set<Node<MethodModel>>();
 
 		for (let method of classModel.methods) {
@@ -38,6 +39,6 @@ export default class Lcom1Converter {
 			}
 		}
 
-		return new Graph<MethodModel>(methods);
+		return new UndirectedGraph<MethodModel>(methods);
 	}
 }

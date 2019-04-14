@@ -1,8 +1,8 @@
 import "mocha";
 
-import JavaScriptFile from "../app/JavaScriptFile";
-import Lcom1Converter from "../app/metrics/lcom1/Lcom1Converter";
-import Lcom1Metric from "../app/metrics/lcom1/Lcom1Metric";
+import JavaScriptFile from "../../app/JavaScriptFile";
+import Lcom1Converter from "../../app/metrics/lcom1/Lcom1Converter";
+import Lcom1Metric from "../../app/metrics/lcom1/Lcom1Metric";
 import { expect } from "chai";
 
 describe("LCOM1 of JavaScript file", () => {

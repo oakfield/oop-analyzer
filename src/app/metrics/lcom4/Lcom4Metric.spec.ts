@@ -1,11 +1,11 @@
 import "mocha";
 
 import ClassModel from "../../models/ClassModel";
-import Graph from "../../Graph";
 import Lcom4Converter from "./Lcom4Converter";
 import Lcom4Metric from "./Lcom4Metric";
 import MethodModel from "../../models/MethodModel";
 import Node from "../../Node";
+import UndirectedGraph from "../../UndirectedGraph";
 import VariableModel from "../../models/VariableModel";
 import { expect } from "chai";
 
@@ -15,11 +15,11 @@ describe(Lcom4Metric.name, () => {
 
 	beforeEach(() => {
 		mockEmptyConverter = {
-			convert: () => new Graph()
+			convert: () => new UndirectedGraph()
 		} as Lcom4Converter;
 
 		mockOneNodeConverter = {
-			convert: () => new Graph(
+			convert: () => new UndirectedGraph(
 				new Set([
 					new Node<MethodModel>(
 						new MethodModel("f", "f() { }")
@@ -75,7 +75,7 @@ describe(Lcom4Metric.name, () => {
 			classModel.methods.push(new MethodModel("f", "f() { }"));
 			classModel.methods.push(new MethodModel("g", "g() { }"));
 			let metric = new Lcom4Metric({
-				convert: () => new Graph(
+				convert: () => new UndirectedGraph(
 					new Set([
 						new Node<MethodModel>(
 							new MethodModel("f", "f() { }")
@@ -99,7 +99,7 @@ describe(Lcom4Metric.name, () => {
 			let methodGNode = new Node<MethodModel>(new MethodModel("g", "g() { }"));
 			methodFNode.neighbors.add(methodGNode);
 			let metric = new Lcom4Metric({
-				convert: () => new Graph(
+				convert: () => new UndirectedGraph(
 					new Set([methodFNode])
 				)
 			});

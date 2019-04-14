@@ -1,20 +1,20 @@
 import "mocha";
 
-import Graph from "./Graph";
+import DirectedGraph from "./DirectedGraph";
 import Node from "./Node";
 import { expect } from "chai";
 
-describe(Graph.name, () => {
+describe(DirectedGraph.name, () => {
 	describe("get components", () => {
 		it("returns an empty array when the graph has no nodes", () => {
-			let graph = new Graph();
+			let graph = new DirectedGraph();
 
 			expect(graph.components).to.be.empty;
 		});
 
 		it("returns one component when the graph has one node", () => {
 			let node = new Node(null);
-			let graph = new Graph(new Set([node]));
+			let graph = new DirectedGraph(new Set([node]));
 
 			expect(graph.components.length).to.equal(1);
 			expect(graph.components[0].nodes.size).to.equal(1);
@@ -27,7 +27,7 @@ describe(Graph.name, () => {
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
 
-			let graph = new Graph(new Set([node1, node2]));
+			let graph = new DirectedGraph(new Set([node1, node2]));
 
 			expect(graph.components.length).to.equal(1);
 			expect(graph.components[0].nodes.size).to.equal(2);
@@ -38,7 +38,7 @@ describe(Graph.name, () => {
 		it("returns two components when the graph has two unconnected nodes", () => {
 			let node1 = new Node(null);
 			let node2 = new Node(null);
-			let graph = new Graph(new Set([node1, node2]));
+			let graph = new DirectedGraph(new Set([node1, node2]));
 
 			expect(graph.components.length).to.equal(2);
 			expect(graph.components[0].nodes.size).to.equal(1);
@@ -60,7 +60,7 @@ describe(Graph.name, () => {
 			node3.neighbors.add(node1);
 			node3.neighbors.add(node2);
 
-			let graph = new Graph(new Set([node1, node2, node3]));
+			let graph = new DirectedGraph(new Set([node1, node2, node3]));
 
 			expect(graph.components.length).to.equal(1);
 			expect(graph.components[0].nodes.size).to.equal(3);
@@ -73,7 +73,7 @@ describe(Graph.name, () => {
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
 
-			let graph = new Graph(new Set([node1, node2, node3]));
+			let graph = new DirectedGraph(new Set([node1, node2, node3]));
 
 			expect(graph.components.length).to.equal(2);
 			expect(graph.components[0].nodes.size).to.equal(2);
@@ -84,7 +84,7 @@ describe(Graph.name, () => {
 			let node1 = new Node(null);
 			let node2 = new Node(null);
 			let node3 = new Node(null);
-			let graph = new Graph(new Set([node1, node2, node3]));
+			let graph = new DirectedGraph(new Set([node1, node2, node3]));
 
 			expect(graph.components.length).to.equal(3);
 			expect(graph.components[0].nodes.size).to.equal(1);
@@ -95,14 +95,14 @@ describe(Graph.name, () => {
 
 	describe("get edges", () => {
 		it("returns an empty set when the graph has no nodes", () => {
-			let graph = new Graph();
+			let graph = new DirectedGraph();
 
 			expect(graph.edges).to.be.empty;
 		});
 
 		it("returns an empty set when the graph has one unconnected node", () => {
 			let node = new Node(null);
-			let graph = new Graph(new Set([node]));
+			let graph = new DirectedGraph(new Set([node]));
 
 			expect(graph.edges).to.be.empty;
 		});
@@ -110,7 +110,7 @@ describe(Graph.name, () => {
 		it("returns a set of one edge when the graph has one self-connected node", () => {
 			let node = new Node(null);
 			node.neighbors.add(node);
-			let graph = new Graph(new Set([node]));
+			let graph = new DirectedGraph(new Set([node]));
 
 			expect(graph.edges.size).to.equal(1);
 		});
@@ -119,7 +119,7 @@ describe(Graph.name, () => {
 			let node1 = new Node("one");
 			let node2 = new Node("two");
 			node1.neighbors.add(node2);
-			let graph = new Graph(new Set([node1, node2]));
+			let graph = new DirectedGraph(new Set([node1, node2]));
 
 			expect(graph.edges.size).to.equal(1);
 		});
@@ -129,7 +129,7 @@ describe(Graph.name, () => {
 			let node2 = new Node("two");
 			let node3 = new Node("three");
 			node1.neighbors.add(node2);
-			let graph = new Graph(new Set([node1, node2, node3]));
+			let graph = new DirectedGraph(new Set([node1, node2, node3]));
 
 			expect(graph.edges.size).to.equal(1);
 		});
@@ -140,7 +140,7 @@ describe(Graph.name, () => {
 			let node3 = new Node("three");
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node3);
-			let graph = new Graph(new Set([node1, node2, node3]));
+			let graph = new DirectedGraph(new Set([node1, node2, node3]));
 
 			expect(graph.edges.size).to.equal(2);
 		});
@@ -152,52 +152,9 @@ describe(Graph.name, () => {
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node3);
 			node3.neighbors.add(node1);
-			let graph = new Graph(new Set([node1, node2, node3]));
+			let graph = new DirectedGraph(new Set([node1, node2, node3]));
 
 			expect(graph.edges.size).to.equal(3);
-		});
-	});
-
-	describe("get maximalCliques", () => {
-		it("returns an array of one empty graph when the graph has no nodes", () => {
-			let graph = new Graph();
-			let maximalCliques = graph.maximalCliques;
-
-			expect(maximalCliques.length).to.equal(1);
-			expect(maximalCliques[0].nodes).to.be.empty;
-		});
-
-		it("returns an array of one graph with one node when the graph has one node", () => {
-			let node = new Node(null);
-			let graph = new Graph(new Set([node]));
-			let maximalCliques = graph.maximalCliques;
-
-			expect(maximalCliques.length).to.equal(1);
-			expect(maximalCliques[0].nodes.size).to.equal(1);
-		});
-
-		it("returns an array of two graphs when the graph has two unconnected nodes", () => {
-			let node1 = new Node("one");
-			let node2 = new Node("two");
-			let graph = new Graph(new Set([node1, node2]));
-			let maximalCliques = graph.maximalCliques;
-
-			expect(maximalCliques.length).to.equal(2);
-			expect(maximalCliques[0].nodes.size).to.equal(1);
-			expect(maximalCliques[1].nodes.size).to.equal(1);
-		});
-
-		it("returns an array of one graph when the graph has two connected nodes", () => {
-			let node1 = new Node("one");
-			let node2 = new Node("two");
-			node1.neighbors.add(node2);
-			node2.neighbors.add(node1);
-			// TODO: distinguish between directed and undirected graphs
-			let graph = new Graph(new Set([node1, node2]));
-			let maximalCliques = graph.maximalCliques;
-
-			expect(maximalCliques.length).to.equal(1);
-			expect(maximalCliques[0].nodes.size).to.equal(2);
 		});
 	});
 });

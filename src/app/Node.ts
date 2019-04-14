@@ -3,22 +3,22 @@ import INode from "./INode";
 /**
  * Basic object-oriented implementation of a node, in the sense of graphs in computer science.
  */
-export default class Node<T> implements INode<T> {
+export default class Node<TData> implements INode<TData> {
 	/**
 	 * The information to store in the Node.
 	 */
-	data: T;
+	data: TData;
 
 	/**
 	 * The Nodes to which this Node is directly connected.
 	 */
-	neighbors: Set<Node<T>>;
+	neighbors: Set<Node<TData>>;
 
 	/**
 	 * Constructor.
 	 * @param data the information to store in the Node
 	*/
-	constructor(data: T) {
+	constructor(data: TData) {
 		this.data = data;
 		this.neighbors = new Set();
 	}
@@ -26,9 +26,9 @@ export default class Node<T> implements INode<T> {
 	/**
 	 * Iterates through the Node, its neighbors, its neighbors' neighbors, etc.
 	 */
-	*partialDepthFirstSearch(): IterableIterator<Node<T>> {
-		let discoveredNodes = new Set<Node<T>>();
-		let stack: Node<T>[] = [];
+	*partialDepthFirstSearch(): IterableIterator<Node<TData>> {
+		let discoveredNodes = new Set<Node<TData>>();
+		let stack: Node<TData>[] = [];
 		stack.push(this);
 
 		while (stack.length) {
