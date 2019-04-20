@@ -6,106 +6,165 @@ import { expect } from "chai";
 
 describe(UndirectedGraph.name, () => {
 	describe("constructor", () => {
-		it("constructs a new graph given no nodes", () => {
-			expect(() => new UndirectedGraph()).not.to.throw();
+		describe("constructor", () => {
+			it("initializes instance variables", () => {
+				let graph = new UndirectedGraph<string>();
+	
+				expect(graph.nodes).to.exist;
+				expect(graph.edges).to.exist;
+			});
+	
+			it("initializes instances variables using arguments", () => {
+				let node = new Node<string>("");
+				let graph = new UndirectedGraph<string>(new Set([node]));
+	
+				expect(graph.nodes).to.be.an.instanceOf(Set).that.includes(node);
+			});
+		});
+	});
+
+	describe("get edges", () => {
+		it("returns an empty set when the graph has no nodes", () => {
+			let graph = new UndirectedGraph();
+
+			expect(graph.edges).to.be.empty;
 		});
 
-		it("constructs a new graph given a single unconnected node", () => {
-			let node1 = new Node(null);
+		it("returns an empty set when the graph has one unconnected node", () => {
+			let node = new Node<string>("");
+			let graph = new UndirectedGraph<string>(new Set([node]));
 
-			expect(() => new UndirectedGraph(new Set([node1])))
-				.not.to.throw();
+			expect(graph.edges).to.be.empty;
 		});
 
-		it("constructs a new graph given a single self-connected node", () => {
-			let node1 = new Node(null);
+		it("returns a set of one edge when the graph has one self-connected node", () => {
+			let node = new Node<string>("");
+			node.neighbors.add(node);
+			let graph = new UndirectedGraph<string>(new Set([node]));
 
-			node1.neighbors.add(node1);
-
-			expect(() => new UndirectedGraph(new Set([node1])))
-				.not.to.throw();
+			expect(graph.edges.size).to.equal(1);
 		});
 
-		it("constructs a new graph given two unconnected nodes", () => {
-			let node1 = new Node(null);
-			let node2 = new Node(null);
+		it("returns a set of one edge when the graph has two connected nodes", () => {
+			let node1 = new Node<string>("one");
+			let node2 = new Node<string>("two");
+			node1.neighbors.add(node2);
+			let graph = new UndirectedGraph<string>(new Set([node1]));
+			let actualEdges = graph.edges;
+			let nodesOfActualEdges = actualEdges.values().next().value.nodes;
 
-			expect(() => new UndirectedGraph(new Set([node1, node2])))
-				.not.to.throw();
-		});
+			expect(actualEdges.size).to.equal(1);
+			expect(nodesOfActualEdges).to.include(node1);
+			expect(nodesOfActualEdges).to.include(node2);
 
-		it("constructs a new graph given two connected nodes", () => {
-			let node1 = new Node(null);
-			let node2 = new Node(null);
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node2.neighbors.add(node1);
+			graph = new UndirectedGraph<string>(new Set([node2]));
+			actualEdges = graph.edges;
+			nodesOfActualEdges = actualEdges.values().next().value.nodes;
 
+			expect(actualEdges.size).to.equal(1);
+			expect(nodesOfActualEdges).to.include(node1);
+			expect(nodesOfActualEdges).to.include(node2);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
+			graph = new UndirectedGraph<string>(new Set([node1]));
+			actualEdges = graph.edges;
+			nodesOfActualEdges = actualEdges.values().next().value.nodes;
 
-			expect(() => new UndirectedGraph(new Set([node1, node2])))
-				.not.to.throw();
+			expect(actualEdges.size).to.equal(1);
+			expect(nodesOfActualEdges).to.include(node1);
+			expect(nodesOfActualEdges).to.include(node2);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node1.neighbors.add(node2);
+			graph = new UndirectedGraph<string>(new Set([node1, node2]));
+			actualEdges = graph.edges;
+			nodesOfActualEdges = actualEdges.values().next().value.nodes;
+
+			expect(actualEdges.size).to.equal(1);
+			expect(nodesOfActualEdges).to.include(node1);
+			expect(nodesOfActualEdges).to.include(node2);
 		});
 
-		it("constructs a new graph given many undirected nodes", () => {
-			let node1 = new Node(null);
-			let node2 = new Node(null);
-			let node3 = new Node(null);
-			let node4 = new Node(null);
-			let node5 = new Node(null);
+		it("returns a set of one edge when the graph has two connected nodes and one unconnected node", () => {
+			let node1 = new Node<string>("one");
+			let node2 = new Node<string>("two");
+			let node3 = new Node<string>("three");
+			node1.neighbors.add(node2);
+			let graph = new UndirectedGraph<string>(new Set([node1, node2, node3]));
 
+			expect(graph.edges.size).to.equal(1);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node3 = new Node<string>("three");
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
+			graph = new UndirectedGraph<string>(new Set([node1, node2, node3]));
 
+			expect(graph.edges.size).to.equal(1);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node3 = new Node<string>("three");
+			node1.neighbors.add(node2);
+			node2.neighbors.add(node1);
+			graph = new UndirectedGraph<string>(new Set([node1, node3]));
+
+			expect(graph.edges.size).to.equal(1);
+		});
+
+		it("returns a set of two edges when the graph has three nodes connected in a path", () => {
+			let node1 = new Node("one");
+			let node2 = new Node("two");
+			let node3 = new Node("three");
+			node1.neighbors.add(node2);
+			node2.neighbors.add(node3);
+			let graph = new UndirectedGraph(new Set([node1, node2, node3]));
+
+			expect(graph.edges.size).to.equal(2);
+
+			node1 = new Node("one");
+			node2 = new Node("two");
+			node3 = new Node("three");
+			node1.neighbors.add(node2);
+			node2.neighbors.add(node1);
 			node2.neighbors.add(node3);
 			node3.neighbors.add(node2);
+			graph = new UndirectedGraph(new Set([node1, node2, node3]));
 
-			node3.neighbors.add(node4);
-			node4.neighbors.add(node3);
-
-			node4.neighbors.add(node5);
-			node5.neighbors.add(node4);
-
-			node5.neighbors.add(node5);
-			node5.neighbors.add(node5);
-
-			node5.neighbors.add(node2);
-			node2.neighbors.add(node5);
-
-			expect(() => new UndirectedGraph(new Set([node1, node2, node3, node4, node5])))
-				.not.to.throw();
+			expect(graph.edges.size).to.equal(2);
 		});
 
-		it("throws an error when given two nodes only one of which is connected to the other", () => {
-			let node1 = new Node(null);
-			let node2 = new Node(null);
-
+		it("returns a set of three edges when the graph has three connected nodes", () => {
+			let node1 = new Node("one");
+			let node2 = new Node("two");
+			let node3 = new Node("three");
 			node1.neighbors.add(node2);
+			node2.neighbors.add(node3);
+			node3.neighbors.add(node1);
+			let graph = new UndirectedGraph(new Set([node1, node2, node3]));
 
-			expect(() => new UndirectedGraph(new Set([node1, node2]))).to.throw();
-		});
+			expect(graph.edges.size).to.equal(3);
 
-		it("throws an error when given many nodes that form an undirected graph", () => {
-			let node1 = new Node(null);
-			let node2 = new Node(null);
-			let node3 = new Node(null);
-			let node4 = new Node(null);
-			let node5 = new Node(null);
-
+			node1 = new Node("one");
+			node2 = new Node("two");
+			node3 = new Node("three");
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
-
 			node2.neighbors.add(node3);
+			node3.neighbors.add(node2);
+			node3.neighbors.add(node1);
+			node1.neighbors.add(node3);
+			graph = new UndirectedGraph(new Set([node1]));
 
-			node3.neighbors.add(node4);
-
-			node4.neighbors.add(node5);
-
-			node5.neighbors.add(node5);
-			node5.neighbors.add(node5);
-
-			node5.neighbors.add(node2);
-
-			expect(() => new UndirectedGraph(new Set([node1, node2, node3, node4, node5])))
-				.to.throw();
+			expect(graph.edges.size).to.equal(3);
 		});
 	});
 
@@ -143,7 +202,6 @@ describe(UndirectedGraph.name, () => {
 			let node2 = new Node("two");
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node1);
-			// TODO: distinguish between directed and undirected graphs
 			let graph = new UndirectedGraph(new Set([node1, node2]));
 			let maximalCliques = graph.maximalCliques;
 

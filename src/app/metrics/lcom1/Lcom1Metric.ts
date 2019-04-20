@@ -23,14 +23,9 @@ export default class Lcom1Metric implements IMetric {
 	 */
 	evaluate(classModel: ClassModel): number {
 		let graph = this._converter.convert(classModel);
-		let edges = Array.from(graph.edges);
-
-		// TODO: make sure the graph returns the right number of edges.
-		// Since the graph should be considered undirected, we have to divide by 2 to get the edges.
-		let undirectedEdgesCount = edges.length / 2;
-
+		
 		// LCOM1(graph) is difference between the maximum possible number of edges and the actual
 		// number of edges.
-		return graph.nodes.size * (graph.nodes.size - 1) / 2 - undirectedEdgesCount;
+		return graph.nodes.size * (graph.nodes.size - 1) / 2 - graph.edges.size;
 	}
 }

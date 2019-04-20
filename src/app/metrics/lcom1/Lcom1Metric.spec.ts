@@ -38,22 +38,22 @@ describe(Lcom1Metric.name, () => {
 	});
 
 	describe("evaluate", () => {
-		it("returns 0 for class that has no methods or variables", () => {
+		it("returns 0 for a class that has no methods or variables", () => {
 			let classModel = new ClassModel("Test");
 			let metric = new Lcom1Metric(mockEmptyConverter);
 
 			expect(metric.evaluate(classModel)).to.equal(0);
 		});
 
-		it("returns 0 for class that has no methods and some variables", () => {
+		it("returns 0 for a class that has no methods and some variables", () => {
 			let classModel = new ClassModel("Test");
-			classModel.variables.push(new VariableModel("x", "this.x = 1;"))
+			classModel.variables.push(new VariableModel("x", "this.x = 1;"));
 			let metric = new Lcom1Metric(mockEmptyConverter);
 
 			expect(metric.evaluate(classModel)).to.equal(0);
 		});
 
-		it("returns 0 for class that has one method and no variables", () => {
+		it("returns 0 for a class that has one method and no variables", () => {
 			let classModel = new ClassModel("Test");
 			classModel.methods.push(new MethodModel("f", "f() { }"));
 			let metric = new Lcom1Metric(mockOneNodeConverter);
@@ -61,16 +61,16 @@ describe(Lcom1Metric.name, () => {
 			expect(metric.evaluate(classModel)).to.equal(0);
 		});
 
-		it("returns 0 for class that has one method that reference one variable", () => {
+		it("returns 0 for a class that has one method that reference one variable", () => {
 			let classModel = new ClassModel("Test");
-			classModel.variables.push(new VariableModel("x", "this.x = 1;"))
+			classModel.variables.push(new VariableModel("x", "this.x = 1;"));
 			classModel.methods.push(new MethodModel("f", "f() { return this.x; }"));
 			let metric = new Lcom1Metric(mockOneNodeConverter);
 
 			expect(metric.evaluate(classModel)).to.equal(0);
 		});
 
-		it("returns 1 for class that has two methods and no variables", () => {
+		it("returns 1 for a class that has two methods and no variables", () => {
 			let classModel = new ClassModel("Test");
 			classModel.methods.push(new MethodModel("f", "f() { }"));
 			classModel.methods.push(new MethodModel("g", "g() { }"));
@@ -90,17 +90,22 @@ describe(Lcom1Metric.name, () => {
 			expect(metric.evaluate(classModel)).to.equal(1);
 		});
 
-		it("returns 0 for class that has two methods that reference the same variable", () => {
+		it("returns 0 for a class that has two methods that reference the same variable", () => {
 			let classModel = new ClassModel("Test");
-			classModel.variables.push(new VariableModel("x", "this.x = 1;"))
-			classModel.methods.push(new MethodModel("f", "f() { return this.x + 1; }"));
-			classModel.methods.push(new MethodModel("g", "g() { return this.x + 2; }"));
-			let methodFNode = new Node<MethodModel>(new MethodModel("f", "f() { }"));
-			let methodGNode = new Node<MethodModel>(new MethodModel("g", "g() { }"));
+			let variableX = new VariableModel("x", "this.x = 1;");
+			let methodF = new MethodModel("f", "f() { return this.x + 1; }");
+			methodF.references.push(variableX);
+			let methodG = new MethodModel("g", "g() { return this.x + 2; }");
+			methodG.references.push(variableX);
+			classModel.variables.push();
+			classModel.methods.push(methodF);
+			classModel.methods.push(methodG);
+			let methodFNode = new Node<MethodModel>(methodF);
+			let methodGNode = new Node<MethodModel>(methodG);
 			methodFNode.neighbors.add(methodGNode);
 			let metric = new Lcom1Metric({
 				convert: () => new UndirectedGraph(
-					new Set([methodFNode])
+					new Set([methodFNode, methodGNode])
 				)
 			});
 

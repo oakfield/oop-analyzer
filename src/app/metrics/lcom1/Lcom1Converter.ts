@@ -34,7 +34,6 @@ export default class Lcom1Converter {
 				// LCOM1 seems to implicitly assume that there are no edges from a node to itself.
 				if (m !== n && m.data.references.some(name => n.data.references.includes(name))) {
 					m.neighbors.add(n);
-					n.neighbors.add(m);
 				}
 			}
 		}

@@ -19,7 +19,7 @@ describe(Node.name, () => {
 			let node = new Node<string>("test");
 
 			let searchedNodes: Node<string>[] = [];
-			for (let searchedNode of node.partialDepthFirstSearch()) {
+			for (let searchedNode of node.depthFirstSearch()) {
 				searchedNodes.push(searchedNode);
 			}
 
@@ -40,7 +40,7 @@ describe(Node.name, () => {
 			node1.neighbors.add(node5);
 
 			let searchedNodes: Node<string>[] = [];
-			for (let searchedNode of node1.partialDepthFirstSearch()) {
+			for (let searchedNode of node1.depthFirstSearch()) {
 				searchedNodes.push(searchedNode);
 			}
 
@@ -65,7 +65,7 @@ describe(Node.name, () => {
 			node4.neighbors.add(node5);
 
 			let searchedNodes: Node<string>[] = [];
-			for (let searchedNode of node1.partialDepthFirstSearch()) {
+			for (let searchedNode of node1.depthFirstSearch()) {
 				searchedNodes.push(searchedNode);
 			}
 

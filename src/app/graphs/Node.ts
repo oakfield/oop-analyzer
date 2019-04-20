@@ -26,7 +26,7 @@ export default class Node<TData> implements INode<TData> {
 	/**
 	 * Iterates through the Node, its neighbors, its neighbors' neighbors, etc.
 	 */
-	*partialDepthFirstSearch(): IterableIterator<Node<TData>> {
+	*depthFirstSearch(): IterableIterator<Node<TData>> {
 		let discoveredNodes = new Set<Node<TData>>();
 		let stack: Node<TData>[] = [];
 		stack.push(this);

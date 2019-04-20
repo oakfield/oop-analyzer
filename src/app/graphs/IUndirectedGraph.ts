@@ -2,6 +2,15 @@ import IGraph from "./IGraph";
 
 export default interface IUndirectedGraph<TData> extends IGraph<TData> {
 	/**
+	 * An array of connected components in the Graph.
+	 * 
+	 * A component is a subgraph in which each node has a path to each other node, and that can't
+	 * be made any larger by adding other nodes.
+	 * 
+	 */
+	readonly components: IUndirectedGraph<TData>[];
+
+	/**
 	 * An array of maximal cliques in the Graph. Each clique is itself a Graph.
 	 * 
 	 * Maximal cliques are more interesting than cliques (in general). A clique is a subgraph in
