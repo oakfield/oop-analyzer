@@ -34,7 +34,6 @@ export default class Lcom4Converter {
 					|| m.data.references.find(variableModel => variableModel.name === n.data.name)
 					|| n.data.references.find(variableModel => variableModel.name === m.data.name)) {
 					m.neighbors.add(n);
-					n.neighbors.add(m);
 				}
 			}
 		}

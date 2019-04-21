@@ -10,25 +10,24 @@ import Node from "./Node";
  */
 export default class UndirectedGraph<TData> implements IUndirectedGraph<TData> {
 
-	// TODO: there is probably a bug with node counts
 	/**
 	 * Constructor.
-	 * @param nodes the nodes of the graph
+	 * @param _nodes the nodes of the graph
 	 * @throws if the nodes don't form an undirected graph
 	 */
-	constructor(public nodes: Set<INode<TData>> = new Set()) { }
+	constructor(protected _nodes: Set<INode<TData>> = new Set()) { }
 
 	get components(): IUndirectedGraph<TData>[] {
 		let components: UndirectedGraph<TData>[] = [];
 		let discoveredNodes = new Set<Node<TData>>();
 
-		for (let node of this.nodes) {
+		for (let node of this._nodes) {
 			if (!discoveredNodes.has(node)) {
 				let component = new UndirectedGraph<TData>();
 
 				for (let searchedNode of node.depthFirstSearch()) {
 					discoveredNodes.add(searchedNode);
-					component.nodes.add(searchedNode);
+					component._nodes.add(searchedNode);
 				}
 
 				components.push(component);
@@ -42,8 +41,8 @@ export default class UndirectedGraph<TData> implements IUndirectedGraph<TData> {
 	get edges(): Set<IEdge<TData>> {
 		let edges: IEdge<TData>[] = [];
 
-		for (let parentNodeM of this.nodes) {
-			for (let parentNodeN of this.nodes) {
+		for (let parentNodeM of this._nodes) {
+			for (let parentNodeN of this._nodes) {
 				for (let childNodeM of parentNodeM.depthFirstSearch()) {
 					for (let childNodeN of parentNodeN.depthFirstSearch()) {
 						if (childNodeM.neighbors.has(childNodeN)
@@ -64,9 +63,21 @@ export default class UndirectedGraph<TData> implements IUndirectedGraph<TData> {
 
 	get maximalCliques(): IUndirectedGraph<TData>[] {
 		let maximalCliques: IUndirectedGraph<TData>[] = [];
-		UndirectedGraph._bronKerbosch([], Array.from(this.nodes), [], maximalCliques);
+		UndirectedGraph._bronKerbosch([], Array.from(this._nodes), [], maximalCliques);
 
 		return maximalCliques;
+	}
+
+	get nodes(): Set<INode<TData>> {
+		let nodes = new Set<INode<TData>>();
+
+		for (let node of this._nodes) {
+			for (let searchedNode of node.depthFirstSearch()) {
+				nodes.add(searchedNode);
+			}
+		}
+
+		return nodes;
 	}
 
 	/**

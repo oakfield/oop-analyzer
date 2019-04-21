@@ -105,7 +105,7 @@ describe(Lcom1Metric.name, () => {
 			methodFNode.neighbors.add(methodGNode);
 			let metric = new Lcom1Metric({
 				convert: () => new UndirectedGraph(
-					new Set([methodFNode, methodGNode])
+					new Set([methodFNode])
 				)
 			});
 

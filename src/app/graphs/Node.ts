@@ -17,7 +17,7 @@ export default class Node<TData> implements INode<TData> {
 	/**
 	 * Constructor.
 	 * @param data the information to store in the Node
-	*/
+	 */
 	constructor(data: TData) {
 		this.data = data;
 		this.neighbors = new Set();

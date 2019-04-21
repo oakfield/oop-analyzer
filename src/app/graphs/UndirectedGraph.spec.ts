@@ -209,4 +209,83 @@ describe(UndirectedGraph.name, () => {
 			expect(maximalCliques[0].nodes.size).to.equal(2);
 		});
 	});
+
+	describe("get nodes", () => {
+		it("returns an empty set when the graph has no nodes", () => {
+			let graph = new UndirectedGraph();
+
+			expect(graph.nodes).to.be.empty;
+		});
+
+		it("returns one node when the graph has one node", () => {
+			let node = new Node<string>("node1");
+			let graph = new UndirectedGraph<string>(new Set([node]));
+
+			expect(graph.nodes.size).to.equal(1);
+			expect(graph.nodes).to.include(node);
+		});
+
+		it("returns two nodes when the graph has two nodes", () => {
+			let node1 = new Node<string>("one");
+			let node2 = new Node<string>("two");
+			let graph = new UndirectedGraph<string>(new Set([node1, node2]));
+
+			expect(graph.nodes.size).to.equal(2);
+			expect(graph.nodes).to.include(node1);
+			expect(graph.nodes).to.include(node2);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node1.neighbors.add(node2);
+			graph = new UndirectedGraph<string>(new Set([node1]));
+
+			expect(graph.nodes.size).to.equal(2);
+			expect(graph.nodes).to.include(node1);
+			expect(graph.nodes).to.include(node2);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node2.neighbors.add(node1);
+			graph = new UndirectedGraph<string>(new Set([node2]));
+
+			expect(graph.nodes.size).to.equal(2);
+			expect(graph.nodes).to.include(node1);
+			expect(graph.nodes).to.include(node2);
+		});
+
+		it("returns three nodes when the graph has three nodes", () => {
+			let node1 = new Node<string>("one");
+			let node2 = new Node<string>("two");
+			let node3 = new Node<string>("three");
+			let graph = new UndirectedGraph<string>(new Set([node1, node2, node3]));
+
+			expect(graph.nodes.size).to.equal(3);
+			expect(graph.nodes).to.include(node1);
+			expect(graph.nodes).to.include(node2);
+			expect(graph.nodes).to.include(node3);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node3 = new Node<string>("three");
+			node1.neighbors.add(node2);
+			graph = new UndirectedGraph<string>(new Set([node1, node3]));
+
+			expect(graph.nodes.size).to.equal(3);
+			expect(graph.nodes).to.include(node1);
+			expect(graph.nodes).to.include(node2);
+			expect(graph.nodes).to.include(node3);
+
+			node1 = new Node<string>("one");
+			node2 = new Node<string>("two");
+			node3 = new Node<string>("three");
+			node1.neighbors.add(node2);
+			node2.neighbors.add(node3);
+			graph = new UndirectedGraph<string>(new Set([node1]));
+
+			expect(graph.nodes.size).to.equal(3);
+			expect(graph.nodes).to.include(node1);
+			expect(graph.nodes).to.include(node2);
+			expect(graph.nodes).to.include(node3);
+		});
+	});
 });
