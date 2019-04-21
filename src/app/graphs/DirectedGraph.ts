@@ -13,21 +13,27 @@ export default class DirectedGraph<TData> implements IGraph<TData> {
 	constructor(protected _nodes: Set<INode<TData>> = new Set()) { }
 
 	get edges(): Set<IDirectedEdge<TData>> {
-		let edges = new Set<IDirectedEdge<TData>>();
+		let edges: IDirectedEdge<TData>[] = [];
 
-		for (let m of this._nodes) {
-			for (let n of this._nodes) {
-				if (m.neighbors.has(n)) {
-					edges.add({
-						nodes: [m, n],
-						source: m,
-						target: n
-					});
+		for (let parentSource of this._nodes) {
+			for (let parentTarget of this._nodes) {
+				for (let childSource of parentSource.depthFirstSearch()) {
+					for (let childTarget of parentTarget.depthFirstSearch()) {
+						if (childSource.neighbors.has(childTarget)
+							&& !edges.find(edge =>
+								edge.source === childSource && edge.target === childTarget)) {
+							edges.push({
+								nodes: [childSource, childTarget],
+								source: childSource,
+								target: childTarget
+							});
+						}
+					}
 				}
 			}
 		}
 
-		return edges;
+		return new Set(edges);
 	}
 
 	get nodes(): Set<INode<TData>> {
