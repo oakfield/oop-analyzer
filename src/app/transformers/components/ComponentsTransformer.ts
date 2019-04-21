@@ -1,5 +1,6 @@
-import ClassModel from "../models/ClassModel";
-import Lcom4Converter from "../metrics/lcom4/Lcom4Converter";
+import ClassModel from "../../models/ClassModel";
+import IComponentsTransformer from "../ITransformer";
+import IUndirectedGraphConverter from "src/app/metrics/IUndirectedGraphConverter";
 import { difference } from "lodash";
 
 /**
@@ -7,13 +8,12 @@ import { difference } from "lodash";
  * transformer defines components using the LCOM4 metric; that is, methods are related if they
  * reference the same variable or method.
  */
-export default class ComponentsTransformer {
-	// TODO: remove dependency on Lcom4Converter specifically
+export default class ComponentsTransformer implements IComponentsTransformer {
 	/**
 	 * Constructor.
 	 * @param _converter an object that can convert class models to the appropriate graph
 	 */
-	constructor(private _converter: Lcom4Converter) { }
+	constructor(private _converter: IUndirectedGraphConverter) { }
 
 	/**
 	 * Transforms a class into multiple classes, each of which is a component.

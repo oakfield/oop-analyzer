@@ -1,5 +1,6 @@
-import ClassModel from "../models/ClassModel";
-import Lcom1Converter from "../metrics/lcom1/Lcom1Converter";
+import ClassModel from "../../models/ClassModel";
+import IComponentsTransformer from "../ITransformer";
+import IUndirectedGraphConverter from "src/app/metrics/IUndirectedGraphConverter";
 import { difference } from "lodash";
 
 /**
@@ -8,13 +9,12 @@ import { difference } from "lodash";
  * cliques instead. Methods are related to each other according to the LCOM1 metric; that is, they
  * are connected if they reference the same variable.
  */
-export default class MaximalCliqueTransformer {
-	// TODO: remove dependency on Lcom1Converter specifically, or explain why dependency is necessary
+export default class MaximalCliqueTransformer implements IComponentsTransformer {
 	/**
 	 * Constructor.
 	 * @param _lcom1Converter an object that can convert classes to the appropriate graphs
 	 */
-	constructor(private _lcom1Converter: Lcom1Converter) { }
+	constructor(private _lcom1Converter: IUndirectedGraphConverter) { }
 
 	/**
 	 * Transforms a class into multiple classes with methods that form maximal cliques.

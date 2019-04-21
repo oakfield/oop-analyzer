@@ -3,7 +3,7 @@ import "mocha";
 import JavaScriptFile from "../../app/JavaScriptFile";
 import Lcom1Converter from "../../app/metrics/lcom1/Lcom1Converter";
 import Lcom1Metric from "../../app/metrics/lcom1/Lcom1Metric";
-import MaximalCliqueTransformer from "../../app/transformers/MaximalCliqueTransformer";
+import MaximalCliqueTransformer from "../../app/transformers/maximalCliques/MaximalCliqueTransformer";
 import { expect } from "chai";
 
 describe("Transform JavaScript file to improve LCOM1", () => {

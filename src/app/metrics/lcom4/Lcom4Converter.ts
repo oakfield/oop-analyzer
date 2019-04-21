@@ -1,5 +1,6 @@
 import ClassModel from "../../models/ClassModel";
 import IUndirectedGraph from "../../graphs/IUndirectedGraph";
+import IUndirectedGraphConverter from "../IUndirectedGraphConverter";
 import MethodModel from "../../models/MethodModel";
 import Node from "../../graphs/Node";
 import UndirectedGraph from "../../graphs/UndirectedGraph";
@@ -7,8 +8,7 @@ import UndirectedGraph from "../../graphs/UndirectedGraph";
 /**
  * Converts class to a graph appropriate for measuring LCOM4.
  */
-export default class Lcom4Converter {
-
+export default class Lcom4Converter implements IUndirectedGraphConverter {
 	/**
 	 * Converts a class to a graph appropriate for measure LCOM4.
 	 * @param classModel the class to convert

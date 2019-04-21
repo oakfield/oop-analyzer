@@ -3,7 +3,6 @@ export default class Graph {
 		this._nodes = nodes;
 	}
 
-	// todo: add addNode and removeNode?
 	get nodes() {
 		return this._nodes;
 	}

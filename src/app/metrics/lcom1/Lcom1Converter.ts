@@ -1,5 +1,6 @@
 import ClassModel from '../../models/ClassModel';
 import IUndirectedGraph from '../../graphs/IUndirectedGraph';
+import IUndirectedGraphConverter from '../IUndirectedGraphConverter';
 import MethodModel from '../../models/MethodModel';
 import Node from "../../graphs/Node";
 import UndirectedGraph from '../../graphs/UndirectedGraph';
@@ -7,7 +8,7 @@ import UndirectedGraph from '../../graphs/UndirectedGraph';
 /**
  * Converts a class into a graph representing the class.
  */
-export default class Lcom1Converter {
+export default class Lcom1Converter implements IUndirectedGraphConverter {
 
 	/**
 	 * Converts a class into a graph representing the class.
