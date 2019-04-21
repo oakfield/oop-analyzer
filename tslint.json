@@ -29,7 +29,7 @@
 				"Did you mean 'symbol'?"
 			]
 		],
-		"completed-docs": [true, { "classes": true, "methods": true, "functions": true }],
+		"completed-docs": [true, { "classes": true, "functions": true }],
 		"forin": true,
 		"label-position": true,
 		"no-any": true,

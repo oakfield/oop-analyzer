@@ -7,18 +7,18 @@ describe(Node.name, () => {
 	describe("constructor", () => {
 		it("initializes instance variables", () => {
 			const data = "test";
-			let node = new Node<string>(data);
+			let node = new Node(data);
 
 			expect(node.data).to.equal(data);
-			expect(node.neighbors).not.to.be.undefined;
+			expect(node.neighbors).to.exist;
 		});
 	});
 
-	describe("*partialDepthFirstSearch", () => {
+	describe("*depthFirstSearch", () => {
 		it("searches through one node when the node has no neighbors", () => {
-			let node = new Node<string>("test");
+			let node = new Node(null);
 
-			let searchedNodes: Node<string>[] = [];
+			let searchedNodes: Node<null>[] = [];
 			for (let searchedNode of node.depthFirstSearch()) {
 				searchedNodes.push(searchedNode);
 			}
@@ -28,18 +28,18 @@ describe(Node.name, () => {
 		});
 
 		it("searches through all neighbors given multiple neighbors", () => {
-			let node1 = new Node<string>("test1");
-			let node2 = new Node<string>("test2");
-			let node3 = new Node<string>("test3");
-			let node4 = new Node<string>("test4");
-			let node5 = new Node<string>("test5");
+			let node1 = new Node(null);
+			let node2 = new Node(null);
+			let node3 = new Node(null);
+			let node4 = new Node(null);
+			let node5 = new Node(null);
 
 			node1.neighbors.add(node2);
 			node1.neighbors.add(node3);
 			node1.neighbors.add(node4);
 			node1.neighbors.add(node5);
 
-			let searchedNodes: Node<string>[] = [];
+			let searchedNodes: Node<null>[] = [];
 			for (let searchedNode of node1.depthFirstSearch()) {
 				searchedNodes.push(searchedNode);
 			}
@@ -53,18 +53,18 @@ describe(Node.name, () => {
 		});
 
 		it("searches recursively", () => {
-			let node1 = new Node<string>("test1");
-			let node2 = new Node<string>("test2");
-			let node3 = new Node<string>("test3");
-			let node4 = new Node<string>("test4");
-			let node5 = new Node<string>("test5");
+			let node1 = new Node(null);
+			let node2 = new Node(null);
+			let node3 = new Node(null);
+			let node4 = new Node(null);
+			let node5 = new Node(null);
 
 			node1.neighbors.add(node2);
 			node2.neighbors.add(node3);
 			node3.neighbors.add(node4);
 			node4.neighbors.add(node5);
 
-			let searchedNodes: Node<string>[] = [];
+			let searchedNodes: Node<null>[] = [];
 			for (let searchedNode of node1.depthFirstSearch()) {
 				searchedNodes.push(searchedNode);
 			}
