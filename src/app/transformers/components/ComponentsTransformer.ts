@@ -1,7 +1,7 @@
 import ClassModel from "../../models/ClassModel";
 import IComponentsTransformer from "../ITransformer";
 import IUndirectedGraphConverter from "src/app/metrics/IUndirectedGraphConverter";
-import { difference } from "lodash";
+import { uniq } from "lodash";
 
 /**
  * Transforms a class into multiple classes, each of which is a connected component. The
@@ -21,28 +21,23 @@ export default class ComponentsTransformer implements IComponentsTransformer {
 	 */
 	transform(classModel: ClassModel): ClassModel[] {
 		let graph = this._converter.convert(classModel);
-		let classModels = [] as ClassModel[];
 		let counter = 0;
 
-		// TODO: use map()?
-		for (let component of graph.components) {
+		let classModels = graph.components.map<ClassModel>(component => {
 			let methods = Array.from(component.nodes)
 				.map(node => node.data);
-			let variables = methods
+			let variables = uniq(methods
 				.map(method => method.references)
 				.reduce((a, b) => a.concat(b), [])
-				.filter(reference => classModel.variables.includes(reference));
-
-			// Get unique references.
-			variables = Array.from(new Set(variables));
+				.filter(reference => classModel.variables.includes(reference)));
 
 			let newClassModel = new ClassModel(`Class${counter}`);
 			newClassModel.methods = methods;
 			newClassModel.variables = variables;
 			counter++;
 
-			classModels.push(newClassModel);
-		}
+			return newClassModel;
+		});
 
 		// We should always get out as much information out of transform as we in. If there are no
 		// connected components, just return the original ClassModel.
@@ -52,13 +47,7 @@ export default class ComponentsTransformer implements IComponentsTransformer {
 
 		// The class may have some variables not referenced in a method. Collect them here and dump
 		// them into the first class.
-		// TODO: refactor
-		let methodVariables = classModel.methods
-			.map(m => m.references)
-			.reduce((a, b) => a.concat(b), [])
-			.filter(r => !classModel.variables.includes(r));
-		let constructorVariables = difference(classModel.variables, methodVariables);
-		classModels[0].variables = Array.from(new Set(classModels[0].variables.concat(constructorVariables)));
+		classModels[0].variables = uniq(classModels[0].variables.concat(classModel.constructorVariables));
 
 		return classModels;
 	}

@@ -1,5 +1,6 @@
 import MethodModel from "./MethodModel";
 import VariableModel from "./VariableModel";
+import { difference } from "lodash";
 
 /**
  * A model of a class, in the sense of object-oriented programming.
@@ -30,6 +31,24 @@ export default class ClassModel {
 	 * @param _name the class's name
 	 */
 	constructor(private _name: string) { }
+
+	// TODO: add tests
+	/**
+	 * Variables referenced in the constructor.
+	 */
+	get constructorVariables() {
+		return difference(this.variables, this.methodVariables);
+	}
+
+	/**
+	 * Variables references in a method.
+	 */
+	get methodVariables(): VariableModel[] {
+		return this.methods
+			.map(m => m.references)
+			.reduce((a, b) => a.concat(b), [])
+			.filter(r => !this.variables.includes(r));
+	}
 
 	/**
 	 * The class's name, for example, "Person" given "class Person."

@@ -1,7 +1,7 @@
 import ClassModel from "../../models/ClassModel";
 import IComponentsTransformer from "../ITransformer";
 import IUndirectedGraphConverter from "src/app/metrics/IUndirectedGraphConverter";
-import { difference } from "lodash";
+import { uniq } from "lodash";
 
 /**
  * Transforms a class into multiple classes with methods that form cliques. Since the transformer
@@ -22,40 +22,29 @@ export default class MaximalCliqueTransformer implements IComponentsTransformer 
 	 */
 	transform(classModel: ClassModel): ClassModel[] {
 		let graph = this._lcom1Converter.convert(classModel);
-		let classModels: ClassModel[] = [];
 		let counter = 0;
 
-		// TODO: would it be more expressive to use map() here?
-		for (let maximalClique of graph.maximalCliques) {
+		let classModels = graph.maximalCliques.map<ClassModel>(maximalClique => {
 			// TODO: can this logic, which is similar to that in ComponentsTransformer,
 			// be placed somewhere else?
 			let cliqueClassModel = new ClassModel(`Class${counter}`);
 			let methods = Array.from(maximalClique.nodes)
 				.map(n => n.data);
-			let variables = methods
+			let variables = uniq(methods
 				.map(m => m.references)
 				.reduce((a, b) => a.concat(b), [])
-				.filter(r => classModel.variables.includes(r));
-
-			// Get unique references.
-			variables = Array.from(new Set(variables));
+				.filter(r => classModel.variables.includes(r)));
 
 			cliqueClassModel.methods = methods;
 			cliqueClassModel.variables = variables;
 			counter++;
 
-			classModels.push(cliqueClassModel);
-		}
+			return cliqueClassModel;
+		});
 
 		// The class may have some variables not referenced in a method. Collect them here and dump
 		// them into the first class.
-		// TODO: refactor
-		let methodVariables = classModel.methods
-			.map(m => m.references)
-			.reduce((a, b) => a.concat(b), [])
-			.filter(r => !classModel.variables.includes(r));
-		let constructorVariables = difference(classModel.variables, methodVariables);
-		classModels[0].variables = classModels[0].variables.concat(constructorVariables);
+		classModels[0].variables = classModels[0].variables.concat(classModel.constructorVariables);
 
 		return classModels;
 	}
