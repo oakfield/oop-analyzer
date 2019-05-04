@@ -1,7 +1,7 @@
 import "mocha";
 
-import Node from "./Node";
-import UndirectedGraph from "./UndirectedGraph";
+import Node from "../../src/app/graphs/Node";
+import UndirectedGraph from "../../src/app/graphs/UndirectedGraph";
 import { expect } from "chai";
 
 describe(UndirectedGraph.name, () => {

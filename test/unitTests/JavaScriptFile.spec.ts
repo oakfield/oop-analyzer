@@ -1,10 +1,14 @@
 import "mocha";
 
-import JavaScriptFile from "./JavaScriptFile";
+import JavaScriptFile from "../../src/app/JavaScriptFile";
 import { expect } from "chai";
 
 describe(JavaScriptFile.name, () => {
 	describe("toClassModelArray", () => {
+		// TODO: add a test for unnamed classes
+		// export default class { }
+
+		// TODO: consider adding a test for syntax errors
 		it("returns an empty array of class models when given a blank file", () => {
 			let classModels = (new JavaScriptFile("")).toClassModelArray();
 

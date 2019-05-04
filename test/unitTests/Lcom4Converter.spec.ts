@@ -1,16 +1,16 @@
 import "mocha";
 
-import ClassModel from "../../models/ClassModel";
-import Lcom1Converter from "./Lcom1Converter";
-import MethodModel from "../../models/MethodModel";
-import VariableModel from "../../models/VariableModel";
+import ClassModel from "../../src/app/models/ClassModel";
+import Lcom4Converter from "../../src/app/metrics/lcom4/Lcom4Converter";
+import MethodModel from "../../src/app/models/MethodModel";
+import VariableModel from "../../src/app/models/VariableModel";
 import { expect } from "chai";
 
-describe(Lcom1Converter.name, () => {
+describe(Lcom4Converter.name, () => {
 	describe("convert", () => {
 		it("returns an empty graph when the class has no variables or methods", () => {
 			let testClass = new ClassModel("Test");
-			let converter = new Lcom1Converter();
+			let converter = new Lcom4Converter();
 
 			expect(converter.convert(testClass).nodes).to.be.empty;
 		});
@@ -19,7 +19,7 @@ describe(Lcom1Converter.name, () => {
 			let testClass = new ClassModel("Test");
 			testClass.variables = [new VariableModel("a")];
 
-			let converter = new Lcom1Converter();
+			let converter = new Lcom4Converter();
 
 			expect(converter.convert(testClass).nodes).to.be.empty;
 		});
@@ -27,13 +27,13 @@ describe(Lcom1Converter.name, () => {
 		it("returns a graph with one node and no edges when the class has no variables", () => {
 			let testClass = new ClassModel("Test");
 			testClass.methods = [new MethodModel("x", "")];
-			let converted = (new Lcom1Converter()).convert(testClass);
+			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(1);
 			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
 		});
 
-		it("returns a graph with one node when the class has one method referencing a variable",
+		it("returns a graph with one self-connected node when the class has one method referencing a variable",
 			() => {
 				let testClass = new ClassModel("Test");
 				let testMethod = new MethodModel("x", "");
@@ -41,10 +41,10 @@ describe(Lcom1Converter.name, () => {
 				testMethod.references.push(testVariable);
 				testClass.variables = [testVariable];
 				testClass.methods = [testMethod];
-				let converted = (new Lcom1Converter()).convert(testClass);
+				let converted = (new Lcom4Converter()).convert(testClass);
 
 				expect(converted.nodes.size).to.equal(1);
-				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
+				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
 			});
 
 		it("returns a graph with two separate nodes when the class has two methods that have no common references",
@@ -58,13 +58,13 @@ describe(Lcom1Converter.name, () => {
 				let testMethod2 = new MethodModel("y", "");
 				testMethod2.references.push(testVariableB);
 				testClass.methods = [testMethod1, testMethod2];
-				let converted = (new Lcom1Converter()).convert(testClass);
+				let converted = (new Lcom4Converter()).convert(testClass);
 
 				expect(converted.nodes.size).to.equal(2);
-				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 0)).to.be.true;
+				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
 			});
 
-		it("returns a graph with two connected nodes when the class has two methods that reference the same variable",
+		it("returns a graph with two nodes when the class has two methods that reference the same variable",
 			() => {
 				let testClass = new ClassModel("Test");
 				let testVariable = new VariableModel("a");
@@ -74,22 +74,44 @@ describe(Lcom1Converter.name, () => {
 				let testMethod2 = new MethodModel("y", "");
 				testMethod2.references.push(testVariable);
 				testClass.methods = [testMethod1, testMethod2];
-				let converted = (new Lcom1Converter()).convert(testClass);
+				let converted = (new Lcom4Converter()).convert(testClass);
 
 				expect(converted.nodes.size).to.equal(2);
-				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
+				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 2)).to.be.true;
 			});
 
-		it("returns a graph with two unconnected nodes when the class has two methods one of which references the other", () => {
+		it("returns a graph with two nodes when the class has two methods that call each other", () => {
 			let testClass = new ClassModel("Test");
+			testClass.variables = [];
 			let testMethod1 = new MethodModel("x", "");
-			let testMethod2 = new MethodModel("y", "");
 			testMethod1.references.push(new VariableModel("y"));
+			let testMethod2 = new MethodModel("y", "");
+			testMethod2.references.push(new VariableModel("x"));
 			testClass.methods = [testMethod1, testMethod2];
-			let converted = (new Lcom1Converter()).convert(testClass);
+			let converted = (new Lcom4Converter()).convert(testClass);
 
 			expect(converted.nodes.size).to.equal(2);
-			expect(Array.from(converted.nodes).every(node => node.neighbors.size <= 1)).to.be.true;
+			expect(Array.from(converted.nodes).every(node => node.neighbors.size === 2)).to.be.true;
 		});
+
+		it("returns a graph with three self-connected nodes when the class has three methods referencing variables",
+			() => {
+				let testClass = new ClassModel("Test");
+				let testVariableA = new VariableModel("a");
+				let testVariableB = new VariableModel("b");
+				let testVariableC = new VariableModel("c");
+				testClass.variables = [testVariableA, testVariableB, testVariableC];
+				let testMethod1 = new MethodModel("x", "");
+				testMethod1.references.push(testVariableA);
+				let testMethod2 = new MethodModel("y", "");
+				testMethod2.references.push(testVariableB);
+				let testMethod3 = new MethodModel("z", "");
+				testMethod3.references.push(testVariableC);
+				testClass.methods = [testMethod1, testMethod2, testMethod3];
+				let converted = (new Lcom4Converter()).convert(testClass);
+
+				expect(converted.nodes.size).to.equal(3);
+				expect(Array.from(converted.nodes).every(node => node.neighbors.size === 1)).to.be.true;
+			});
 	});
 });

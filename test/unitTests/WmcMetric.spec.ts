@@ -1,9 +1,9 @@
 import "mocha";
 
-import ClassModel from "../../models/ClassModel";
-import MethodModel from "../../models/MethodModel";
-import VariableModel from "../../models/VariableModel";
-import WmcMetric from "./WmcMetric";
+import ClassModel from "../../src/app/models/ClassModel";
+import MethodModel from "../../src/app/models/MethodModel";
+import VariableModel from "../../src/app/models/VariableModel";
+import WmcMetric from "../../src/app/metrics/wmc/WmcMetric";
 import { expect } from "chai";
 
 describe(WmcMetric.name, () => {

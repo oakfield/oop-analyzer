@@ -1,7 +1,7 @@
-import 'mocha';
+import "mocha";
 
-import VariableModel from './VariableModel';
-import { expect } from 'chai';
+import VariableModel from "../../src/app/models/VariableModel";
+import { expect } from "chai";
 
 describe(VariableModel.name, () => {
 	describe("constructor", () => {

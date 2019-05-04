@@ -1,7 +1,7 @@
-import 'mocha';
+import "mocha";
 
-import MethodModel from './MethodModel';
-import { expect } from 'chai';
+import MethodModel from "../../src/app/models/MethodModel";
+import { expect } from "chai";
 
 describe(MethodModel.name, () => {
 	describe("constructor", () => {

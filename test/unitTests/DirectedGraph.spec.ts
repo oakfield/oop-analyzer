@@ -1,7 +1,7 @@
 import "mocha";
 
-import DirectedGraph from "./DirectedGraph";
-import Node from "./Node";
+import DirectedGraph from "../../src/app/graphs/DirectedGraph";
+import Node from "../../src/app/graphs/Node";
 import { expect } from "chai";
 
 describe(DirectedGraph.name, () => {

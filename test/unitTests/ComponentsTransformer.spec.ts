@@ -1,21 +1,21 @@
-import 'mocha';
+import "mocha";
 
-import ClassModel from '../../models/ClassModel';
-import MaximalCliqueTransformer from './MaximalCliqueTransformer';
-import MethodModel from '../../models/MethodModel';
-import Node from '../../graphs/Node';
-import UndirectedGraph from '../../graphs/UndirectedGraph';
-import VariableModel from '../../models/VariableModel';
-import { expect } from 'chai';
+import ClassModel from "../../src/app/models/ClassModel";
+import ComponentsTransformer from "../../src/app/transformers/components/ComponentsTransformer";
+import MethodModel from "../../src/app/models/MethodModel";
+import Node from "../../src/app/graphs/Node";
+import UndirectedGraph from "../../src/app/graphs/UndirectedGraph";
+import VariableModel from "../../src/app/models/VariableModel";
+import { expect } from "chai";
 
-describe(MaximalCliqueTransformer.name, () => {
+describe(ComponentsTransformer.name, () => {
 	describe("transform", () => {
 		it("returns an empty class when given a class with no methods or variables", () => {
 			let classModel = new ClassModel("");
-			let mockLcom1Converter = {
+			let mockLcom4Converter = {
 				convert: () => new UndirectedGraph<MethodModel>()
 			};
-			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);
+			let transformer = new ComponentsTransformer(mockLcom4Converter);
 
 			let actual = transformer.transform(classModel);
 
@@ -26,10 +26,10 @@ describe(MaximalCliqueTransformer.name, () => {
 			let variableName = "foo";
 			let classModel = new ClassModel(`class Test { constructor() { this.${variableName} = 1; } }`);
 			classModel.variables.push(new VariableModel(variableName, `this.${variableName} = foo;`));
-			let mockLcom1Converter = {
+			let mockLcom4Converter = {
 				convert: () => new UndirectedGraph<MethodModel>()
 			};
-			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);
+			let transformer = new ComponentsTransformer(mockLcom4Converter);
 
 			let actual = transformer.transform(classModel);
 
@@ -42,13 +42,13 @@ describe(MaximalCliqueTransformer.name, () => {
 			let methodName = "foo";
 			let methodSource = `${methodName}() { }`;
 			let classModel = new ClassModel(`class Test { ${methodSource} }`);
-			let mockLcom1Converter = {
+			let mockLcom4Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
 					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
 				}
 			};
-			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);
+			let transformer = new ComponentsTransformer(mockLcom4Converter);
 
 			let actual = transformer.transform(classModel);
 
@@ -60,13 +60,13 @@ describe(MaximalCliqueTransformer.name, () => {
 			let methodName = "foo";
 			let methodSource = `${methodName}() { }`;
 			let classModel = new ClassModel(`class Test { constructor() { this.foo = 1; } ${methodSource} }`);
-			let mockLcom1Converter = {
+			let mockLcom4Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
 					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
 				}
 			};
-			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);
+			let transformer = new ComponentsTransformer(mockLcom4Converter);
 
 			let actual = transformer.transform(classModel);
 
@@ -78,13 +78,13 @@ describe(MaximalCliqueTransformer.name, () => {
 			let methodName = "foo";
 			let methodSource = `${methodName}() { return this.foo; }`;
 			let classModel = new ClassModel(`class Test { constructor() { this.foo = 1; } ${methodSource} }`);
-			let mockLcom1Converter = {
+			let mockLcom4Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
 					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
 				}
 			};
-			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);
+			let transformer = new ComponentsTransformer(mockLcom4Converter);
 
 			let actual = transformer.transform(classModel);
 

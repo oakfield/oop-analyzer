@@ -1,12 +1,12 @@
 import "mocha";
 
-import ClassModel from "../../models/ClassModel";
-import Lcom1Converter from "./Lcom1Converter";
-import Lcom1Metric from "./Lcom1Metric";
-import MethodModel from "../../models/MethodModel";
-import Node from "../../graphs/Node";
-import UndirectedGraph from "../../graphs/UndirectedGraph";
-import VariableModel from "../../models/VariableModel";
+import ClassModel from "../../src/app/models/ClassModel";
+import Lcom1Converter from "../../src/app/metrics/lcom1/Lcom1Converter";
+import Lcom1Metric from "../../src/app/metrics/lcom1/Lcom1Metric";
+import MethodModel from "../../src/app/models/MethodModel";
+import Node from "../../src/app/graphs/Node";
+import UndirectedGraph from "../../src/app/graphs/UndirectedGraph";
+import VariableModel from "../../src/app/models/VariableModel";
 import { expect } from "chai";
 
 describe(Lcom1Metric.name, () => {

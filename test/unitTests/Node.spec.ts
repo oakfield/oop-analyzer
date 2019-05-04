@@ -1,6 +1,6 @@
 import "mocha";
 
-import Node from "./Node";
+import Node from "../../src/app/graphs/Node";
 import { expect } from "chai";
 
 describe(Node.name, () => {

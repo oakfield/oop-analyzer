@@ -7,18 +7,19 @@
 			"es2017",
 			"dom"
 		],
+		"module": "commonjs",
 		"moduleResolution": "Node",
 		"noImplicitAny": true,
-		"outDir": "dist",
+		"outDir": "build",
 		"sourceMap": true,
 		"strictNullChecks": true,
 		"target": "es2017"
 	},
 	"exclude": [
 		"node_modules",
-		"dist"
+		"build"
 	],
 	"include": [
-		"src/**/*", "acorn-walk.d.ts"
+		"src/**/*", "test/**/*"
 	]
 }
