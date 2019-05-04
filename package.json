@@ -4,8 +4,8 @@
 	"description": "tool to analyze and improve code by oop standards",
 	"main": "index.js",
 	"scripts": {
-		"build": "yarn run rimraf dist && tsc",
-		"test": "mocha -r ts-node/register src/**/*.spec.ts"
+		"build": "yarn run rimraf build && tsc",
+		"test": "mocha build/**/*.spec.js"
 	},
 	"repository": {
 		"type": "git",
@@ -25,12 +25,11 @@
 		"@types/node": "^10.3.3",
 		"@types/yargs": "^12.0.10",
 		"chai": "^4.2.0",
-		"mocha": "^6.1.0",
+		"mocha": "^6.1.4",
 		"rimraf": "^2.6.0",
 		"rollup": "^0.63.0",
 		"ts-lint": "^4.5.0",
 		"ts-node": "^8.0.0",
-		"typescript": "^3.4.2",
 		"typescript-tslint-plugin": "^0.3.1"
 	},
 	"dependencies": {
@@ -38,6 +37,7 @@
 		"acorn-walk": "^6.1.1",
 		"amd-loader": "^0.0.8",
 		"lodash": "^4.17.0",
+		"typescript": "^3.4.2",
 		"yargs": "^13.2.0"
 	}
 }
