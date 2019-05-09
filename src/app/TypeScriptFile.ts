@@ -1,4 +1,13 @@
-import { AssignmentExpression, ClassDeclaration, ScriptTarget, SyntaxKind, Node as TypeScriptNode, VariableDeclaration, VariableStatement, createSourceFile, forEachChild } from "typescript";
+import {
+	BinaryExpression,
+	ClassDeclaration,
+	PropertyAccessExpression,
+	ScriptTarget,
+	SyntaxKind,
+	Node as TypeScriptNode,
+	createSourceFile,
+	forEachChild
+} from "typescript";
 
 import ClassModel from "./models/ClassModel";
 import VariableModel from "./models/VariableModel";
@@ -17,14 +26,23 @@ export default class TypeScriptFile {
 	toClassModelArray(): ClassModel[] {
 		let classModels: ClassModel[] = [];
 		let currentlyParsing: SyntaxKind | null = null;
+		let currentClassModel: ClassModel | null = null;
 
-		const walkClass = (currentClassModel: ClassModel, node: TypeScriptNode) => {
+		const walk = (node: TypeScriptNode) => {
 			switch (node.kind) {
+				case SyntaxKind.ClassDeclaration:
+					const name = (node as ClassDeclaration).name;
+					// TODO: better default name
+					currentClassModel = new ClassModel(name ? name.text : "Default");
+					classModels.push(currentClassModel);
+
+					node.forEachChild(walk);
+					break;
 				case SyntaxKind.Constructor:
 					currentlyParsing = SyntaxKind.Constructor;
 
-					forEachChild(node, () => walkClass(currentClassModel, node));
-				break;
+					node.forEachChild(walk);
+					break;
 				case SyntaxKind.MethodDeclaration:
 					; // do something
 					break;
@@ -36,38 +54,28 @@ export default class TypeScriptFile {
 					break;
 				case SyntaxKind.VariableStatement:
 					break;
-				case SyntaxKind.FirstAssignment:
-					console.log("got here");
-						
+				case SyntaxKind.BinaryExpression:
 					if (currentlyParsing === SyntaxKind.Constructor) {
-						let { name, initializer } = node as any;
-						currentClassModel.variables.push(
-							new VariableModel(name.getText(), initializer ? initializer.getText() : "")
+						const variableName = ((node as BinaryExpression).left as PropertyAccessExpression).name.text;
+						
+						currentClassModel!.variables.push(
+							new VariableModel(
+								variableName,
+								this._source.substring(node.pos, node.end)
+							)
 						);
 					}
 
 					break;
 				default:
-					return;
+					node.forEachChild(walk);
 			}
-	
-			forEachChild(node, () => walkClass(currentClassModel, node));
 		};
 
 		// TODO: consider parameterizing the file name. Do we need a file name?
 		// TODO: consider parameterizing the script target
 		const sourceFile = createSourceFile("", this._source, ScriptTarget.Latest);
-
-		forEachChild(sourceFile, (node: TypeScriptNode) => {
-			if (node.kind === SyntaxKind.ClassDeclaration) {
-				const name = (node as ClassDeclaration).name;
-				// TODO: better default name
-				let currentClassModel = new ClassModel(name ? name.text : "Default");
-				classModels.push(currentClassModel);
-
-				node.forEachChild(() => walkClass(currentClassModel, node));
-			}
-		});
+		forEachChild(sourceFile, walk);
 
 		return classModels;
 	}
