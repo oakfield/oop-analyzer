@@ -20,14 +20,14 @@ describe(TypeScriptFile.name, () => {
 			expect(classModel.variables[0].name).to.equal(variableName);
 		});
 
-		// it("adds methods to the class model", () => {
-		// 	let methodName = "myMethod";
-		// 	let classModels = (new JavaScriptFile(`class Test { ${methodName}() { return true; } }`)).toClassModelArray();
-		// 	let classModel = classModels[0];
+		it("adds methods to the class model", () => {
+			let methodName = "myMethod";
+			let classModels = (new TypeScriptFile(`class Test { ${methodName}() { return true; } }`)).toClassModelArray();
+			let classModel = classModels[0];
 
-		// 	expect(classModel.methods.length).to.equal(1);
-		// 	expect(classModel.methods[0].name).to.equal(methodName);
-		// });
+			expect(classModel.methods.length).to.equal(1);
+			expect(classModel.methods[0].name).to.equal(methodName);
+		});
 
 		// it("adds variables referenced in a method to the method's references", () => {
 		// 	let methodName = "myMethod";

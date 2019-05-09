@@ -1,6 +1,7 @@
 import {
 	BinaryExpression,
 	ClassDeclaration,
+	MethodDeclaration,
 	PropertyAccessExpression,
 	ScriptTarget,
 	SyntaxKind,
@@ -10,6 +11,7 @@ import {
 } from "typescript";
 
 import ClassModel from "./models/ClassModel";
+import MethodModel from "./models/MethodModel";
 import VariableModel from "./models/VariableModel";
 
 /**
@@ -44,7 +46,13 @@ export default class TypeScriptFile {
 					node.forEachChild(walk);
 					break;
 				case SyntaxKind.MethodDeclaration:
-					; // do something
+					const methodName = this._getNodeText((node as MethodDeclaration).name);
+					currentClassModel!.methods.push(
+						new MethodModel(
+							methodName,
+							this._getNodeText(node)
+						)
+					)
 					break;
 				case SyntaxKind.GetAccessor:
 					; // do something
@@ -57,11 +65,10 @@ export default class TypeScriptFile {
 				case SyntaxKind.BinaryExpression:
 					if (currentlyParsing === SyntaxKind.Constructor) {
 						const variableName = ((node as BinaryExpression).left as PropertyAccessExpression).name.text;
-						
 						currentClassModel!.variables.push(
 							new VariableModel(
 								variableName,
-								this._source.substring(node.pos, node.end)
+								this._getNodeText(node)
 							)
 						);
 					}
@@ -78,5 +85,9 @@ export default class TypeScriptFile {
 		forEachChild(sourceFile, walk);
 
 		return classModels;
+	}
+
+	private _getNodeText(node: TypeScriptNode): string {
+		return this._source.substring(node.pos, node.end).trim();
 	}
 }
