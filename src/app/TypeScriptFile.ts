@@ -29,6 +29,7 @@ export default class TypeScriptFile {
 		let classModels: ClassModel[] = [];
 		let currentlyParsing: SyntaxKind | null = null;
 		let currentClassModel: ClassModel | null = null;
+		let currentMethodModel: MethodModel | null = null;
 
 		const walk = (node: TypeScriptNode) => {
 			switch (node.kind) {
@@ -47,12 +48,15 @@ export default class TypeScriptFile {
 					break;
 				case SyntaxKind.MethodDeclaration:
 					const methodName = this._getNodeText((node as MethodDeclaration).name);
-					currentClassModel!.methods.push(
-						new MethodModel(
-							methodName,
-							this._getNodeText(node)
-						)
-					)
+					currentMethodModel = new MethodModel(
+						methodName,
+						this._getNodeText(node)
+					);
+					currentClassModel!.methods.push(currentMethodModel);
+
+					node.forEachChild(walk);
+
+					currentClassModel = null;
 					break;
 				case SyntaxKind.GetAccessor:
 					; // do something
@@ -61,6 +65,7 @@ export default class TypeScriptFile {
 					; // do something
 					break;
 				case SyntaxKind.VariableStatement:
+					console.log(node);
 					break;
 				case SyntaxKind.BinaryExpression:
 					if (currentlyParsing === SyntaxKind.Constructor) {
@@ -73,6 +78,13 @@ export default class TypeScriptFile {
 						);
 					}
 
+					break;
+				case SyntaxKind.PropertyAccessExpression:
+					if (currentMethodModel) {
+						currentMethodModel.references.push(
+							new VariableModel((node as PropertyAccessExpression).name.text)
+						);
+					}
 					break;
 				default:
 					node.forEachChild(walk);

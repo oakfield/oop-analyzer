@@ -29,15 +29,15 @@ describe(TypeScriptFile.name, () => {
 			expect(classModel.methods[0].name).to.equal(methodName);
 		});
 
-		// it("adds variables referenced in a method to the method's references", () => {
-		// 	let methodName = "myMethod";
-		// 	let variableName = "myVariable";
-		// 	let classModels = (new JavaScriptFile(`class Test { constructor() { this.${variableName} = null; } ${methodName}() { return this.${variableName}; } }`)).toClassModelArray();
-		// 	let methods = classModels[0].methods;
+		it("adds variables referenced in a method to the method's references", () => {
+			let methodName = "myMethod";
+			let variableName = "myVariable";
+			let classModels = (new TypeScriptFile(`class Test { constructor() { this.${variableName} = null; } ${methodName}() { return this.${variableName}; } }`)).toClassModelArray();
+			let methods = classModels[0].methods;
 
-		// 	expect(methods[0].references.length).to.equal(1);
-		// 	expect(methods[0].references[0].name).to.equal(variableName);
-		// });
+			expect(methods[0].references.length).to.equal(1);
+			expect(methods[0].references[0].name).to.equal(variableName);
+		});
 
 		// it("adds getters to the class model", () => {
 		// 	let getterName = "myGetter";
