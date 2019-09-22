@@ -47,6 +47,8 @@ export default class TypeScriptFile {
 					node.forEachChild(walk);
 					break;
 				case SyntaxKind.MethodDeclaration:
+					currentlyParsing = SyntaxKind.MethodDeclaration;
+
 					const methodName = this._getNodeText((node as MethodDeclaration).name);
 					currentMethodModel = new MethodModel(
 						methodName,
@@ -56,20 +58,39 @@ export default class TypeScriptFile {
 
 					node.forEachChild(walk);
 
-					currentClassModel = null;
+					currentMethodModel = null;
 					break;
 				case SyntaxKind.GetAccessor:
-					; // do something
+					currentlyParsing = SyntaxKind.GetAccessor;
+
+					const getterName = this._getNodeText((node as MethodDeclaration).name);
+					currentMethodModel = new MethodModel(
+						getterName,
+						this._getNodeText(node)
+					);
+					currentClassModel!.getters.push(currentMethodModel);
+
+					node.forEachChild(walk);
+
+					currentMethodModel = null;
 					break;
 				case SyntaxKind.SetAccessor:
-					; // do something
-					break;
-				case SyntaxKind.VariableStatement:
-					console.log(node);
+					currentlyParsing = SyntaxKind.SetAccessor;
+
+					const setterName = this._getNodeText((node as MethodDeclaration).name);
+					currentMethodModel = new MethodModel(
+						setterName,
+						this._getNodeText(node)
+					);
+					currentClassModel!.setters.push(currentMethodModel);
+
+					node.forEachChild(walk);
+
+					currentMethodModel = null;
 					break;
 				case SyntaxKind.BinaryExpression:
-					if (currentlyParsing === SyntaxKind.Constructor) {
-						const variableName = ((node as BinaryExpression).left as PropertyAccessExpression).name.text;
+					const variableName =  ((node as BinaryExpression).left as PropertyAccessExpression).name.text;
+					if (!currentClassModel!.variables.find(variable => variable.name === variableName)) {
 						currentClassModel!.variables.push(
 							new VariableModel(
 								variableName,
@@ -78,9 +99,23 @@ export default class TypeScriptFile {
 						);
 					}
 
+					const referenceName = ((node as BinaryExpression).left as PropertyAccessExpression).name.text;
+					if (currentlyParsing === SyntaxKind.MethodDeclaration
+						|| currentlyParsing === SyntaxKind.GetAccessor
+						|| currentlyParsing === SyntaxKind.SetAccessor
+						&& !currentMethodModel!.references.find(reference => reference.name === referenceName)) {
+						currentMethodModel!.references.push(
+							new VariableModel(
+								referenceName,
+								this._getNodeText(node)
+							)
+						);
+					}
+
 					break;
 				case SyntaxKind.PropertyAccessExpression:
-					if (currentMethodModel) {
+					const propertyName = (node as PropertyAccessExpression).name.text;
+					if (currentMethodModel && !currentMethodModel!.references.find(reference => reference.name === propertyName)) {
 						currentMethodModel.references.push(
 							new VariableModel((node as PropertyAccessExpression).name.text)
 						);

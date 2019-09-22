@@ -6,6 +6,7 @@ import { difference } from "lodash";
  * A model of a class, in the sense of object-oriented programming.
  */
 export default class ClassModel {
+	// TODO: should these be sets?
 	/**
 	 * Getters.
 	 */
