@@ -3,12 +3,12 @@ import * as yargs from "yargs";
 
 import ComponentsTransformation from "./app/transformers/components/ComponentsTransformer";
 import IProgramArguments from "./app/IProgramArguments";
-import JavaScriptFile from "./app/JavaScriptFile";
 import Lcom1Converter from "./app/metrics/lcom1/Lcom1Converter";
 import Lcom1Metric from "./app/metrics/lcom1/Lcom1Metric";
 import Lcom4Converter from "./app/metrics/lcom4/Lcom4Converter";
 import Lcom4Metric from "./app/metrics/lcom4/Lcom4Metric";
 import MaximalCliqueTransformer from "./app/transformers/maximalCliques/MaximalCliqueTransformer";
+import TypeScriptFile from "./app/TypeScriptFile";
 import WmcMetric from "./app/metrics/wmc/WmcMetric";
 
 yargs.alias("v", "version")
@@ -53,7 +53,7 @@ if (argv.file) {
 			process.exit();
 		}
 
-		let classModels = (new JavaScriptFile(data, argv.sourceType)).toClassModelArray();
+		let classModels = (new TypeScriptFile(data, argv.sourceType)).toClassModelArray();
 
 		if (argv.metric) {
 			switch (argv.metric) {

@@ -1,4 +1,5 @@
 import ClassModel from "../../models/ClassModel";
+import EquatableSet from '../../EquatableSet';
 import IUndirectedGraph from "../../graphs/IUndirectedGraph";
 import IUndirectedGraphConverter from "../IUndirectedGraphConverter";
 import MethodModel from "../../models/MethodModel";
@@ -14,7 +15,7 @@ export default class Lcom4Converter implements IUndirectedGraphConverter {
 	 * @param classModel the class to convert
 	 */
 	convert(classModel: ClassModel): IUndirectedGraph<MethodModel> {
-		let methods = new Set<Node<MethodModel>>();
+		let methods = new EquatableSet<Node<MethodModel>>();
 
 		for (let method of classModel.methods) {
 			methods.add(new Node<MethodModel>(method));
@@ -30,9 +31,9 @@ export default class Lcom4Converter implements IUndirectedGraphConverter {
 
 		for (let m of methods) {
 			for (let n of methods) {
-				if (m.data.references.some(name => n.data.references.includes(name))
-					|| m.data.references.find(variableModel => variableModel.name === n.data.name)
-					|| n.data.references.find(variableModel => variableModel.name === m.data.name)) {
+				if (m.data.references.some(name => n.data.references.has(name))
+					|| m.data.references.has(variableModel => variableModel.name === n.data.name)
+					|| n.data.references.has(variableModel => variableModel.name === m.data.name)) {
 					m.neighbors.add(n);
 				}
 			}

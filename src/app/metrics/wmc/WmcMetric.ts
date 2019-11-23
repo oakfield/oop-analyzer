@@ -14,7 +14,7 @@ export default class WmcMetric {
 	 */
 	evaluate(classModels: ClassModel[]): number {
 		return classModels
-			.map(classModel => classModel.methods.length)
+			.map(classModel => classModel.methods.size)
 			.reduce((a, b) => a + b, 0) / classModels.length;
 	}
 }

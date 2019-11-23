@@ -1,13 +1,15 @@
+import Equatable from "../Equatable";
+import EquatableSet from "../EquatableSet";
 import VariableModel from "./VariableModel";
 
 /**
  * A model of a method, in the sense of object-oriented programming.
  */
-export default class MethodModel {
+export default class MethodModel implements Equatable {
 	/**
 	 * Instance variables referenced by the method.
 	 */
-	private _references: VariableModel[] = [];
+	private _references: EquatableSet<VariableModel> = new EquatableSet();
 
 	/**
 	 * Constructor.
@@ -26,8 +28,17 @@ export default class MethodModel {
 	/**
 	 * The variables the method references.
 	 */
-	get references(): VariableModel[] {
+	get references(): EquatableSet<VariableModel> {
 		return this._references;
+	}
+
+	/**
+	 * Returns true iff two method models are equal.
+	 * @param methodModel the method model to compare
+	 */
+	equals(methodModel: MethodModel): boolean {
+		// Two method models with the same source should be equal in all respects.
+		return this._source === methodModel._source;
 	}
 
 	/**

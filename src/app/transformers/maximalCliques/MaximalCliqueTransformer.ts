@@ -1,7 +1,6 @@
 import ClassModel from "../../models/ClassModel";
 import IComponentsTransformer from "../ITransformer";
 import IUndirectedGraphConverter from "src/app/metrics/IUndirectedGraphConverter";
-import { uniq } from "lodash";
 
 /**
  * Transforms a class into multiple classes with methods that form cliques. Since the transformer
@@ -28,12 +27,12 @@ export default class MaximalCliqueTransformer implements IComponentsTransformer 
 			// TODO: can this logic, which is similar to that in ComponentsTransformer,
 			// be placed somewhere else?
 			let cliqueClassModel = new ClassModel(`Class${counter}`);
-			let methods = Array.from(maximalClique.nodes)
-				.map(n => n.data);
-			let variables = uniq(methods
-				.map(m => m.references)
-				.reduce((a, b) => a.concat(b), [])
-				.filter(r => classModel.variables.includes(r)));
+			let methods = maximalClique.nodes
+				.map(node => node.data);
+			let variables = methods	
+				.map(method => method.references)
+				.flatten()
+				.filter(reference => classModel.variables.has(reference));
 
 			cliqueClassModel.methods = methods;
 			cliqueClassModel.variables = variables;
@@ -44,7 +43,7 @@ export default class MaximalCliqueTransformer implements IComponentsTransformer 
 
 		// The class may have some variables not referenced in a method. Collect them here and dump
 		// them into the first class.
-		classModels[0].variables = classModels[0].variables.concat(classModel.constructorVariables);
+		classModels[0].variables = classModels[0].variables.union(classModel.constructorVariables);
 
 		return classModels;
 	}

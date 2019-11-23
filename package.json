@@ -4,7 +4,7 @@
 	"description": "tool to analyze and improve code by oop standards",
 	"main": "index.js",
 	"scripts": {
-		"build": "yarn run rimraf build && tsc",
+		"build": "tsc",
 		"test": "mocha build/test/**/*.js"
 	},
 	"repository": {

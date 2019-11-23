@@ -54,7 +54,7 @@ export default class TypeScriptFile {
 						methodName,
 						this._getNodeText(node)
 					);
-					currentClassModel!.methods.push(currentMethodModel);
+					currentClassModel!.methods.add(currentMethodModel);
 
 					node.forEachChild(walk);
 
@@ -68,7 +68,7 @@ export default class TypeScriptFile {
 						getterName,
 						this._getNodeText(node)
 					);
-					currentClassModel!.getters.push(currentMethodModel);
+					currentClassModel!.getters.add(currentMethodModel);
 
 					node.forEachChild(walk);
 
@@ -82,7 +82,7 @@ export default class TypeScriptFile {
 						setterName,
 						this._getNodeText(node)
 					);
-					currentClassModel!.setters.push(currentMethodModel);
+					currentClassModel!.setters.add(currentMethodModel);
 
 					node.forEachChild(walk);
 
@@ -90,8 +90,8 @@ export default class TypeScriptFile {
 					break;
 				case SyntaxKind.BinaryExpression:
 					const variableName =  ((node as BinaryExpression).left as PropertyAccessExpression).name.text;
-					if (!currentClassModel!.variables.find(variable => variable.name === variableName)) {
-						currentClassModel!.variables.push(
+					if (!currentClassModel!.variables.has(variable => variable.name === variableName)) {
+						currentClassModel!.variables.add(
 							new VariableModel(
 								variableName,
 								this._getNodeText(node)
@@ -103,8 +103,8 @@ export default class TypeScriptFile {
 					if (currentlyParsing === SyntaxKind.MethodDeclaration
 						|| currentlyParsing === SyntaxKind.GetAccessor
 						|| currentlyParsing === SyntaxKind.SetAccessor
-						&& !currentMethodModel!.references.find(reference => reference.name === referenceName)) {
-						currentMethodModel!.references.push(
+						&& !currentMethodModel!.references.has(reference => reference.name === referenceName)) {
+						currentMethodModel!.references.add(
 							new VariableModel(
 								referenceName,
 								this._getNodeText(node)
@@ -115,8 +115,8 @@ export default class TypeScriptFile {
 					break;
 				case SyntaxKind.PropertyAccessExpression:
 					const propertyName = (node as PropertyAccessExpression).name.text;
-					if (currentMethodModel && !currentMethodModel!.references.find(reference => reference.name === propertyName)) {
-						currentMethodModel.references.push(
+					if (currentMethodModel && !currentMethodModel!.references.has(reference => reference.name === propertyName)) {
+						currentMethodModel.references.add(
 							new VariableModel((node as PropertyAccessExpression).name.text)
 						);
 					}

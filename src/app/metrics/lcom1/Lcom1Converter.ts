@@ -1,4 +1,5 @@
 import ClassModel from '../../models/ClassModel';
+import EquatableSet from '../../EquatableSet';
 import IUndirectedGraph from '../../graphs/IUndirectedGraph';
 import IUndirectedGraphConverter from '../IUndirectedGraphConverter';
 import MethodModel from '../../models/MethodModel';
@@ -15,7 +16,7 @@ export default class Lcom1Converter implements IUndirectedGraphConverter {
 	 * @param classModel the class to convert
 	 */
 	convert(classModel: ClassModel): IUndirectedGraph<MethodModel> {
-		let methods = new Set<Node<MethodModel>>();
+		let methods = new EquatableSet<Node<MethodModel>>();
 
 		for (let method of classModel.methods) {
 			methods.add(new Node<MethodModel>(method));
@@ -33,7 +34,7 @@ export default class Lcom1Converter implements IUndirectedGraphConverter {
 			for (let n of methods) {
 				// Based on http://www.cs.sjsu.edu/~pearce/modules/lectures/ood/metrics/lcom.htm.
 				// LCOM1 seems to implicitly assume that there are no edges from a node to itself.
-				if (m !== n && m.data.references.some(name => n.data.references.includes(name))) {
+				if (!m.equals(n) && m.data.references.some(name => n.data.references.has(name))) {
 					m.neighbors.add(n);
 				}
 			}

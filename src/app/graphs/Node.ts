@@ -1,9 +1,10 @@
+import Equatable from "../Equatable";
 import INode from "./INode";
 
 /**
  * Basic object-oriented implementation of a node, in the sense of graphs in computer science.
  */
-export default class Node<TData> implements INode<TData> {
+export default class Node<TData extends Equatable> implements INode<TData>, Equatable {
 	data: TData;
 	neighbors: Set<Node<TData>>;
 
@@ -34,5 +35,9 @@ export default class Node<TData> implements INode<TData> {
 				}
 			}
 		}
+	}
+
+	equals(other: Node<TData>): boolean {
+		return this.data.equals(other.data);
 	}
 }

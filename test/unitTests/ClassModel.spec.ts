@@ -27,8 +27,8 @@ describe(ClassModel.name, () => {
 			let methodName = "foo";
 			let variableName = "bar";
 			let classModel = new ClassModel(className);
-			classModel.methods.push(new MethodModel(methodName, `${methodName}() { }`));
-			classModel.variables.push(new VariableModel(variableName, `this.${variableName} = 1;`))
+			classModel.methods.add(new MethodModel(methodName, `${methodName}() { }`));
+			classModel.variables.add(new VariableModel(variableName, `this.${variableName} = 1;`))
 
 			expect(classModel.toString()).to.include(className);
 			expect(classModel.toString()).to.include(methodName);

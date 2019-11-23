@@ -1,7 +1,9 @@
+import Equatable from "../Equatable";
+
 /**
  * A model of a variable, in the sense of programming.
  */
-export default class VariableModel {
+export default class VariableModel implements Equatable {
 	// TODO: it shouldn't be possible to create an invalid VariableModel with a name that doesn't
 	// match the assignmentSource. See if logic can be added to infer the name from the assignment source.
 	// Consider breaking this class into VariableModel and AssignedVariableModel.
@@ -17,6 +19,14 @@ export default class VariableModel {
 	 */
 	get name(): string {
 		return this._name;
+	}
+
+	/**
+	 * Returns true iff two variable models are equal.
+	 * @param variableModel the variable model to equate
+	 */
+	equals(variableModel: VariableModel): boolean {
+		return this._name === variableModel.name;
 	}
 
 	/**

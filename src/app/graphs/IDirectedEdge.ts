@@ -1,10 +1,11 @@
-import IEdge from "./IEdge";
+import Equatable from "../Equatable";
 import INode from "./INode";
+import IUndirectedEdge from "./IUndirectedEdge";
 
 /**
  * A directed edge or arrow.
  */
-export default interface IDirectedEdge<TData> extends IEdge<TData> {
+export default interface IDirectedEdge<TData extends Equatable> extends IUndirectedEdge<TData> {
 	/**
 	 * The node the edge starts from.
 	 */

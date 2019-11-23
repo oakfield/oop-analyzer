@@ -1,6 +1,7 @@
 import "mocha";
 
 import ClassModel from "../../src/app/models/ClassModel";
+import EquatableSet from "../../src/app/EquatableSet";
 import MaximalCliqueTransformer from "../../src/app/transformers/maximalCliques/MaximalCliqueTransformer";
 import MethodModel from "../../src/app/models/MethodModel";
 import Node from "../../src/app/graphs/Node";
@@ -25,7 +26,7 @@ describe(MaximalCliqueTransformer.name, () => {
 		it("returns a single class with one variable when given a class with no methods and one variable", () => {
 			let variableName = "foo";
 			let classModel = new ClassModel(`class Test { constructor() { this.${variableName} = 1; } }`);
-			classModel.variables.push(new VariableModel(variableName, `this.${variableName} = foo;`));
+			classModel.variables.add(new VariableModel(variableName, `this.${variableName} = foo;`));
 			let mockLcom1Converter = {
 				convert: () => new UndirectedGraph<MethodModel>()
 			};
@@ -34,8 +35,8 @@ describe(MaximalCliqueTransformer.name, () => {
 			let actual = transformer.transform(classModel);
 
 			expect(actual.length).to.equal(1);
-			expect(actual[0].variables.length).to.equal(1);
-			expect(actual[0].variables[0].name).to.equal(variableName);
+			expect(actual[0].variables.size).to.equal(1);
+			expect(actual[0].variables.pick().name).to.equal(variableName);
 		});
 
 		it("returns a single class with one method when given a class with one method and no variables", () => {
@@ -45,7 +46,7 @@ describe(MaximalCliqueTransformer.name, () => {
 			let mockLcom1Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
-					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
+					return new UndirectedGraph<MethodModel>(new EquatableSet(new Node<MethodModel>(method)));
 				}
 			};
 			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);
@@ -63,7 +64,7 @@ describe(MaximalCliqueTransformer.name, () => {
 			let mockLcom1Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
-					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
+					return new UndirectedGraph<MethodModel>(new EquatableSet(new Node<MethodModel>(method)));
 				}
 			};
 			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);
@@ -81,7 +82,7 @@ describe(MaximalCliqueTransformer.name, () => {
 			let mockLcom1Converter = {
 				convert: () => {
 					let method = new MethodModel("foo", `${methodSource}`);
-					return new UndirectedGraph<MethodModel>(new Set([new Node<MethodModel>(method)]));
+					return new UndirectedGraph<MethodModel>(new EquatableSet(new Node<MethodModel>(method)));
 				}
 			};
 			let transformer = new MaximalCliqueTransformer(mockLcom1Converter);

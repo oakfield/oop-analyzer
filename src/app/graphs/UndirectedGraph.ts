@@ -1,25 +1,28 @@
 import { difference, intersection, union } from "lodash";
 
-import IEdge from "./IEdge";
+import Equatable from "../Equatable";
+import EquatableSet from "../EquatableSet";
 import INode from "./INode";
+import IUndirectedEdge from "./IUndirectedEdge";
 import IUndirectedGraph from "./IUndirectedGraph";
 import Node from "./Node";
+import UndirectedEdge from "./UndirectedEdge";
 
 /**
  * Basic object-oriented implementation of an undirected graph.
  */
-export default class UndirectedGraph<TData> implements IUndirectedGraph<TData> {
+export default class UndirectedGraph<TData extends Equatable> implements IUndirectedGraph<TData> {
 
 	/**
 	 * Constructor.
 	 * @param _nodes the nodes of the graph
 	 * @throws if the nodes don't form an undirected graph
 	 */
-	constructor(protected _nodes: Set<INode<TData>> = new Set()) { }
+	constructor(protected _nodes = new EquatableSet<INode<TData>>()) { }
 
 	get components(): IUndirectedGraph<TData>[] {
 		let components: UndirectedGraph<TData>[] = [];
-		let discoveredNodes = new Set<Node<TData>>();
+		let discoveredNodes = new EquatableSet<Node<TData>>();
 
 		for (let node of this._nodes) {
 			if (!discoveredNodes.has(node)) {
@@ -37,28 +40,22 @@ export default class UndirectedGraph<TData> implements IUndirectedGraph<TData> {
 		return components;
 	}
 
-	// TODO: this method is OUTTA CONTROL
-	get edges(): Set<IEdge<TData>> {
-		let edges: IEdge<TData>[] = [];
+	get edges(): EquatableSet<IUndirectedEdge<TData>> {
+		let edges = new EquatableSet<IUndirectedEdge<TData>>();
 
 		for (let parentNodeM of this._nodes) {
 			for (let parentNodeN of this._nodes) {
 				for (let childNodeM of parentNodeM.depthFirstSearch()) {
 					for (let childNodeN of parentNodeN.depthFirstSearch()) {
-						if (childNodeM.neighbors.has(childNodeN)
-							&& !edges.find(edge =>
-								edge.nodes[0] === childNodeM && edge.nodes[1] === childNodeN
-								|| edge.nodes[0] === childNodeN && edge.nodes[1] === childNodeM)) {
-							edges.push({
-								nodes: [childNodeM, childNodeN]
-							});
+						if (childNodeM.neighbors.has(childNodeN)) {
+							edges.add(new UndirectedEdge(childNodeM, childNodeN));
 						}
 					}
 				}
 			}
 		}
 
-		return new Set(edges);
+		return edges;
 	}
 
 	get maximalCliques(): IUndirectedGraph<TData>[] {
@@ -68,8 +65,8 @@ export default class UndirectedGraph<TData> implements IUndirectedGraph<TData> {
 		return maximalCliques;
 	}
 
-	get nodes(): Set<INode<TData>> {
-		let nodes = new Set<INode<TData>>();
+	get nodes(): EquatableSet<INode<TData>> {
+		let nodes = new EquatableSet<INode<TData>>();
 
 		for (let node of this._nodes) {
 			for (let searchedNode of node.depthFirstSearch()) {
@@ -89,14 +86,14 @@ export default class UndirectedGraph<TData> implements IUndirectedGraph<TData> {
 	 * @param excludedNodes a set of nodes (X) disjoint with currentWorkingClique and unclassifiedNodes
 	 * @param maximalCliques the primary input and output of the algorithm
 	 */
-	private static _bronKerbosch<TData>(
+	private static _bronKerbosch<TData extends Equatable>(
 		currentWorkingClique: INode<TData>[],
 		unclassifiedNodes: INode<TData>[],
 		excludedNodes: INode<TData>[],
 		maximalCliques: IUndirectedGraph<TData>[]
 	): void {
 		if (unclassifiedNodes.length === 0 && excludedNodes.length === 0) {
-			maximalCliques.push(new UndirectedGraph(new Set(currentWorkingClique)));
+			maximalCliques.push(new UndirectedGraph(new EquatableSet(...currentWorkingClique)));
 		}
 
 		for (let unclassifiedNode of unclassifiedNodes) {

@@ -1,31 +1,32 @@
+import EquatableSet from "../EquatableSet";
 import MethodModel from "./MethodModel";
 import VariableModel from "./VariableModel";
-import { difference } from "lodash";
 
+// TODO: create method "references" or "hasAggregrationOF" that tells whether the class/model
+// has a reference to a given VariableModel? Maybe also method "isComposedOf"?
 /**
  * A model of a class, in the sense of object-oriented programming.
  */
 export default class ClassModel {
-	// TODO: should these be sets?
 	/**
 	 * Getters.
 	 */
-	getters: MethodModel[] = [];
+	getters: EquatableSet<MethodModel> = new EquatableSet();
 
 	/**
 	 * Methods.
 	 */
-	methods: MethodModel[] = [];
+	methods: EquatableSet<MethodModel> = new EquatableSet();
 
 	/**
 	 * Setters.
 	 */
-	setters: MethodModel[] = [];
+	setters: EquatableSet<MethodModel> = new EquatableSet();
 
 	/**
 	 * Instance variables.
 	 */
-	variables: VariableModel[] = [];
+	variables: EquatableSet<VariableModel> = new EquatableSet();
 
 	/**
 	 * Constructor.
@@ -38,21 +39,21 @@ export default class ClassModel {
 	 * Variables referenced in the constructor.
 	 */
 	get constructorVariables() {
-		return difference(this.variables, this.methodVariables);
+		return this.variables.difference(this.methodVariables);
 	}
 
 	/**
 	 * Variables references in a method.
 	 */
-	get methodVariables(): VariableModel[] {
+	get methodVariables():  EquatableSet<VariableModel> {
 		return this.methods
-			.map(m => m.references)
-			.reduce((a, b) => a.concat(b), [])
-			.filter(r => !this.variables.includes(r));
+			.map(method => method.references)
+			.flatten()
+			.filter(reference => !this.variables.has(reference));
 	}
 
 	/**
-	 * The class's name, for example, "Person" given "class Person."
+	 * The class's name; for example, "Person" given "class Person."
 	 */
 	get name(): string {
 		return this._name;
@@ -63,10 +64,10 @@ export default class ClassModel {
 	 */
 	toString(): string {
 		let formatMethod = (method: MethodModel) => "\n\n\t" + method.toString();
-		let variablesString = `${this.variables.map(variable => `${variable.toString()}\n`)}`;
-		let gettersString = `${this.getters.map(formatMethod)}`;
-		let methodsString = `${this.methods.map(formatMethod)}`;
-		let settersString = `${this.getters.map(formatMethod)}`;
+		let variablesString = `${this.variables.mapArray(variable => `${variable.toString()}\n`)}`;
+		let gettersString = `${this.getters.mapArray(formatMethod)}`;
+		let methodsString = `${this.methods.mapArray(formatMethod)}`;
+		let settersString = `${this.getters.mapArray(formatMethod)}`;
 		return `class ${this._name} {\n\tconstructor () {\n\t\t${variablesString}\t}${gettersString}${settersString}${methodsString}\n}\n`;
 	}
 }

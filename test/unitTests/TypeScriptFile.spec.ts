@@ -16,8 +16,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { constructor() { this.${variableName} = null; } }`)).toClassModelArray();
 			let classModel = classModels[0];
 
-			expect(classModel.variables.length).to.equal(1);
-			expect(classModel.variables[0].name).to.equal(variableName);
+			expect(classModel.variables.size).to.equal(1);
+			expect(classModel.variables.pick().name).to.equal(variableName);
 		});
 
 		it("adds methods to the class model", () => {
@@ -25,8 +25,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { ${methodName}() { return true; } }`)).toClassModelArray();
 			let classModel = classModels[0];
 
-			expect(classModel.methods.length).to.equal(1);
-			expect(classModel.methods[0].name).to.equal(methodName);
+			expect(classModel.methods.size).to.equal(1);
+			expect(classModel.methods.pick().name).to.equal(methodName);
 		});
 
 		it("adds variables referenced in a method to the method's references", () => {
@@ -35,8 +35,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { constructor() { this.${variableName} = null; } ${methodName}() { return this.${variableName}; } }`)).toClassModelArray();
 			let methods = classModels[0].methods;
 
-			expect(methods[0].references.length).to.equal(1);
-			expect(methods[0].references[0].name).to.equal(variableName);
+			expect(methods.pick().references.size).to.equal(1);
+			expect(methods.pick().references.pick().name).to.equal(variableName);
 		});
 
 		it("adds getters to the class model", () => {
@@ -44,8 +44,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { get ${getterName}() { return true; } }`)).toClassModelArray();
 			let classModel = classModels[0];
 
-			expect(classModel.getters.length).to.equal(1);
-			expect(classModel.getters[0].name).to.equal(getterName);
+			expect(classModel.getters.size).to.equal(1);
+			expect(classModel.getters.pick().name).to.equal(getterName);
 		});
 
 		it("adds variables referenced in a getter to the getter's references", () => {
@@ -54,8 +54,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { constructor() { this.${variableName} = null; } get ${getterName}() { return this.${variableName}; } }`)).toClassModelArray();
 			let getters = classModels[0].getters;
 
-			expect(getters[0].references.length).to.equal(1);
-			expect(getters[0].references[0].name).to.equal(variableName);
+			expect(getters.pick().references.size).to.equal(1);
+			expect(getters.pick().references.pick().name).to.equal(variableName);
 		});
 
 		it("adds setters to the class model", () => {
@@ -63,8 +63,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { set ${setterName}(input) { return; } }`)).toClassModelArray();
 			let classModel = classModels[0];
 
-			expect(classModel.setters.length).to.equal(1);
-			expect(classModel.setters[0].name).to.equal(setterName);
+			expect(classModel.setters.size).to.equal(1);
+			expect(classModel.setters.pick().name).to.equal(setterName);
 		});
 
 		it("adds variables referenced in a setter to the setter's references", () => {
@@ -73,8 +73,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { constructor() { this.${variableName} = null; } set ${setterName}(input) { this.${variableName} = input; } }`)).toClassModelArray();
 			let setters = classModels[0].setters;
 
-			expect(setters[0].references.length).to.equal(1);
-			expect(setters[0].references[0].name).to.equal(variableName);
+			expect(setters.pick().references.size).to.equal(1);
+			expect(setters.pick().references.pick().name).to.equal(variableName);
 		});
 
 		it("adds variables assigned in a method to the class model", () => {
@@ -83,8 +83,8 @@ describe(TypeScriptFile.name, () => {
 			let classModels = (new TypeScriptFile(`class Test { ${methodName}() { this.${variableName} = 1; } }`)).toClassModelArray();
 			let methods = classModels[0].methods;
 
-			expect(methods[0].references.length).to.equal(1);
-			expect(methods[0].references[0].name).to.equal(variableName);
+			expect(methods.pick().references.size).to.equal(1);
+			expect(methods.pick().references.pick().name).to.equal(variableName);
 		});
 
 		it("adds variables assigned in a method to the class model", () => {
@@ -94,10 +94,10 @@ describe(TypeScriptFile.name, () => {
 			let methods = classModel.methods;
 			let variables = classModel.variables;
 
-			expect(variables.length).to.equal(1);
-			expect(variables[0].name).to.equal(variableName);
-			expect(methods[0].references.length).to.equal(1);
-			expect(methods[0].references[0].name).to.equal(variableName);
+			expect(variables.size).to.equal(1);
+			expect(variables.pick().name).to.equal(variableName);
+			expect(methods.pick().references.size).to.equal(1);
+			expect(methods.pick().references.pick().name).to.equal(variableName);
 		});
 	});
 });

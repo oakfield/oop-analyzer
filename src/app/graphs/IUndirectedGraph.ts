@@ -1,6 +1,7 @@
+import Equatable from "../Equatable";
 import IGraph from "./IGraph";
 
-export default interface IUndirectedGraph<TData> extends IGraph<TData> {
+export default interface IUndirectedGraph<TData extends Equatable> extends IGraph<TData> {
 	/**
 	 * An array of connected components in the Graph.
 	 * 
