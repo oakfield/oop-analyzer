@@ -36,7 +36,7 @@
 		"acorn": "^6.1.1",
 		"acorn-walk": "^6.1.1",
 		"amd-loader": "^0.0.8",
-		"lodash": "^4.17.0",
+		"lodash": "^4.17.19",
 		"typescript": "^3.4.2",
 		"yargs": "^13.2.0"
 	}
